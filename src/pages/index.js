@@ -1,7 +1,21 @@
-import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import fetchHandler from "../utils/fetchHandler";
 
 export default function Home() {
+  const [user, setUser] = useState({});
+
+  const getProfile = async () => {
+    const response = await fetchHandler.get("/api/profile/get");
+    setUser(response.data.profile);
+    console.log("response", response);
+  };
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
   return (
     <>
       <Head>
@@ -10,9 +24,25 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        Mockland.dev
+      <main>
+        <h1>Welcome to Mockland</h1>
+        {user && (
+          <h2>
+            {user.firstName} {user.lastName}
+          </h2>
+        )}
+        <ul>
+          <li>
+            <Link href="/mocks">Mocks</Link>
+          </li>
+          <li>
+            <Link href="/auth/login">Login</Link>
+          </li>
+          <li>
+            <Link href="/auth/register">Register</Link>
+          </li>
+        </ul>
       </main>
     </>
-  )
+  );
 }

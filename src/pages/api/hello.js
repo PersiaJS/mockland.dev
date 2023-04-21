@@ -1,6 +1,5 @@
-const handler = async (req, res) => {
-  const { name = "World" } = req.query;
-  res.status(200).json({ text: `Hello ${name}!` });
+const handler = (req, res) => {
+  res.status(200).json({ text: "Hello World" });
 };
 
 export default handler;
