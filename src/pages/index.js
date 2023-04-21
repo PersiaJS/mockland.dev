@@ -31,6 +31,7 @@ export default function Home() {
             {user.firstName} {user.lastName}
           </h2>
         )}
+        <div>CONNECTED TO FLY</div>
         <ul>
           <li>
             <Link href="/mocks">Mocks</Link>
