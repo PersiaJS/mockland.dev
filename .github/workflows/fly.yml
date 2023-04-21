@@ -18,16 +18,17 @@ jobs:
 
       - name: "Create env file"
         run: |
-          touch .env
-          echo CLIENT_URL=http://mockland.dev >> .env
-          echo NODE_ENV=production >> .env
-          # echo SEND_IN_BLUE_URL=smtp-relay.sendinblue.com >> .env
-          # echo SEND_FROM_EMAIL=info@mockland.dev >> .env
-          # echo SEND_IN_BLUE_USER=me@ehsangazar.com >> .env
-          # echo SEND_IN_BLUE_PASSWORD=${{secrets.SEND_IN_BLUE_PASSWORD}} >> .env
-          # echo DATABASE_URL=${{secrets.DATABASE_URL}} >> .env
-          # echo JWT_SECRET=${{secrets.JWT_SECRET}} >> .env
-          # echo EMAIL_ADDRESS=info@mockland.dev >> .env
+          touch .env.local
+          echo CLIENT_URL=http://mockland.dev >> .env.local
+          echo NODE_ENV=production >> .env.local
+          # echo SEND_IN_BLUE_URL=smtp-relay.sendinblue.com >> .env.local
+          # echo SEND_FROM_EMAIL=info@mockland.dev >> .env.local
+          # echo SEND_IN_BLUE_USER=me@ehsangazar.com >> .env.local
+          # echo SEND_IN_BLUE_PASSWORD=${{secrets.SEND_IN_BLUE_PASSWORD}} >> .env.local
+          # echo DATABASE_URL=${{secrets.DATABASE_URL}} >> .env.local
+          # echo JWT_SECRET=${{secrets.JWT_SECRET}} >> .env.local
+          # echo EMAIL_ADDRESS=info@mockland.dev >> .env.local
+
       - name: Deploy to Fly
         run: flyctl deploy --remote-only
         env:
