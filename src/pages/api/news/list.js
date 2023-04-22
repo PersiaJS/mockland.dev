@@ -1,7 +1,10 @@
 import { faker } from "@faker-js/faker";
 
 const handler = async (req, res) => {
-  const news = new Array(10).fill(null).map((_, index) => ({
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 10;
+
+  const news = new Array(limit).fill(null).map((_, index) => ({
     id: index + 1,
     title: faker.lorem.words(3),
     createdAt: faker.date.past(),
@@ -26,7 +29,11 @@ const handler = async (req, res) => {
     },
   }));
 
-  res.status(200).json(news);
+  res.status(200).json({
+    data: news,
+    page: page,
+    limit: limit,
+  });
 };
 
 export default handler;
