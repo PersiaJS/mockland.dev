@@ -33,6 +33,7 @@ const handler = async (req, res) => {
     data: news,
     page: page,
     limit: limit,
+    total: 1000,
   });
 };
 
