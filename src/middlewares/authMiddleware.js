@@ -1,5 +1,5 @@
-import prisma from "@/utils/prisma";
 import jwt from "jsonwebtoken";
+import prisma from "../../lib/prisma";
 
 const authMiddleware = async (req, res) => {
   const { auth } = req.headers;

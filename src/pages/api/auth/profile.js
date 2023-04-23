@@ -1,6 +1,6 @@
 import authMiddleware from "@/middlewares/authMiddleware";
 import methodMiddleware from "@/middlewares/methodMiddleware";
-import prisma from "@/utils/prisma";
+import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "GET");

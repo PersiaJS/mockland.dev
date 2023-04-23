@@ -1,4 +1,4 @@
-import prisma from "@/utils/prisma";
+import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
   const page = req.query.page || 1;
@@ -25,8 +25,8 @@ const handler = async (req, res) => {
   res.status(200).json({
     status: true,
     message: "News fetched",
-    total,
-    data: news,
+    total: total,
+    data: [],
   });
 };
 

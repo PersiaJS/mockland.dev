@@ -1,4 +1,4 @@
-import prisma from "@/utils/prisma";
+import prisma from "../../../../../lib/prisma";
 
 const handler = async (req, res) => {
   const { slug } = req.query;

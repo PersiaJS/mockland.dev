@@ -1,7 +1,7 @@
-import prisma from "@/utils/prisma";
 import Validator from "validatorjs";
 import sendEmail from "../../../utils/sendEmail";
 import methodMiddleware from "@/middlewares/methodMiddleware";
+import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "POST");
