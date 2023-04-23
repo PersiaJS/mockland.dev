@@ -1,8 +1,11 @@
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../../lib/prisma";
+import tokenMiddleware from "@/middlewares/tokenMiddleware";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "PUT");
+
+  await tokenMiddleware(req, res);
 
   const { id } = req.query;
 
@@ -17,6 +20,7 @@ const handler = async (req, res) => {
   const news = await prisma.news.findUnique({
     where: {
       id: id,
+      userId: req.user.id,
     },
   });
 

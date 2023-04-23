@@ -1,17 +1,16 @@
+import methodMiddleware from "@/middlewares/methodMiddleware";
+import tokenMiddleware from "@/middlewares/tokenMiddleware";
 import Validator from "validatorjs";
+import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  if (req.method !== "POST") {
-    res.status(200).json({
-      status: false,
-      message: "Method not allowed",
-    });
-    return;
-  }
+  await methodMiddleware(req, res, "POST");
+
+  await tokenMiddleware(req, res);
 
   const rules = {
     title: "required",
-    descrtipion: "required",
+    description: "required",
     content: "required",
     image: "required",
     author: "required",
@@ -29,13 +28,37 @@ const handler = async (req, res) => {
     return;
   }
 
-  if (!req.header?.token) {
+  const news = await prisma.news.findFirst({
+    where: {
+      slug: req.body.slug,
+    },
+  });
+
+  if (news) {
     res.status(200).json({
       status: false,
-      message: "Token is required",
+      message: "News already exists",
     });
     return;
   }
+
+  await prisma.news.create({
+    data: {
+      title: req.body.title,
+      description: req.body.description,
+      content: req.body.content,
+      image: req.body.image,
+      author: req.body.author,
+      slug: req.body.slug,
+      userId: req.user.id,
+      publishedAt: new Date(),
+    },
+  });
+
+  res.status(200).json({
+    status: true,
+    message: "News created successfully",
+  });
 };
 
 export default handler;

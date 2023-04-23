@@ -3,19 +3,37 @@ import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "GET");
+  await checkTokenMiddleware(req, res);
 
   const page = req.query.page || 1;
   const limit = req.query.limit || 10;
+  let where = {};
+
+  if (req.user?.id) {
+    where = {
+      OR: [
+        {
+          userId: req.user.id,
+        },
+        {
+          userId: "MAIN",
+        },
+      ],
+    };
+  }
 
   const news = await prisma.news.findMany({
     skip: (page - 1) * limit,
     take: limit,
+    where: where,
     orderBy: {
       publishedAt: "desc",
     },
   });
 
-  const total = await prisma.news.count();
+  const total = await prisma.news.count({
+    where: where,
+  });
 
   res.status(200).json({
     status: true,
