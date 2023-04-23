@@ -132,6 +132,9 @@ const Register = () => {
         <Box>
           <UnorderedList>
             <ListItem>
+              <Link href="/">Homepage</Link>
+            </ListItem>
+            <ListItem>
               <Link href="/auth/login">Login</Link>
             </ListItem>
             <ListItem>
