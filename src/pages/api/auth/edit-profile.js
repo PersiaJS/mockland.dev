@@ -6,7 +6,6 @@ const handler = async (req, res) => {
     firstName: "required|string",
     lastName: "required|string",
     newsletter: "required|boolean",
-    token: "required|string",
   };
 
   const validation = new Validator(req.body, rules);
@@ -26,9 +25,29 @@ const handler = async (req, res) => {
 
   const { firstName, lastName, newsletter } = req.body;
 
+  const { auth } = req.headers;
+
+  if (!auth) {
+    return res
+      .status(400)
+      .json({ status: false, message: "auth header is required" });
+  }
+
+  try {
+    if (!jwt.verify(auth, process.env.JWT_SECRET)) {
+      return res
+        .status(400)
+        .json({ status: false, message: "Invalid auth token" });
+    }
+  } catch (err) {
+    return res
+      .status(400)
+      .json({ status: false, message: "Invalid auth token" });
+  }
+
   const user = await prisma.user.findFirst({
     where: {
-      token: req.body.token,
+      auth,
     },
   });
 

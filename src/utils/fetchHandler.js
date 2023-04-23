@@ -7,8 +7,8 @@ const getInstance = () => {
     "Content-Type": "application/json",
   };
 
-  if (cookies.get("token")) {
-    headers["authorization"] = `Bearer ${cookies.get("token")}`;
+  if (cookies.get("auth")) {
+    headers["auth"] = `${cookies.get("auth")}`;
   }
 
   const instance = axios.create({

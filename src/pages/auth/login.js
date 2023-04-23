@@ -41,7 +41,7 @@ const Login = () => {
               console.log("debug response", response);
               if (response.data.status) {
                 const cookies = new Cookies();
-                cookies.set("token", response.data.token);
+                cookies.set("auth", response.data.auth);
                 setMessage({
                   status: "success",
                   message: response.data.message,

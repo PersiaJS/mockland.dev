@@ -73,7 +73,12 @@ const handler = async (req, res) => {
     `,
   });
 
-  res.status(200).json({ status: true, message: "User created" });
+  res
+    .status(200)
+    .json({
+      status: true,
+      message: "User created, to login you need to confirm your email",
+    });
 };
 
 export default handler;

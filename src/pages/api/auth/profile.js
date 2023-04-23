@@ -1,31 +1,36 @@
 import prisma from "@/utils/prisma";
-import Validator from "validatorjs";
+import jwt from "jsonwebtoken";
 
 const handler = async (req, res) => {
-  const rules = {
-    token: "required|string",
-  };
-
-  const validation = new Validator(req.body, rules);
-
-  if (validation.fails()) {
-    return res.status(400).json({
-      status: false,
-      message: "Validation failed",
-    });
-  }
-
-  if (req.method !== "POST") {
+  if (req.method !== "GET") {
     return res
       .status(405)
       .json({ status: false, message: "Method not allowed" });
   }
 
-  const { token } = req.body;
+  const { auth } = req.headers;
+
+  if (!auth) {
+    return res
+      .status(400)
+      .json({ status: false, message: "auth header is required" });
+  }
+
+  try {
+    if (!jwt.verify(auth, process.env.JWT_SECRET)) {
+      return res
+        .status(400)
+        .json({ status: false, message: "Invalid auth token" });
+    }
+  } catch (err) {
+    return res
+      .status(400)
+      .json({ status: false, message: "Invalid auth token" });
+  }
 
   const user = await prisma.user.findFirst({
     where: {
-      token,
+      auth,
     },
   });
 

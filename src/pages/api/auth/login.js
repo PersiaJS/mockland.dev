@@ -70,7 +70,7 @@ const handler = async (req, res) => {
       .json({ status: false, unVerified: true, message: "User not verified" });
   }
 
-  const token = jwt.sign(
+  const auth = jwt.sign(
     {
       id: user.id,
       email: user.email,
@@ -93,7 +93,7 @@ const handler = async (req, res) => {
       id: user.id,
     },
     data: {
-      token,
+      auth,
       lastLogin: new Date(),
       securityHash,
     },
@@ -102,7 +102,7 @@ const handler = async (req, res) => {
   return res.status(200).json({
     status: true,
     message: "Login successful",
-    token,
+    auth,
   });
 };
 

@@ -16,6 +16,7 @@ model User {
   lastName     String?
   image        String?
   email        String?  @unique
+  auth         String?
   token        String?
   password     String?
   securityHash String?
