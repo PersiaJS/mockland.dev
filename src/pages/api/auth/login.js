@@ -3,8 +3,11 @@ import Validator from "validatorjs";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import sendEmail from "@/utils/sendEmail";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 
 const handler = async (req, res) => {
+  await methodMiddleware(req, res, "POST");
+
   const rules = {
     email: "required|email",
     password: "required|string",
@@ -18,13 +21,6 @@ const handler = async (req, res) => {
       message: "Validation failed",
     });
   }
-
-  if (req.method !== "POST") {
-    return res
-      .status(200)
-      .json({ status: false, message: "Method not allowed" });
-  }
-
   const { email, password } = req.body;
 
   const user = await prisma.user.findUnique({

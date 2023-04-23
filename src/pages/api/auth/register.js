@@ -2,8 +2,11 @@ import prisma from "@/utils/prisma";
 import Validator from "validatorjs";
 import sendEmail from "../../../utils/sendEmail";
 import bcrypt from "bcryptjs";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 
 const handler = async (req, res) => {
+  await methodMiddleware(req, res, "POST");
+
   const rules = {
     firstName: "required|string",
     lastName: "required|string",
@@ -20,11 +23,6 @@ const handler = async (req, res) => {
     });
   }
 
-  if (req.method !== "POST") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
-  }
   const { firstName, lastName, email, password } = req.body;
 
   const user = await prisma.user.findUnique({
@@ -73,12 +71,10 @@ const handler = async (req, res) => {
     `,
   });
 
-  res
-    .status(200)
-    .json({
-      status: true,
-      message: "User created, to login you need to confirm your email",
-    });
+  res.status(200).json({
+    status: true,
+    message: "User created, to login you need to confirm your email",
+  });
 };
 
 export default handler;

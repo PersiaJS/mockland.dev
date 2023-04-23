@@ -1,52 +1,19 @@
+import authMiddleware from "@/middlewares/authMiddleware";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "@/utils/prisma";
 import jwt from "jsonwebtoken";
 
 const handler = async (req, res) => {
-  if (req.method !== "GET") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
-  }
+  await methodMiddleware(req, res, "GET");
+  await authMiddleware(req, res);
 
-  const { auth } = req.headers;
-
-  if (!auth) {
-    return res
-      .status(400)
-      .json({ status: false, message: "auth header is required" });
-  }
-
-  try {
-    if (!jwt.verify(auth, process.env.JWT_SECRET)) {
-      return res
-        .status(400)
-        .json({ status: false, message: "Invalid auth token" });
-    }
-  } catch (err) {
-    return res
-      .status(400)
-      .json({ status: false, message: "Invalid auth token" });
-  }
-
-  const user = await prisma.user.findFirst({
-    where: {
-      auth,
-    },
-  });
-
-  if (!user) {
-    return res
-      .status(400)
-      .json({ status: false, message: "User does not exist" });
-  }
-
-  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ id: req.user.id }, process.env.JWT_SECRET, {
     expiresIn: "1w",
   });
 
   await prisma.user.update({
     where: {
-      id: user.id,
+      id: req.user.id,
     },
     data: {
       token,

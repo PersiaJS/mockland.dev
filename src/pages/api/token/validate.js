@@ -1,12 +1,8 @@
-import prisma from "@/utils/prisma";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 import jwt from "jsonwebtoken";
 
 const handler = async (req, res) => {
-  if (req.method !== "GET") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
-  }
+  await methodMiddleware(req, res, "GET");
 
   const { token } = req.headers;
 

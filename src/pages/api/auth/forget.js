@@ -1,8 +1,11 @@
 import prisma from "@/utils/prisma";
 import Validator from "validatorjs";
 import sendEmail from "../../../utils/sendEmail";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 
 const handler = async (req, res) => {
+  await methodMiddleware(req, res, "POST");
+
   const rules = {
     email: "required|email",
   };
@@ -14,12 +17,6 @@ const handler = async (req, res) => {
       status: false,
       message: "Validation failed",
     });
-  }
-
-  if (req.method !== "POST") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
   }
 
   const { email } = req.body;

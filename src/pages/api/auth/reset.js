@@ -1,8 +1,11 @@
 import Validator from "validatorjs";
 import bcrypt from "bcryptjs";
 import prisma from "@/utils/prisma";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 
 const handler = async (req, res) => {
+  await methodMiddleware(req, res, "POST");
+
   const rules = {
     password: "required|min:6",
     passwordConfirm: "required|min:6",
@@ -17,13 +20,6 @@ const handler = async (req, res) => {
       message: "Validation failed",
     });
   }
-
-  if (req.method !== "POST") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
-  }
-
   const { password, passwordConfirm, securityHash } = req.body;
 
   if (password !== passwordConfirm) {

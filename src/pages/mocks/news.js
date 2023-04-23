@@ -10,6 +10,8 @@ const MockNewsIndex = () => {
       <h2>News Apis</h2>
       <div>
         <h2> NEWS LIST API </h2>
+        <p>LINK: https://mockland.dev/api/news/list</p>
+        <p>method: GET</p>
       </div>
       <div>
         <h2> NEWS CREATE API </h2>

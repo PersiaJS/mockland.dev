@@ -1,37 +1,15 @@
-import prisma from "@/utils/prisma";
+import authMiddleware from "@/middlewares/authMiddleware";
+import methodMiddleware from "@/middlewares/methodMiddleware";
 
 const handler = async (req, res) => {
-  if (req.method !== "GET") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
-  }
-
-  const { auth } = req.headers;
-
-  if (!auth) {
-    return res
-      .status(400)
-      .json({ status: false, message: "auth header is required" });
-  }
-
-  const user = await prisma.user.findFirst({
-    where: {
-      auth,
-    },
-  });
-
-  if (!user) {
-    return res
-      .status(400)
-      .json({ status: false, message: "User does not exist" });
-  }
+  await methodMiddleware(req, res, "GET");
+  await authMiddleware(req, res);
 
   return res.status(200).json({
     status: true,
     message: "User logged in",
     data: {
-      token: user.token,
+      token: req.user.token,
     },
   });
 };

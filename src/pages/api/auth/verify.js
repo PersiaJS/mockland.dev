@@ -1,11 +1,8 @@
+import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "@/utils/prisma";
 
 const handler = async (req, res) => {
-  if (req.method !== "POST") {
-    return res
-      .status(405)
-      .json({ status: false, message: "Method not allowed" });
-  }
+  await methodMiddleware(req, res, "POST");
 
   const { securityHash } = req.body;
 
