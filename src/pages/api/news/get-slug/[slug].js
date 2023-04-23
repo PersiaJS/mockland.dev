@@ -1,3 +1,5 @@
+import prisma from "@/utils/prisma";
+
 const handler = async (req, res) => {
   const { slug } = req.query;
 
