@@ -1,15 +1,10 @@
+import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  const { id } = req.query;
+  await methodMiddleware(req, res, "GET");
 
-  if (req.method !== "GET") {
-    res.status(200).json({
-      status: false,
-      message: "Method not allowed",
-    });
-    return;
-  }
+  const { id } = req.query;
 
   const news = await prisma.news.findUnique({
     where: {

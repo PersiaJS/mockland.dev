@@ -1,16 +1,11 @@
+import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
+  await methodMiddleware(req, res, "GET");
+
   const page = req.query.page || 1;
   const limit = req.query.limit || 10;
-
-  if (req.method !== "GET") {
-    res.status(200).json({
-      status: false,
-      message: "Method not allowed",
-    });
-    return;
-  }
 
   const news = await prisma.news.findMany({
     skip: (page - 1) * limit,
@@ -26,7 +21,7 @@ const handler = async (req, res) => {
     status: true,
     message: "News fetched",
     total: total,
-    data: [],
+    data: news,
   });
 };
 

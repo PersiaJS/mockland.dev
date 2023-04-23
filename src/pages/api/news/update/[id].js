@@ -1,15 +1,10 @@
+import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  const { id } = req.query;
+  await methodMiddleware(req, res, "PUT");
 
-  if (req.method !== "PUT") {
-    res.status(200).json({
-      status: false,
-      message: "Method not allowed",
-    });
-    return;
-  }
+  const { id } = req.query;
 
   if (!req.header?.token) {
     res.status(200).json({
