@@ -7,17 +7,29 @@ const handler = async (req, res) => {
 
   await tokenMiddleware(req, res);
 
-  const { id } = req.query;
+  const rules = {
+    title: "required",
+    description: "required",
+    content: "required",
+    image: "required",
+    author: "required",
+    slug: "required",
+    publishedAt: "required",
+  };
 
-  if (!req.header?.token) {
+  const validation = new Validator(req.body, rules);
+
+  if (validation.fails()) {
     res.status(200).json({
       status: false,
-      message: "Token is required",
+      message: "Validation failed",
+      errors: validation.errors.all(),
     });
     return;
   }
 
-  const news = await prisma.news.findUnique({
+  const { id } = req.query;
+  const news = await prisma.news.findFirst({
     where: {
       id: id,
       userId: req.user.id,
@@ -31,6 +43,44 @@ const handler = async (req, res) => {
     });
     return;
   }
+
+  const newsCheckSlug = await prisma.news.findFirst({
+    where: {
+      slug: req.body.slug,
+      NOT: {
+        id: id,
+      },
+    },
+  });
+
+  if (newsCheckSlug) {
+    res.status(200).json({
+      status: false,
+      message: "News already exists",
+    });
+    return;
+  }
+
+  await prisma.news.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title: req.body.title,
+      slug: req.body.slug,
+      description: req.body.description,
+      content: req.body.content,
+      image: req.body.image,
+      author: req.body.author,
+      slug: req.body.slug,
+      publishedAt: req.body.publishedAt,
+    },
+  });
+
+  res.status(200).json({
+    status: true,
+    message: "News updated successfully",
+  });
 };
 
 export default handler;

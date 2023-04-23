@@ -13,6 +13,7 @@ const handler = async (req, res) => {
     description: "required",
     content: "required",
     image: "required",
+    slug: "required",
     author: "required",
     slug: "required",
   };
@@ -28,13 +29,13 @@ const handler = async (req, res) => {
     return;
   }
 
-  const news = await prisma.news.findFirst({
+  const newsCheckSlug = await prisma.news.findFirst({
     where: {
       slug: req.body.slug,
     },
   });
 
-  if (news) {
+  if (newsCheckSlug) {
     res.status(200).json({
       status: false,
       message: "News already exists",
