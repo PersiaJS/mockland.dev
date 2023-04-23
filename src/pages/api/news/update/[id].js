@@ -1,10 +1,20 @@
+import prisma from "@/utils/prisma";
+
 const handler = async (req, res) => {
   const { id } = req.query;
 
-  if (req.method !== "GET") {
+  if (req.method !== "PUT") {
     res.status(200).json({
       status: false,
       message: "Method not allowed",
+    });
+    return;
+  }
+
+  if (!req.header?.token) {
+    res.status(200).json({
+      status: false,
+      message: "Token is required",
     });
     return;
   }
@@ -22,12 +32,6 @@ const handler = async (req, res) => {
     });
     return;
   }
-
-  res.status(200).json({
-    status: true,
-    message: "News fetched",
-    data: news,
-  });
 };
 
 export default handler;

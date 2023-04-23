@@ -1,5 +1,3 @@
-import data from "../../../../mocks/news";
-
 const handler = async (req, res) => {
   const { slug } = req.query;
 
@@ -11,19 +9,24 @@ const handler = async (req, res) => {
     return;
   }
 
-  const newsList = data.find((item) => item.slug === slug);
+  const news = await prisma.news.findUnique({
+    where: {
+      slug: slug,
+    },
+  });
 
-  if (!newsList) {
+  if (!news) {
     res.status(200).json({
       status: false,
-      message: "Invalid slug",
+      message: "News not found",
     });
     return;
   }
 
   res.status(200).json({
     status: true,
-    data: newsList,
+    message: "News fetched",
+    data: news,
   });
 };
 

@@ -3280,7 +3280,6 @@ const news = [
 const newNews = news.map((item, index) => {
   return {
     ...item,
-    id: index + 1,
     slug: item.title.replace(/[^a-zA-Z ]/g, "").replace(/\s/g, "-"),
   };
 });

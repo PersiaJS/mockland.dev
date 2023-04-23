@@ -1,4 +1,4 @@
-import data from "../../../mocks/news";
+import prisma from "@/utils/prisma";
 
 const handler = async (req, res) => {
   const page = req.query.page || 1;
@@ -12,14 +12,21 @@ const handler = async (req, res) => {
     return;
   }
 
-  const newsList = data.slice((page - 1) * limit, page * limit);
+  const news = await prisma.news.findMany({
+    skip: (page - 1) * limit,
+    take: limit,
+    orderBy: {
+      publishedAt: "desc",
+    },
+  });
+
+  const total = await prisma.news.count();
 
   res.status(200).json({
     status: true,
-    data: newsList,
-    page: page,
-    limit: limit,
-    total: data.length,
+    message: "News fetched",
+    total,
+    data: news,
   });
 };
 
