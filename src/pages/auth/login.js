@@ -38,7 +38,6 @@ const Login = () => {
                 "/api/auth/login",
                 values
               );
-              console.log("debug response", response);
               if (response.data.status) {
                 const cookies = new Cookies();
                 cookies.set("auth", response.data.auth);
