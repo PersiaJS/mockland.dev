@@ -23,16 +23,16 @@ const handler = async (req, res) => {
     };
   }
 
-  const products = await prisma.products.findMany({
+  const products = await prisma.product.findMany({
     skip: (page - 1) * limit,
     take: limit,
     where: where,
     orderBy: {
-      publishedAt: "desc",
+      createdAt: "desc",
     },
   });
 
-  const total = await prisma.products.count({
+  const total = await prisma.product.count({
     where: where,
   });
 
