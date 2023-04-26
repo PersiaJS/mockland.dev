@@ -29,6 +29,9 @@ const MocksIndex = () => {
             <Link href="/mocks/product">
               <Button colorScheme="messenger">Product</Button>
             </Link>
+            <Link href="/mocks/post">
+              <Button colorScheme="yellow">Post</Button>
+            </Link>
           </Box>
         </Box>
       </Box>

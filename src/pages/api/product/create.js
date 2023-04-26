@@ -44,7 +44,7 @@ const handler = async (req, res) => {
       category: req.body.category,
       thumbnail: req.body.thumbnail,
       images: req.body.images,
-      userId: req.user.id,
+      memberId: req.user.id,
     },
   });
 

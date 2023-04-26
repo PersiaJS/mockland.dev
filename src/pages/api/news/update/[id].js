@@ -32,7 +32,7 @@ const handler = async (req, res) => {
   const news = await prisma.news.findFirst({
     where: {
       id: id,
-      userId: req.user.id,
+      memberId: req.user.id,
     },
   });
 

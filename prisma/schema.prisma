@@ -38,7 +38,7 @@ model News {
   image       String?
   author      String?
   slug        String?   @unique
-  userId      String?   @default("MAIN")
+  memberId    String?   @default("MAIN")
   publishedAt DateTime? @map(name: "published_at")
   createdAt   DateTime  @default(now()) @map(name: "created_at")
   updatedAt   DateTime  @updatedAt @map(name: "updated_at")
@@ -58,7 +58,7 @@ model Product {
   category           String?
   thumbnail          String?
   images             String[]
-  userId             String?  @default("MAIN")
+  memberId           String?  @default("MAIN")
   createdAt          DateTime @default(now()) @map(name: "created_at")
   updatedAt          DateTime @updatedAt @map(name: "updated_at")
 }
@@ -66,7 +66,18 @@ model Product {
 model Category {
   id        String   @id @default(cuid())
   name      String?
-  userId    String?  @default("MAIN")
+  memberId  String?  @default("MAIN")
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String?
+  body      String?
+  memberId  String?  @default("MAIN")
+  tags      String[]
+  reactions Int?     @default(0)
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
 }

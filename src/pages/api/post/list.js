@@ -23,7 +23,7 @@ const handler = async (req, res) => {
     };
   }
 
-  const products = await prisma.product.findMany({
+  const posts = await prisma.post.findMany({
     skip: (page - 1) * limit,
     take: limit,
     where: where,
@@ -32,15 +32,15 @@ const handler = async (req, res) => {
     },
   });
 
-  const total = await prisma.product.count({
+  const total = await prisma.post.count({
     where: where,
   });
 
   res.status(200).json({
     status: true,
-    message: "Products fetched",
+    message: "Posts fetched",
     total: total,
-    data: products,
+    data: posts,
   });
 };
 

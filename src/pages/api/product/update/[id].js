@@ -35,7 +35,7 @@ const handler = async (req, res) => {
   const product = await prisma.product.findFirst({
     where: {
       id: id,
-      userId: req.user.id,
+      memberId: req.user.id,
     },
   });
 

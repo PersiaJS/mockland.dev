@@ -14,10 +14,10 @@ const handler = async (req, res) => {
     where = {
       OR: [
         {
-          userId: req.user.id,
+          memberId: req.user.id,
         },
         {
-          userId: "MAIN",
+          memberId: "MAIN",
         },
       ],
     };

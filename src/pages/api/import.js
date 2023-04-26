@@ -1,5 +1,5 @@
 import prisma from "../../../lib/prisma";
-import data from "./categories";
+import data from "./posts";
 
 const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
@@ -8,17 +8,21 @@ const asyncForEach = async (array, callback) => {
 };
 
 const handler = async (req, res) => {
-  await asyncForEach(data, async (category) => {
-    await prisma.category.create({
+  await asyncForEach(data.posts, async (post) => {
+    console.log("data", post.id);
+    await prisma.post.create({
       data: {
-        name: category,
+        title: post.title,
+        body: post.body,
+        tags: post.tags,
+        reactions: post.reactions,
       },
     });
   });
 
   res
     .status(200)
-    .json({ status: true, message: "Imported", lenght: data.length });
+    .json({ status: true, message: "Imported Post", lenght: data.length });
 };
 
 export default handler;

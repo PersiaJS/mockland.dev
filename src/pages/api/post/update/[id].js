@@ -1,21 +1,17 @@
 import methodMiddleware from "@/middlewares/methodMiddleware";
+import prisma from "../../../../../lib/prisma";
 import tokenMiddleware from "@/middlewares/tokenMiddleware";
-import Validator from "validatorjs";
-import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  await methodMiddleware(req, res, "POST");
+  await methodMiddleware(req, res, "PUT");
 
   await tokenMiddleware(req, res);
 
   const rules = {
     title: "required",
-    description: "required",
-    content: "required",
-    image: "required",
-    slug: "required",
-    author: "required",
-    slug: "required",
+    body: "required",
+    tags: "required",
+    reactions: "required",
   };
 
   const validation = new Validator(req.body, rules);
@@ -29,36 +25,38 @@ const handler = async (req, res) => {
     return;
   }
 
-  const newsCheckSlug = await prisma.news.findFirst({
+  const { id } = req.query;
+  const post = await prisma.post.findFirst({
     where: {
-      slug: req.body.slug,
+      id: id,
+      memberId: req.user.id,
     },
   });
 
-  if (newsCheckSlug) {
+  if (!post) {
     res.status(200).json({
       status: false,
-      message: "News already exists",
+      message: "Post not found",
     });
     return;
   }
 
-  await prisma.news.create({
+  await prisma.post.update({
+    where: {
+      id: id,
+    },
     data: {
       title: req.body.title,
-      description: req.body.description,
-      content: req.body.content,
-      image: req.body.image,
-      author: req.body.author,
-      slug: req.body.slug,
-      memberId: req.user.id,
-      publishedAt: new Date(),
+      body: req.body.body,
+      tags: req.body.tags,
+      reactions: req.body.reactions,
+      images: req.body.images,
     },
   });
 
   res.status(200).json({
     status: true,
-    message: "News created successfully",
+    message: "Post updated successfully",
   });
 };
 

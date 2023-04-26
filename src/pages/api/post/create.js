@@ -10,12 +10,9 @@ const handler = async (req, res) => {
 
   const rules = {
     title: "required",
-    description: "required",
-    content: "required",
-    image: "required",
-    slug: "required",
-    author: "required",
-    slug: "required",
+    body: "required",
+    tags: "required",
+    reactions: "required",
   };
 
   const validation = new Validator(req.body, rules);
@@ -29,36 +26,19 @@ const handler = async (req, res) => {
     return;
   }
 
-  const newsCheckSlug = await prisma.news.findFirst({
-    where: {
-      slug: req.body.slug,
-    },
-  });
-
-  if (newsCheckSlug) {
-    res.status(200).json({
-      status: false,
-      message: "News already exists",
-    });
-    return;
-  }
-
-  await prisma.news.create({
+  await prisma.post.create({
     data: {
       title: req.body.title,
-      description: req.body.description,
-      content: req.body.content,
-      image: req.body.image,
-      author: req.body.author,
-      slug: req.body.slug,
+      body: req.body.body,
+      tags: req.body.tags,
+      reactions: req.body.reactions,
       memberId: req.user.id,
-      publishedAt: new Date(),
     },
   });
 
   res.status(200).json({
     status: true,
-    message: "News created successfully",
+    message: "Post created successfully",
   });
 };
 

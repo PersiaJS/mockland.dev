@@ -9,22 +9,22 @@ const handler = async (req, res) => {
 
   const { id } = req.query;
 
-  const product = await prisma.product.findFirst({
+  const post = await prisma.post.findFirst({
     where: {
       id: id,
       memberId: req.user.id,
     },
   });
 
-  if (!product) {
+  if (!post) {
     res.status(200).json({
       status: false,
-      message: "Product not found",
+      message: "Post not found",
     });
     return;
   }
 
-  await prisma.product.delete({
+  await prisma.post.delete({
     where: {
       id: id,
     },
@@ -32,7 +32,7 @@ const handler = async (req, res) => {
 
   res.status(200).json({
     status: true,
-    message: "Product deleted successfully",
+    message: "Post deleted successfully",
   });
 };
 
