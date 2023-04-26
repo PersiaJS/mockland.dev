@@ -21,7 +21,7 @@ const handler = async (req, res) => {
 
   const { email } = req.body;
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.member.findUnique({
     where: {
       email,
     },

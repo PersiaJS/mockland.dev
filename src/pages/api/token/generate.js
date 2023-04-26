@@ -11,7 +11,7 @@ const handler = async (req, res) => {
     expiresIn: "1w",
   });
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: req.user.id,
     },

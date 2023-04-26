@@ -23,7 +23,7 @@ const handler = async (req, res) => {
   }
   const { email, password } = req.body;
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.member.findUnique({
     where: {
       email,
     },
@@ -84,7 +84,7 @@ const handler = async (req, res) => {
 
   const securityHash = Math.random().toString(36).substring(2, 15);
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: user.id,
     },

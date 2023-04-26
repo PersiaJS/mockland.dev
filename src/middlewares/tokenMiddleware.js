@@ -13,7 +13,7 @@ const tokenMiddleware = async (req, res, next) => {
     return res.status(400).json({ status: false, message: "Invalid token" });
   }
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.member.findFirst({
     where: {
       token,
     },

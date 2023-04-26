@@ -25,7 +25,7 @@ const handler = async (req, res) => {
 
   const { firstName, lastName, email, password } = req.body;
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.member.findUnique({
     where: {
       email,
     },
@@ -40,7 +40,7 @@ const handler = async (req, res) => {
   const securityHash = Math.random().toString(36).substring(2, 15);
   const passwordHashed = await bcrypt.hash(password, 10);
 
-  await prisma.user.create({
+  await prisma.member.create({
     data: {
       firstName,
       lastName,

@@ -15,7 +15,7 @@ const authMiddleware = async (req, res) => {
       .json({ status: false, message: "Invalid auth token" });
   }
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.member.findFirst({
     where: {
       auth,
     },

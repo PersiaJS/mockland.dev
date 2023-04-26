@@ -7,7 +7,7 @@ const handler = async (req, res) => {
 
   await authMiddleware(req, res);
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: req.user.id,
     },

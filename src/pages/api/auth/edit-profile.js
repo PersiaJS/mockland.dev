@@ -25,7 +25,7 @@ const handler = async (req, res) => {
 
   const { firstName, lastName, newsletter } = req.body;
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: req.user.id,
     },

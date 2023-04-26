@@ -28,7 +28,7 @@ const handler = async (req, res) => {
       .json({ status: false, message: "Passwords do not match" });
   }
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.member.findFirst({
     where: {
       securityHash,
     },
@@ -46,7 +46,7 @@ const handler = async (req, res) => {
 
   const newSecurityHash = Math.random().toString(36).substring(2, 15);
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: user.id,
     },
