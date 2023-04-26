@@ -45,3 +45,28 @@ model News {
 
   @@map(name: "news")
 }
+
+model Product {
+  id                 String   @id @default(cuid())
+  title              String?
+  description        String?
+  price              Float?
+  discountPercentage Float?
+  rating             Float?
+  stock              Int?
+  brand              String?
+  category           String?
+  thumbnail          String?
+  images             String[]
+  userId             String?  @default("MAIN")
+  createdAt          DateTime @default(now()) @map(name: "created_at")
+  updatedAt          DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String?
+  userId    String?  @default("MAIN")
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}

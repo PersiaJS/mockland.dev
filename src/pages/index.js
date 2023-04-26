@@ -2,14 +2,18 @@ import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import fetchHandler from "../utils/fetchHandler";
+import { Box, Button, Container, Heading } from "@chakra-ui/react";
 
 export default function Home() {
   const [user, setUser] = useState({});
 
   const getProfile = async () => {
-    const response = await fetchHandler.get("/api/profile/get");
-    setUser(response.data.profile);
-    console.log("response", response);
+    try {
+      const response = await fetchHandler.get("/api/profile/get");
+      setUser(response.data.profile);
+    } catch (error) {
+      console.log("NOT LOGGED IN");
+    }
   };
 
   useEffect(() => {
@@ -25,24 +29,40 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Welcome to Mockland</h1>
-        {user && (
-          <h2>
-            {user.firstName} {user.lastName}
-          </h2>
-        )}
-        <div>CONNECTED TO FLY</div>
-        <ul>
-          <li>
-            <Link href="/mocks">Mocks</Link>
-          </li>
-          <li>
-            <Link href="/auth/login">Login</Link>
-          </li>
-          <li>
-            <Link href="/auth/register">Register</Link>
-          </li>
-        </ul>
+        <Container>
+          <Box display={"grid"} alignItems={"center"} height={"100vh"}>
+            <Box></Box>
+            <Box>
+              <Box textAlign={"center"}>
+                <Heading as={"h1"}>Welcome to Mockland</Heading>
+              </Box>
+              {user && (
+                <h2>
+                  {user.firstName} {user.lastName}
+                </h2>
+              )}
+              <Box
+                display={"grid"}
+                gridTemplateColumns={"1fr 1fr"}
+                my={10}
+                gridGap={4}
+              >
+                <Button colorScheme={"red"}>
+                  <Link href="/auth/register">Register</Link>
+                </Button>
+                <Button colorScheme={"green"}>
+                  <Link href="/auth/login">Login</Link>
+                </Button>
+              </Box>
+              <Box>
+                <Button colorScheme={"blue"}>
+                  <Link href="/mocks">Mocks</Link>
+                </Button>
+              </Box>
+            </Box>
+            <Box></Box>
+          </Box>
+        </Container>
       </main>
     </>
   );

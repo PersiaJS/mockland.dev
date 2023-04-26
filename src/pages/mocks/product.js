@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-const MockNewsIndex = () => {
+const MockProductIndex = () => {
   return (
     <Container>
       <Box display={"grid"} alignItems={"center"} height={"100vh"}>
@@ -20,17 +20,16 @@ const MockNewsIndex = () => {
               <Link href="/mocks"> Mocks </Link>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
-              <Link href="/mocks/news"> News </Link>
+              <Link href="/mocks/product"> Product </Link>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Heading as={"h1"}>News</Heading>
+          <Heading as={"h1"}>Product</Heading>
           <Box my={8}>
-            <p>GET: https://mockland.dev/api/news/list</p>
-            <p>GET: https://mockland.dev/api/news/get-id/:id</p>
-            <p>GET: https://mockland.dev/api/news/get-slug/:slug</p>
-            <p>PUT: https://mockland.dev/api/news/update/:id</p>
-            <p>DELETE: https://mockland.dev/api/news/delete/:id</p>
-            <p>POST: https://mockland.dev/api/news/create</p>
+            <p>GET: https://mockland.dev/api/product/list</p>
+            <p>GET: https://mockland.dev/api/product/get-id/:id</p>
+            <p>PUT: https://mockland.dev/api/product/update/:id</p>
+            <p>DELETE: https://mockland.dev/api/product/delete/:id</p>
+            <p>POST: https://mockland.dev/api/product/create</p>
           </Box>
         </Box>
       </Box>
@@ -38,4 +37,4 @@ const MockNewsIndex = () => {
   );
 };
 
-export default MockNewsIndex;
+export default MockProductIndex;
