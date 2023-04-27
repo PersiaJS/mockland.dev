@@ -38,6 +38,9 @@ const MocksIndex = () => {
             <Link href="/mocks/auth">
               <Button colorScheme="cyan">Auth</Button>
             </Link>
+            <Link href="/mocks/cart">
+              <Button colorScheme="pink">Cart</Button>
+            </Link>
           </Box>
         </Box>
       </Box>

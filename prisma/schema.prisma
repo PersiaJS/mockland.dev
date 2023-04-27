@@ -107,3 +107,14 @@ model Post {
 
   @@map(name: "posts")
 }
+
+model Cart {
+  id        String   @id @default(cuid())
+  memberId  String?  @default("MAIN")
+  productId String?
+  quantity  Int?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "carts")
+}
