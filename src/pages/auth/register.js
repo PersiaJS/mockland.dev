@@ -48,7 +48,7 @@ const Register = () => {
               onSubmit={async (values, actions) => {
                 try {
                   const response = await fetchHandler.post(
-                    "/api/auth/register",
+                    "/api/member/register",
                     values
                   );
                   if (response.data.status) {

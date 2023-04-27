@@ -41,7 +41,7 @@ const Login = () => {
               onSubmit={async (values, actions) => {
                 try {
                   const response = await fetchHandler.post(
-                    "/api/auth/login",
+                    "/api/member/login",
                     values
                   );
                   if (response.data.status) {

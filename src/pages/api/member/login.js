@@ -4,16 +4,13 @@ import bcrypt from "bcryptjs";
 import sendEmail from "@/utils/sendEmail";
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
-import tokenMiddleware from "@/middlewares/tokenMiddleware";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "POST");
-  await tokenMiddleware(req, res);
 
   const rules = {
     email: "required|email",
     password: "required|string",
-    clientUrl: "required|string",
   };
 
   const validation = new Validator(req.body, rules);
@@ -26,10 +23,9 @@ const handler = async (req, res) => {
   }
   const { email, password } = req.body;
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.member.findUnique({
     where: {
       email,
-      memberId: req.user.id,
     },
   });
 
@@ -50,14 +46,14 @@ const handler = async (req, res) => {
   if (!user.verified) {
     await sendEmail({
       email,
-      subject: `Verify your email for user ${req.user.id}`,
+      subject: "Verify your email",
       message: `
       <h1>Verify your email</h1>
       <p>Hi ${user.firstName},</p>
       <br />
       <p>
         Please click the link below to verify your email address.
-        <a href="${req.body.clientUrl}/?securityHash=${user.securityHash}">Verify</a>
+        <a href="${process.env.CLIENT_URL}/?securityHash=${user.securityHash}">Verify</a>
       </p>
       <br />
       <p>Regards, MockLand.dev</p>
@@ -88,7 +84,7 @@ const handler = async (req, res) => {
 
   const securityHash = Math.random().toString(36).substring(2, 15);
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: user.id,
     },

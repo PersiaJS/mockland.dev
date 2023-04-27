@@ -3,18 +3,15 @@ import sendEmail from "../../../utils/sendEmail";
 import bcrypt from "bcryptjs";
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
-import tokenMiddleware from "@/middlewares/tokenMiddleware";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "POST");
-  await tokenMiddleware(req, res);
 
   const rules = {
     firstName: "required|string",
     lastName: "required|string",
     email: "required|email",
     password: "required|string",
-    clientUrl: "required|string",
   };
 
   const validation = new Validator(req.body, rules);
@@ -28,10 +25,9 @@ const handler = async (req, res) => {
 
   const { firstName, lastName, email, password } = req.body;
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.member.findUnique({
     where: {
       email,
-      memberId: req.user.id,
     },
   });
 
@@ -44,7 +40,7 @@ const handler = async (req, res) => {
   const securityHash = Math.random().toString(36).substring(2, 15);
   const passwordHashed = await bcrypt.hash(password, 10);
 
-  await prisma.user.create({
+  await prisma.member.create({
     data: {
       firstName,
       lastName,
@@ -55,17 +51,19 @@ const handler = async (req, res) => {
       newsletter: true,
       verified: false,
       lastLogin: new Date(),
-      memberId: req.user.id,
     },
   });
 
   await sendEmail({
     email,
-    subject: `Welcome to the mockland for user ${req.user.id}`,
+    subject: "Welcome to the community",
     message: `
+      <h1>Welcome to the community</h1>
+      <p>Thank you for registering, we hope you enjoy your stay.</p>
+      <br />
       <p>
         In order to verify your account, please click on the following link:
-        <a href="${req.body.clientUrl}/?securityHash=${securityHash}">Verify</a>
+        <a href="${process.env.CLIENT_URL}/?securityHash=${securityHash}">Verify</a>
       </p>
       <br />
       <p>Regards, MockLand.dev</p>

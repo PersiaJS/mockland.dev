@@ -1,15 +1,13 @@
-import userAuthMiddleware from "@/middlewares/userAuthMiddleware";
+import authMiddleware from "@/middlewares/authMiddleware";
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
-import tokenMiddleware from "@/middlewares/tokenMiddleware";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "GET");
-  await tokenMiddleware(req, res);
 
-  await userAuthMiddleware(req, res);
+  await authMiddleware(req, res);
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: req.user.id,
     },

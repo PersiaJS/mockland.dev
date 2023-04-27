@@ -1,14 +1,12 @@
-import userAuthMiddleware from "@/middlewares/userAuthMiddleware";
+import authMiddleware from "@/middlewares/authMiddleware";
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import Validator from "validatorjs";
 import prisma from "../../../../lib/prisma";
-import tokenMiddleware from "@/middlewares/tokenMiddleware";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "POST");
-  await tokenMiddleware(req, res);
 
-  await userAuthMiddleware(req, res);
+  await authMiddleware(req, res);
 
   const rules = {
     firstName: "required|string",

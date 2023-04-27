@@ -1,14 +1,12 @@
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
-import tokenMiddleware from "@/middlewares/tokenMiddleware";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "POST");
-  await tokenMiddleware(req, res);
 
   const { securityHash } = req.body;
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.member.findFirst({
     where: {
       securityHash,
     },
@@ -20,7 +18,7 @@ const handler = async (req, res) => {
 
   const newSecurityHash = Math.random().toString(36).substring(2, 15);
 
-  await prisma.user.update({
+  await prisma.member.update({
     where: {
       id: user.id,
     },
