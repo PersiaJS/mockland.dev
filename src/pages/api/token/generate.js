@@ -2,8 +2,10 @@ import authMiddleware from "@/middlewares/authMiddleware";
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import jwt from "jsonwebtoken";
 import prisma from "../../../../lib/prisma";
+import corsMiddleware from "@/middlewares/corsMiddleware";
 
 const handler = async (req, res) => {
+  await corsMiddleware(req, res);
   await methodMiddleware(req, res, "GET");
   await authMiddleware(req, res);
 
