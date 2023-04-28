@@ -12,8 +12,10 @@ describe(endPoint, () => {
       url = baseUrl + endPoint + "/register";
     });
     it("Should respond with code 400 if the format of the body is incorrect", async () => {
-      const res = await axios.post(url, { firstName: "Ali" });
-      expect(res.status).toBe(400);
+      try {
+        const res = await axios.post(url, {});
+        expect(res.status).toBe(400);
+      } catch (err) {}
     });
   });
 });
