@@ -4,13 +4,15 @@ import prisma from "../../lib/prisma";
 const tokenMiddleware = async (req, res, next) => {
   const { token } = req.headers;
   if (!token) {
-    return res
+    res
       .status(400)
       .json({ status: false, message: "token header is required" });
+    return true;
   }
 
   if (!jwt.verify(token, process.env.JWT_SECRET)) {
-    return res.status(400).json({ status: false, message: "Invalid token" });
+    res.status(400).json({ status: false, message: "Invalid token" });
+    return true;
   }
 
   const user = await prisma.member.findFirst({
@@ -20,9 +22,8 @@ const tokenMiddleware = async (req, res, next) => {
   });
 
   if (!user) {
-    return res
-      .status(400)
-      .json({ status: false, message: "User does not exist" });
+    res.status(400).json({ status: false, message: "User does not exist" });
+    return true;
   }
 
   req.user = user;
