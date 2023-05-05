@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
       <main>
         <Container>
-          <Box display={"grid"} alignItems={"center"} height={"100vh"}>
+          <Box display={"grid"} alignItems={"center"}>
             <Box></Box>
             <Box>
               <Box textAlign={"center"}>
