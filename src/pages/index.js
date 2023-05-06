@@ -41,19 +41,6 @@ export default function Home() {
                   {user.firstName} {user.lastName}
                 </h2>
               )}
-              <Box
-                display={"grid"}
-                gridTemplateColumns={"1fr 1fr"}
-                my={10}
-                gridGap={4}
-              >
-                <Button colorScheme={"red"}>
-                  <Link href="/auth/register">Register</Link>
-                </Button>
-                <Button colorScheme={"green"}>
-                  <Link href="/auth/login">Login</Link>
-                </Button>
-              </Box>
               <Box>
                 <Button colorScheme={"blue"}>
                   <Link href="/mocks">Mocks</Link>
