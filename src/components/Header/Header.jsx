@@ -8,6 +8,7 @@ import {
   Link,
   Icon,
   Box,
+  Button,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -109,6 +110,19 @@ const Header = () => {
             </Link>
           </Flex>
         </Box>
+        <Flex gap={2}>
+          <Link href="/auth/login">
+            <Button colorScheme="green" variant="ghost">
+              Log In
+            </Button>
+          </Link>
+
+          <Link href="/auth/register">
+            <Button colorScheme="green" variant="solid">
+              Sign Up
+            </Button>
+          </Link>
+        </Flex>
       </Flex>
     </header>
   );
