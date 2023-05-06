@@ -15,10 +15,11 @@ const Header = () => {
     <header>
       <Flex
         height={"75px"}
+        transition={"all 250ms"}
         justifyContent={"space-between"}
         alignItems={"center"}
         boxShadow="sm"
-        px={"4rem"}
+        px={{ lg: "4rem", md: "1.5rem", sm: "1rem" }}
         py={"1rem"}
         gap={4}
       >
