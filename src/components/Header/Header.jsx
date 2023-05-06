@@ -63,7 +63,7 @@ const Header = () => {
               />
             </Icon>
           </Link>
-          <Link>
+          <Link href="https://t.me/joinchat/BcZHTxkf2MoIC1pHxJ_xSw">
             <Icon
               viewBox="0 0 16 16 "
               _hover={{
