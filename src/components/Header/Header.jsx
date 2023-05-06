@@ -35,27 +35,28 @@ const Header = () => {
             Mockland
           </Heading>
         </Flex>
-        <Flex gap={4} alignItems={"Center"} height={"100%"} width={"100%"} justifyContent={"flex-end"}>
-          <InputGroup
-            display={{ base: "none", lg: "flex", md: "flex", sm: "flex" }}
-            alignItems={"center"}
-            boxShadow="base"
-            height={"100%"}
-            maxWidth={"600px"}
-            borderRadius={"5px"}
-          >
-            <InputLeftElement
-              pt={"3px"}
-              pointerEvents="none"
-              children={<Search2Icon color="gray.500" />}
-            />
-            <Input
-              type="tel"
-              _placeholder={{ color: "gray.500", fontSize: "16px" }}
-              placeholder="Search Mocks"
-              variant="unstyled"
-            />
-          </InputGroup>
+        <InputGroup
+          display={{ base: "none", lg: "flex", md: "flex", sm: "flex" }}
+          alignItems={"center"}
+          boxShadow="base"
+          height={"100%"}
+          maxWidth={"600px"}
+          borderRadius={"5px"}
+        >
+          <InputLeftElement
+            pt={"3px"}
+            pointerEvents="none"
+            children={<Search2Icon color="gray.500" />}
+          />
+          <Input
+            type="tel"
+            _placeholder={{ color: "gray.500", fontSize: "16px" }}
+            placeholder="Search Mocks"
+            variant="unstyled"
+          />
+        </InputGroup>
+
+        <Flex gap={4} alignItems={"Center"} height={"100%"}>
           <Box display={{ base: "none", md: "block" }}>
             <Flex justifyContent={"space-between"} gap={5}>
               <Link href="https://github.com/PersiaJS/mockland.dev">
