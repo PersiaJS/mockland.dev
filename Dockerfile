@@ -35,7 +35,7 @@ COPY --from=builder /app ./
 
 USER nextjs
 
-CMD ["yarn", "start"]
+CMD ["yarn", "run", "start:prod"]
 
 # If using npm comment out above and use below instead
 # CMD ["npm", "run", "start"]
