@@ -88,6 +88,7 @@ const LoginForm = () => {
               });
             }
           } catch (error) {
+            setIsPending(false);
             setMessage({
               status: "error",
               message: "Something went wrong. Please try again later.",
