@@ -22,9 +22,20 @@ import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
 import Cookies from "universal-cookie";
 
-const LoginSchema = Yup.object().shape({
+const SignupSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  lastName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().required("Required"),
+  password: Yup.string().min(6, "Password too short!").required("Required"),
+  passwordConfirm: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Required"),
 });
 
 const LoginForm = () => {
@@ -48,32 +59,33 @@ const LoginForm = () => {
           color={"blackAlpha.800"}
           textAlign={"center"}
         >
-          Login to your account
+          Create an account
         </Heading>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
-          Don't have an account?{" "}
-          <Link href="/auth/register" color="green">
-            Sign up
+          Already have an account?{" "}
+          <Link href="/auth/login" color="green">
+            Log in
           </Link>
         </Text>
       </VStack>
       <Formik
         initialValues={{
+          firstName: "",
+          lastName: "",
           email: "",
           password: "",
+          passwordConfirm: "",
           rememberMe: true,
         }}
-        validationSchema={LoginSchema}
+        validationSchema={SignupSchema}
         onSubmit={async (values, { resetForm }) => {
           setIsPending(true);
           try {
             const response = await fetchHandler.post(
-              "/api/member/login",
+              "/api/member/register",
               values
             );
             if (response.data.status) {
-              const cookies = new Cookies();
-              cookies.set("auth", response.data.auth);
               setMessage({
                 status: "success",
                 message: response.data.message,
@@ -99,13 +111,35 @@ const LoginForm = () => {
         {({ handleSubmit, errors, touched }) => (
           <form onSubmit={handleSubmit}>
             <VStack spacing={5}>
-              <FormControl isInvalid={errors.email && touched.email}>
-                <FormLabel htmlFor="email" color={"blackAlpha.700"}>
-                  Email
-                </FormLabel>
+              <HStack>
+                <FormControl isInvalid={errors.firstName && touched.firstName}>
+                  <Field
+                    as={Input}
+                    placeholder="First Name"
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    focusBorderColor="#38A169"
+                  />
+                  <FormErrorMessage>{errors.firstName}</FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.lastName && touched.lastName}>
+                  <Field
+                    as={Input}
+                    placeholder="Last Name"
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    focusBorderColor="#38A169"
+                  />
+                  <FormErrorMessage>{errors.lastName}</FormErrorMessage>
+                </FormControl>
+              </HStack>
 
+              <FormControl isInvalid={errors.email && touched.email}>
                 <Field
                   as={Input}
+                  placeholder="Email"
                   id="email"
                   name="email"
                   type="email"
@@ -114,11 +148,9 @@ const LoginForm = () => {
                 <FormErrorMessage>{errors.email}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.password && touched.password}>
-                <FormLabel htmlFor="password" color={"blackAlpha.700"}>
-                  Password
-                </FormLabel>
                 <Field
                   as={Input}
+                  placeholder="Password"
                   id="password"
                   name="password"
                   type="password"
@@ -126,34 +158,33 @@ const LoginForm = () => {
                 />
                 <FormErrorMessage>{errors.password}</FormErrorMessage>
               </FormControl>
-              <HStack w={"100%"} justifyContent={"space-between"}>
+              <FormControl
+                isInvalid={errors.passwordConfirm && touched.passwordConfirm}
+              >
                 <Field
-                  as={Checkbox}
-                  defaultChecked
-                  id="rememberMe"
-                  name="rememberMe"
-                  colorScheme="green"
-                >
-                  Remember me
-                </Field>
-                <Text color={"green"} fontWeight={"500"}>
-                  <Link>Forgot password</Link>
-                </Text>
-              </HStack>
-              <VStack align="stretch" width={"100%"} spacing={5}>
+                  as={Input}
+                  placeholder="Confirm password"
+                  id="passwordConfirm"
+                  name="passwordConfirm"
+                  type="password"
+                  focusBorderColor="#38A169"
+                />
+                <FormErrorMessage>{errors.passwordConfirm}</FormErrorMessage>
+              </FormControl>
+              <VStack align="stretch" width={"100%"} spacing={3}>
                 <Button
                   variant={"solid"}
                   colorScheme="green"
                   isLoading={isPending}
                   type="submit"
                 >
-                  Sign in
+                  Sign up
                 </Button>
                 <Button
                   variant={"outline"}
                   leftIcon={<GoogleIcon boxSize={5} />}
                 >
-                  Sign in with Google
+                  Sign up with Google
                 </Button>
               </VStack>
             </VStack>
