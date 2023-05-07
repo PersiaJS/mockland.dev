@@ -11,20 +11,21 @@ datasource db {
 }
 
 model Member {
-  id           String   @id @default(cuid())
+  id           String       @id @default(cuid())
   firstName    String?
   lastName     String?
   image        String?
-  email        String?  @unique
+  email        String?      @unique
   auth         String?
   token        String?
   password     String?
   securityHash String?
-  verified     Boolean? @default(false)
-  createdAt    DateTime @default(now()) @map(name: "created_at")
-  updatedAt    DateTime @updatedAt @map(name: "updated_at")
-  newsletter   Boolean? @default(false)
-  lastLogin    DateTime @map(name: "last_login")
+  verified     Boolean?     @default(false)
+  createdAt    DateTime     @default(now()) @map(name: "created_at")
+  updatedAt    DateTime     @updatedAt @map(name: "updated_at")
+  newsletter   Boolean?     @default(false)
+  lastLogin    DateTime     @map(name: "last_login")
+  token_usage  TokenUsage[]
 
   @@map(name: "members")
 }
@@ -120,7 +121,7 @@ model Cart {
 }
 
 model Contact {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   email       String
   description String?
@@ -128,4 +129,17 @@ model Contact {
   updatedAt   DateTime @updatedAt @map(name: "updated_at")
 
   @@map(name: "contacts")
+}
+
+model TokenUsage {
+  id        String   @id @default(cuid())
+  memberId  String
+  month     Int
+  year      Int
+  count     Int
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  member    Member   @relation(fields: [memberId], references: [id])
+
+  @@map(name: "token_usages")
 }
