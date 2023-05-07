@@ -35,7 +35,6 @@ COPY --from=builder /app ./
 
 USER nextjs
 
-CMD ["yarn", "run", "start:prod"]
+RUN yarn run migrate
 
-# If using npm comment out above and use below instead
-# CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]

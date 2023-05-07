@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "start:prod": "prisma migrate deploy && next start",
+    "migrate": "prisma db push",
     "test": "jest --watchAll --verbose --runInBand --detectOpenHandles --coverage",
     "lint": "next lint"
   },
