@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production npm run migrate && next start",
     "test": "jest --watchAll --verbose --runInBand --detectOpenHandles --coverage",
+    "migrate": "npx prisma migrate deploy",
     "lint": "next lint"
   },
   "dependencies": {
