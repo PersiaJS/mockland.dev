@@ -4,9 +4,9 @@ import Header from "../Header/Header";
 const Layout = ({ children }) => {
   return (
     <>
-      <Container maxWidth={"100wh"} minHeight={"100vh"} padding={0}>
+      <Container display={"flex"} flexDirection={"column"} maxWidth={"100wh"} minHeight={"100vh"} padding={0}>
         <Header />
-        <main>{children}</main>
+        {children}
       </Container>
     </>
   );

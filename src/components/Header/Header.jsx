@@ -1,7 +1,6 @@
-import { Search2Icon, HamburgerIcon, StarIcon } from "@chakra-ui/icons";
+import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Flex,
-  Heading,
   InputGroup,
   InputLeftElement,
   Input,
@@ -11,6 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import React from "react";
+import Mockland from "../Mockland/Mockland";
 
 const Header = () => {
   return (
@@ -25,18 +25,7 @@ const Header = () => {
         py={"1rem"}
         gap={4}
       >
-          <Link href="/" _hover={{textDecoration: "none"}}>
-        <Flex alignItems={"center"} gap={2}>
-            <StarIcon />
-            <Heading
-              as="h1"
-              fontSize="32px"
-              display={{ base: "none", md: "block" }}
-            >
-              Mockland
-            </Heading>
-        </Flex>
-          </Link>
+        <Mockland />
         <InputGroup
           display={{ base: "none", lg: "flex", md: "flex", sm: "flex" }}
           alignItems={"center"}
