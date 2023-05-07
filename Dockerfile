@@ -35,6 +35,4 @@ COPY --from=builder /app ./
 
 USER nextjs
 
-RUN yarn run migrate
-
-CMD ["yarn", "start"]
+CMD ["yarn", "start:prod"]
