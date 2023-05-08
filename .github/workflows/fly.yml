@@ -21,13 +21,13 @@ jobs:
           touch .env
           echo CLIENT_URL=http://mockland.dev >> .env
           echo NODE_ENV=production >> .env
-          # echo SEND_IN_BLUE_URL=smtp-relay.sendinblue.com >> .env
-          # echo SEND_FROM_EMAIL=info@mockland.dev >> .env
-          # echo SEND_IN_BLUE_USER=me@ehsangazar.com >> .env
-          # echo SEND_IN_BLUE_PASSWORD=${{secrets.SEND_IN_BLUE_PASSWORD}} >> .env
-          # echo DATABASE_URL=${{secrets.DATABASE_URL}} >> .env
-          # echo JWT_SECRET=${{secrets.JWT_SECRET}} >> .env
-          # echo EMAIL_ADDRESS=info@mockland.dev >> .env
+          echo SEND_IN_BLUE_URL=smtp-relay.sendinblue.com >> .env
+          echo SEND_FROM_EMAIL=info@mockland.dev >> .env
+          echo SEND_IN_BLUE_USER=me@ehsangazar.com >> .env
+          echo SEND_IN_BLUE_PASSWORD=${{secrets.SEND_IN_BLUE_PASSWORD}} >> .env
+          echo DATABASE_URL=${{secrets.DATABASE_URL}} >> .env
+          echo JWT_SECRET=${{secrets.JWT_SECRET}} >> .env
+          echo EMAIL_ADDRESS=info@mockland.dev >> .env
 
       - name: Deploy to Fly
         run: flyctl deploy --remote-only
