@@ -137,7 +137,7 @@ const LoginForm = () => {
                   Remember me
                 </Field>
                 <Text color={"green"} fontWeight={"500"}>
-                  <Link>Forgot password</Link>
+                  <Link href="/auth/forgotpassword">Forgot password</Link>
                 </Text>
               </HStack>
               <VStack align="stretch" width={"100%"} spacing={5}>
