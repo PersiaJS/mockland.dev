@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "token_usages" ALTER COLUMN "month" DROP NOT NULL,
+ALTER COLUMN "year" DROP NOT NULL,
+ALTER COLUMN "count" DROP NOT NULL;
