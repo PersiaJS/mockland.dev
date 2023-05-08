@@ -8,8 +8,8 @@ const handler = async (req, res) => {
   await methodMiddleware(req, res, "GET");
   await checkTokenMiddleware(req, res);
 
-  const page = req.query.page || 1;
-  const limit = req.query.limit || 10;
+  const page = req.query?.page || 1;
+  const limit = req.query?.limit || 10;
   let where = {};
 
   if (req.user?.id) {

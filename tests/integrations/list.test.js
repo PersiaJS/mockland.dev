@@ -1,5 +1,4 @@
 const { default: axios } = require("axios");
-
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const endpoint = "/api/news";
 let url;

@@ -33,4 +33,9 @@ describe("userAuthMiddleware", () => {
       message: "User does not exist",
     });
   });
+  // it("Should set req.user to a valid user object if the token is valid and there is a user related to the token", async () => {
+  //   req.headers.auth = process.env.TEST_TOKEN;
+  //   await userAuthMiddleware(req, res);
+  //   expect(req.user).toBeDefined();
+  // });
 });
