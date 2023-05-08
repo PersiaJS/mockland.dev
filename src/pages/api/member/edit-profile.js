@@ -4,7 +4,7 @@ import Validator from "validatorjs";
 import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  await methodMiddleware(req, res, "POST");
+  await methodMiddleware(req, res, "PUT");
 
   await authMiddleware(req, res);
 
