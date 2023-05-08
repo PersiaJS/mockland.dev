@@ -20,7 +20,6 @@ import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
-import Cookies from "universal-cookie";
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
