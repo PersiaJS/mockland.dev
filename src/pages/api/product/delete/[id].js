@@ -2,12 +2,14 @@ import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../../lib/prisma";
 import tokenMiddleware from "@/middlewares/tokenMiddleware";
 import corsMiddleware from "@/middlewares/corsMiddleware";
+import tokenCounterMiddleware from "@/middlewares/tokenCounterMiddleware";
 
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
   await methodMiddleware(req, res, "DELETE");
 
   await tokenMiddleware(req, res);
+  await tokenCounterMiddleware(req, res);
 
   const { id } = req.query;
 

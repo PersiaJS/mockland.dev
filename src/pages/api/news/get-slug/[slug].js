@@ -1,10 +1,12 @@
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../../lib/prisma";
 import corsMiddleware from "@/middlewares/corsMiddleware";
+import tokenCounterMiddleware from "@/middlewares/tokenCounterMiddleware";
 
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
   await methodMiddleware(req, res, "GET");
+  await tokenCounterMiddleware(req, res);
 
   const { slug } = req.query;
 
