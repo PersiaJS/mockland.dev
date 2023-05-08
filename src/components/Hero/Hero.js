@@ -67,7 +67,7 @@ px={{lg: "4rem", md: "1.5rem", sm: "1rem"}}      >
          rightIcon={<ArrowForwardIcon />}
               
               _hover={{
-                bg: 'blue.700',
+                bg: 'gray.200',
               }}>
           GitHub
             </Button>
