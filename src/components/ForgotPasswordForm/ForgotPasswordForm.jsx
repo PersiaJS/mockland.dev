@@ -16,6 +16,7 @@ import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import fetchHandler from "@/utils/fetchHandler";
 
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -23,6 +24,7 @@ const ForgotPasswordSchema = Yup.object().shape({
 
 const ForgotPasswordForm = () => {
   const [message, setMessage] = useState(null);
+  const [isPending, setIsPending] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
   return (
@@ -54,14 +56,34 @@ const ForgotPasswordForm = () => {
         }}
         validationSchema={ForgotPasswordSchema}
         //just to test onSubmit, logics will be implemented later
-        onSubmit={(values, { resetForm }) => {
-          setIsSent(true);
-          setMessage({
-            status: "success",
-            message:
-              "we've sent you a verification code. Please check your mailbox (including spam).",
-          });
-          resetForm();
+        onSubmit={async (values, { resetForm }) => {
+          setIsPending(true);
+          try {
+            const response = await fetchHandler.post(
+              "/api/member/forget",
+              values
+            );
+            if (response.data.status) {
+              setMessage({
+                status: "success",
+                message: response.data.message,
+              });
+              setIsPending(false);
+              resetForm();
+            } else {
+              setIsPending(false);
+              setMessage({
+                status: "warning",
+                message: response.data.message,
+              });
+            }
+          } catch (error) {
+            setIsPending(false);
+            setMessage({
+              status: "error",
+              message: "Something went wrong. Please try again later.",
+            });
+          }
         }}
       >
         {({ handleSubmit, errors, touched }) => (
@@ -79,7 +101,7 @@ const ForgotPasswordForm = () => {
                 <FormErrorMessage>{errors.email}</FormErrorMessage>
               </FormControl>
               <VStack align="stretch" width={"100%"}>
-                <Button variant={"solid"} colorScheme="green" type="submit">
+                <Button variant={"solid"} colorScheme="green" type="submit" isLoading={isPending}>
                   Verify
                 </Button>
                 {isSent && (
