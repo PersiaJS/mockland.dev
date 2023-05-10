@@ -4,6 +4,7 @@ import Validator from "validatorjs";
 import prisma from "../../../../lib/prisma";
 import tokenMiddleware from "@/middlewares/tokenMiddleware";
 import corsMiddleware from "@/middlewares/corsMiddleware";
+import tokenCounterMiddleware from "@/middlewares/tokenCounterMiddleware";
 
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
@@ -11,6 +12,7 @@ const handler = async (req, res) => {
   await tokenMiddleware(req, res);
 
   await userAuthMiddleware(req, res);
+  await tokenCounterMiddleware(req, res);
 
   const rules = {
     firstName: "required|string",

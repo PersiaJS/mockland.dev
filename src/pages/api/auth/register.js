@@ -5,12 +5,14 @@ import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
 import tokenMiddleware from "@/middlewares/tokenMiddleware";
 import corsMiddleware from "@/middlewares/corsMiddleware";
+import tokenCounterMiddleware from "@/middlewares/tokenCounterMiddleware";
 
 const handler = async (req, res) => {
   let error;
   await corsMiddleware(req, res);
   error = await methodMiddleware(req, res, "POST");
   error = await tokenMiddleware(req, res);
+  await tokenCounterMiddleware(req, res);
 
   if (error) return;
 
