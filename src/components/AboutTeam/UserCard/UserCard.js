@@ -10,7 +10,7 @@ import {
   Container,
   Img,
 } from "@chakra-ui/react";
-import img1 from "../../../public/profile/1.jpg";
+
 import { FaGithub, FaLightbulb, FaLinkedin } from "react-icons/fa";
 export default function UserCard() {
   return (

@@ -33,27 +33,6 @@ export default function Home() {
       <main>
         <Hero />
         <AboutTeam />
-        {/* <Container>
-          <Box display={"grid"} alignItems={"center"}>
-            <Box></Box>
-            <Box>
-              <Box textAlign={"center"}>
-                <Heading as={"h1"}>Welcome to Mockland</Heading>
-              </Box>
-              {user && (
-                <h2>
-                  {user.firstName} {user.lastName}
-                </h2>
-              )}
-              <Box>
-                <Button colorScheme={"blue"}>
-                  <Link href="/mocks">Mocks</Link>
-                </Button>
-              </Box>
-            </Box>
-            <Box></Box>
-          </Box>
-        </Container> */}
       </main>
     </>
   );
