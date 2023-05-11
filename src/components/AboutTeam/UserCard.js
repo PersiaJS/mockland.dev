@@ -31,11 +31,11 @@ export default function UserCard() {
           <Text color={"gray.400"}>Happy Hacking ✌️</Text>
           <Flex gap={2} p={2}>
             <FaGithub
-              color="var(--chakra-colors-green-500)"
+              color="var(--chakra-colors-blue-500)"
               fontSize={"1.2rem"}
             />
             <FaLinkedin
-              color="var(--chakra-colors-green-500)"
+              color="var(--chakra-colors-blue-500)"
               fontSize={"1.2rem"}
             />
           </Flex>

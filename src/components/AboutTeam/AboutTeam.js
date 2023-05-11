@@ -11,7 +11,6 @@ import {
   Container,
 } from "@chakra-ui/react";
 
-import img1 from "../../../public/profile/1.jpg";
 import UserCard from "./UserCard";
 
 export default function AboutTeam() {
