@@ -40,9 +40,9 @@ export default function Hero() {
             Free fake API for testing .
           </Heading>
           <Text color={"gray.500"} fontSize={"xl"}>
-            Monetize your content by charging your most loyal readers and reward
-            them loyalty points. Give back to your loyal readers by granting
-            them access to your pre-releases and sneak-peaks.
+            If you ever wonder how to test your frontend application without a
+            real API, MockLand is the answer. Simply use our mock APIs to test
+            your applications and see how it works
           </Text>
           <Stack
             direction={"row"}

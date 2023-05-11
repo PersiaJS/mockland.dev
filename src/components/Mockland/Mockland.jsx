@@ -1,6 +1,7 @@
 import React from "react";
 import MocklandLogo from "../MocklandLogo/MocklandLogo";
-import { Flex, Heading, Link } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Mockland = () => {
   return (
