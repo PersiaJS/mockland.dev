@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import fetchHandler from "../utils/fetchHandler";
 import { Box, Button, Container, Heading } from "@chakra-ui/react";
 import Hero from "@/components/Hero/Hero";
+import AboutTeam from "@/components/AboutTeam/AboutTeam";
 
 export default function Home() {
   const [user, setUser] = useState({});
@@ -30,28 +31,8 @@ export default function Home() {
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
       <main>
-        <Hero/>
-        <Container>
-          <Box display={"grid"} alignItems={"center"}>
-            <Box></Box>
-            <Box>
-              <Box textAlign={"center"}>
-                <Heading as={"h1"}>Welcome to Mockland</Heading>
-              </Box>
-              {user && (
-                <h2>
-                  {user.firstName} {user.lastName}
-                </h2>
-              )}
-              <Box>
-                <Button colorScheme={"blue"}>
-                  <Link href="/mocks">Mocks</Link>
-                </Button>
-              </Box>
-            </Box>
-            <Box></Box>
-          </Box>
-        </Container>
+        <Hero />
+        <AboutTeam />
       </main>
     </>
   );
