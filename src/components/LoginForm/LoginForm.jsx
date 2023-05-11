@@ -15,7 +15,6 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react";
-import { GoogleIcon } from "@/utils/createIcon";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
@@ -148,12 +147,6 @@ const LoginForm = () => {
                   type="submit"
                 >
                   Sign in
-                </Button>
-                <Button
-                  variant={"outline"}
-                  leftIcon={<GoogleIcon boxSize={5} />}
-                >
-                  Sign in with Google
                 </Button>
               </VStack>
             </VStack>
