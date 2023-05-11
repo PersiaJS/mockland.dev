@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import fetchHandler from "../utils/fetchHandler";
 import { Box, Button, Container, Heading } from "@chakra-ui/react";
 import Hero from "@/components/Hero/Hero";
+import AboutTeam from "@/components/AboutTeam/AboutTeam";
 
 export default function Home() {
   const [user, setUser] = useState({});
@@ -30,8 +31,9 @@ export default function Home() {
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
       <main>
-        <Hero/>
-        <Container>
+        <Hero />
+        <AboutTeam />
+        {/* <Container>
           <Box display={"grid"} alignItems={"center"}>
             <Box></Box>
             <Box>
@@ -51,7 +53,7 @@ export default function Home() {
             </Box>
             <Box></Box>
           </Box>
-        </Container>
+        </Container> */}
       </main>
     </>
   );

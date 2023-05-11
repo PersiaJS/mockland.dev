@@ -5,10 +5,16 @@ import Footer from "../Footer/Footer";
 const Layout = ({ children }) => {
   return (
     <>
-      <Container display={"flex"} flexDirection={"column"} maxWidth={"100wh"} minHeight={"100vh"} padding={0}>
+      <Container
+        display={"flex"}
+        flexDirection={"column"}
+        maxWidth={"100wh"}
+        minHeight={"100vh"}
+        padding={0}
+      >
         <Header />
         {children}
-        <Footer/>
+        <Footer />
       </Container>
     </>
   );
