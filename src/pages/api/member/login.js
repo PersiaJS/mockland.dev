@@ -53,7 +53,7 @@ const handler = async (req, res) => {
       <br />
       <p>
         Please click the link below to verify your email address.
-        <a href="${process.env.CLIENT_URL}/auth/login?securityHash=${user.securityHash}">Verify</a>
+        <a href="${process.env.CLIENT_URL}/auth/verify?securityHash=${user.securityHash}">Verify</a>
       </p>
       <br />
       <p>Regards, MockLand.dev</p>

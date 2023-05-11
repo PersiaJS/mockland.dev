@@ -1,10 +1,10 @@
 import {
   Container,
   Heading,
-  Link,
   Text,
   VStack,
   FormControl,
+  FormLabel,
   Input,
   FormErrorMessage,
   Box,
@@ -15,17 +15,17 @@ import {
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import fetchHandler from "@/utils/fetchHandler";
+import { useRouter } from "next/router";
 
-const ForgotPasswordSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+const VerifySchema = Yup.object().shape({
+  securityHash: Yup.string().required("Required"),
 });
 
-const ForgotPasswordForm = () => {
+const VerifyForm = () => {
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const [isSent, setIsSent] = useState(false);
+  const router = useRouter();
 
   return (
     <Container
@@ -44,24 +44,24 @@ const ForgotPasswordForm = () => {
           color={"blackAlpha.800"}
           textAlign={"center"}
         >
-          Forgot your password?
+          Verify your e-mail
         </Heading>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
-          Enter your email and verify your identity
+          Enter the code sent to your email
         </Text>
       </VStack>
       <Formik
         initialValues={{
-          email: "",
+          securityHash: "",
         }}
-        validationSchema={ForgotPasswordSchema}
+        validationSchema={VerifySchema}
         onSubmit={async (values, { resetForm }) => {
           setIsPending(true);
           try {
-            const response = await fetchHandler.post(
-              "/api/member/forget",
-              values
-            );
+            const response = await fetchHandler.put("/api/member/verify", {
+              ...values,
+              securityHash: router.query.securityHash,
+            });
             if (response.data.status) {
               setMessage({
                 status: "success",
@@ -69,7 +69,6 @@ const ForgotPasswordForm = () => {
               });
               setIsPending(false);
               resetForm();
-              setIsSent(true);
             } else {
               setIsPending(false);
               setMessage({
@@ -89,44 +88,30 @@ const ForgotPasswordForm = () => {
         {({ handleSubmit, errors, touched }) => (
           <form onSubmit={handleSubmit}>
             <VStack spacing={5}>
-              <FormControl isInvalid={errors.email && touched.email}>
+              <FormControl
+                isInvalid={errors.securityHash && touched.securityHash}
+              >
+                <FormLabel htmlFor="securityHash" color={"blackAlpha.700"}>
+                  Verify Code
+                </FormLabel>
                 <Field
                   as={Input}
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Registered Email Address"
+                  id="securityHash"
+                  name="securityHash"
+                  type="text"
                   focusBorderColor="#38A169"
                 />
-                <FormErrorMessage>{errors.email}</FormErrorMessage>
+                <FormErrorMessage>{errors.securityHash}</FormErrorMessage>
               </FormControl>
               <VStack align="stretch" width={"100%"}>
                 <Button
                   variant={"solid"}
-                  colorScheme="blue"
+                  colorScheme="green"
                   type="submit"
                   isLoading={isPending}
                 >
                   Verify
                 </Button>
-                {isSent && (
-                  <>
-                    <Text>
-                      Didn{`'`}t receive an email?{" "}
-                      <Link color="blue">Send again</Link>
-                    </Text>
-                  </>
-                )}
-                <Link href="/auth/login">
-                  <Button
-                    variant={"outline"}
-                    width={"100%"}
-                    marginTop={2}
-                    leftIcon={<ArrowBackIcon />}
-                  >
-                    Back to login page
-                  </Button>
-                </Link>
               </VStack>
             </VStack>
           </form>
@@ -144,4 +129,4 @@ const ForgotPasswordForm = () => {
   );
 };
 
-export default ForgotPasswordForm;
+export default VerifyForm;
