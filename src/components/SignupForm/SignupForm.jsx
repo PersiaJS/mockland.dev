@@ -62,7 +62,7 @@ const LoginForm = () => {
         </Heading>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
           Already have an account?{" "}
-          <Link href="/auth/login" color="green">
+          <Link href="/auth/login" color="blue">
             Log in
           </Link>
         </Text>
@@ -173,7 +173,7 @@ const LoginForm = () => {
               <VStack align="stretch" width={"100%"} spacing={3}>
                 <Button
                   variant={"solid"}
-                  colorScheme="green"
+                  colorScheme="blue"
                   isLoading={isPending}
                   type="submit"
                 >

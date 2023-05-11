@@ -3,7 +3,7 @@ import React from "react";
 const MocklandLogo = ({
   width = "50px",
   height = "50px",
-  color = "#38A169",
+  color = "var(--chakra-colors-blue-500)",
 }) => {
   return (
     <svg

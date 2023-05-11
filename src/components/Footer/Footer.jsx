@@ -22,8 +22,9 @@ export default function Footer() {
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
+      mt={12}
     >
-      <Flex p={10} bg={"green.500"} width={"full"}>
+      <Flex p={10} bg={"#7289d9"} width={"full"}>
         <Container
           as={"flex"}
           direction={"row"}
@@ -66,7 +67,7 @@ export default function Footer() {
                   alignItems={"center"}
                   mt={{ base: "20px", md: "0px" }}
                 >
-                  Join the #Persianjs Discord!
+                  Join the #PersiaJS Discord!
                 </Button>
               </Link>
             </Box>
@@ -76,17 +77,17 @@ export default function Footer() {
       <Flex p={10} bg={"blue.600"} width={"full"}>
         <Container
           as={"flex"}
-          direction={"column"}
-          justifyContent={"center"}
+          direction={"row"}
+          justifyContent={"space-between"}
           maxW={"7xl"}
         >
           <Flex
-            direction={{ base: "column", md: "column" }}
+            direction={{ base: "column", md: "row" }}
             justifyContent={"space-around"}
             alignItems={"center"}
           >
             <Flex
-              direction={{ base: "column" }}
+              direction={{ base: "column", md: "row" }}
               alignItems={"center"}
               columnGap={2}
             >
@@ -98,7 +99,7 @@ export default function Footer() {
                 <Text
                   color={"white"}
                   fontSize={"xl"}
-                  textAlign={{ base: "center" }}
+                  textAlign={{ base: "center", md: "left" }}
                 >
                   Connect with the community
                 </Text>
@@ -122,7 +123,7 @@ export default function Footer() {
                   alignItems={"center"}
                   mt={{ base: "20px" }}
                 >
-                  Join the #Persianjs Telegram!
+                  Join the #PersiaJS Telegram!
                 </Button>
               </Link>
             </Box>
@@ -141,7 +142,7 @@ export default function Footer() {
         }}
       >
         <Stack direction={"row"} spacing={6}>
-          <Text color={"gray.900"}>Proudly made in by PersianJs</Text>
+          <Text color={"gray.900"}>Proudly made in by PersiaJS</Text>
         </Stack>
         <Box>
           <Container

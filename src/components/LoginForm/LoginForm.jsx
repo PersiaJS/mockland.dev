@@ -52,7 +52,7 @@ const LoginForm = () => {
         </Heading>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
           Don't have an account?{" "}
-          <Link href="/auth/register" color="green">
+          <Link href="/auth/register" color="blue">
             Sign up
           </Link>
         </Text>
@@ -132,18 +132,18 @@ const LoginForm = () => {
                   defaultChecked
                   id="rememberMe"
                   name="rememberMe"
-                  colorScheme="green"
+                  colorScheme="blue"
                 >
                   Remember me
                 </Field>
-                <Text color={"green"} fontWeight={"500"}>
+                <Text color={"blue"} fontWeight={"500"}>
                   <Link href="/auth/forgotpassword">Forgot password</Link>
                 </Text>
               </HStack>
               <VStack align="stretch" width={"100%"} spacing={5}>
                 <Button
                   variant={"solid"}
-                  colorScheme="green"
+                  colorScheme="blue"
                   isLoading={isPending}
                   type="submit"
                 >

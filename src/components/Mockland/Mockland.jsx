@@ -10,10 +10,11 @@ const Mockland = () => {
         <Heading
           as="h1"
           fontSize="32px"
-          color={"green"}
+          color={"blue.500"}
+          fontWeight={"800"}
           display={{ base: "none", md: "block" }}
         >
-          Mockland
+          MockLand
         </Heading>
       </Flex>
     </Link>

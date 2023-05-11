@@ -33,7 +33,7 @@ const MocksIndex = () => {
               <Button colorScheme="yellow">Post</Button>
             </Link>
             <Link href="/mocks/category">
-              <Button colorScheme="green">Category</Button>
+              <Button colorScheme="blue">Category</Button>
             </Link>
             <Link href="/mocks/auth">
               <Button colorScheme="cyan">Auth</Button>

@@ -102,12 +102,12 @@ const Header = () => {
           </Box>
           <Flex gap={2}>
             <Link href="/auth/login">
-              <Button colorScheme="green" variant="ghost">
+              <Button colorScheme="blue" variant="ghost">
                 Log In
               </Button>
             </Link>
             <Link href="/auth/register">
-              <Button colorScheme="green" variant="solid">
+              <Button colorScheme="blue" variant="solid">
                 Sign Up
               </Button>
             </Link>

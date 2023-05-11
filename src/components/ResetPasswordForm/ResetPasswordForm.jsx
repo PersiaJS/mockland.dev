@@ -120,7 +120,7 @@ const ResetPasswordForm = () => {
               <VStack align="stretch" width={"100%"} spacing={3}>
                 <Button
                   variant={"solid"}
-                  colorScheme="green"
+                  colorScheme="blue"
                   type="submit"
                   isLoading={isPending}
                 >

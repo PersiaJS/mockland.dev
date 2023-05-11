@@ -101,14 +101,19 @@ const ForgotPasswordForm = () => {
                 <FormErrorMessage>{errors.email}</FormErrorMessage>
               </FormControl>
               <VStack align="stretch" width={"100%"}>
-                <Button variant={"solid"} colorScheme="green" type="submit" isLoading={isPending}>
+                <Button
+                  variant={"solid"}
+                  colorScheme="blue"
+                  type="submit"
+                  isLoading={isPending}
+                >
                   Verify
                 </Button>
                 {isSent && (
                   <>
                     <Text>
                       Didn't receive an email?{" "}
-                      <Link color="green">Send again</Link>
+                      <Link color="blue">Send again</Link>
                     </Text>
                   </>
                 )}

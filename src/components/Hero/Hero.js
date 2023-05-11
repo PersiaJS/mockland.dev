@@ -32,7 +32,7 @@ export default function Hero() {
           >
             <Text
               as={"span"}
-              color={"green.500"}
+              color={"blue.500"}
               fontSize={{ base: "3xl", sm: "5xl", md: "6xl" }}
             >
               MockLand{" "}
@@ -51,29 +51,28 @@ export default function Hero() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Button
-              colorScheme={"blue"}
-              bg={"green.500"}
-              rounded={"5px"}
-              paddingInline={"45px"}
-              py={7}
-              _hover={{
-                bg: "green.600",
-              }}
-            >
-              Get Started
-            </Button>
+            <Link href="/mocks">
+              <Button
+                colorScheme={"blue"}
+                bg={"blue.500"}
+                rounded={"5px"}
+                paddingInline={"45px"}
+                py={7}
+                _hover={{
+                  bg: "blue.600",
+                }}
+              >
+                Get Started
+              </Button>
+            </Link>
             <Link href="https://github.com/PersiaJS/mockland.dev">
               <Button
-                colorScheme={"gray"}
-                bg={"gray.100"}
+                target="_blank"
+                colorScheme={"green"}
                 rounded={"5px"}
                 paddingInline={"45px"}
                 py={7}
                 rightIcon={<ArrowForwardIcon />}
-                _hover={{
-                  bg: "gray.200",
-                }}
               >
                 GitHub
               </Button>

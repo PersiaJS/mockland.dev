@@ -37,22 +37,21 @@ const Contact = () => {
           status: "success",
           message: response.data.message,
         });
-        console.log('message', message)
+        console.log("message", message);
       } else {
         setMessage({
           status: "warning",
           message: response.data.message,
         });
-        console.log('message', message)
+        console.log("message", message);
       }
     } catch (error) {
       setMessage({
         status: "error",
         message: "something went wrong. Please try again later.",
       });
-      console.log('message', message)
+      console.log("message", message);
     }
-
   };
 
   return (
@@ -130,7 +129,7 @@ const Contact = () => {
                 <Button
                   mt={4}
                   width="100%"
-                  colorScheme="green"
+                  colorScheme="blue"
                   isLoading={props.isSubmitting}
                   type="submit"
                 >
