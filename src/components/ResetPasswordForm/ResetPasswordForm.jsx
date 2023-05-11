@@ -1,16 +1,12 @@
 import {
   Container,
   Heading,
-  Link,
-  Text,
   VStack,
-  HStack,
   FormControl,
   FormLabel,
   Input,
   FormErrorMessage,
   Box,
-  Checkbox,
   Button,
   Alert,
   AlertIcon,
@@ -19,6 +15,7 @@ import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const ResetPasswordSchema = Yup.object().shape({
   password: Yup.string().min(6, "Password too short!").required("Required"),
@@ -30,6 +27,7 @@ const ResetPasswordSchema = Yup.object().shape({
 const ResetPasswordForm = () => {
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  const router = useRouter();
 
   return (
     <Container
@@ -56,12 +54,13 @@ const ResetPasswordForm = () => {
         }}
         validationSchema={ResetPasswordSchema}
         onSubmit={async (values, { resetForm }) => {
+          console.log(values);
           setIsPending(true);
           try {
-            const response = await fetchHandler.put(
-              "/api/member/reset",
-              values
-            );
+            const response = await fetchHandler.put("/api/member/reset", {
+              ...values,
+              securityHash: router.query.reset,
+            });
             if (response.data.status) {
               setMessage({
                 status: "success",
