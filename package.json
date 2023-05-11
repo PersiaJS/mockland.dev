@@ -8,7 +8,8 @@
     "start": "next start",
     "start:prod": "prisma db push && next start",
     "migrate": "prisma db push",
-    "test": "jest --watchAll --verbose --runInBand --detectOpenHandles --coverage",
+    "test:integration": "jest --testPathPattern=tests/integrations",
+    "test:watch": "jest --watchAll --verbose --runInBand --detectOpenHandles --coverage",
     "lint": "next lint"
   },
   "dependencies": {

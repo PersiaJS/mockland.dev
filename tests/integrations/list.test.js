@@ -1,5 +1,5 @@
 const { default: axios } = require("axios");
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mockland.dev";
 const endpoint = "/api/news";
 let url;
 
