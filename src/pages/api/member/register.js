@@ -61,8 +61,9 @@ const handler = async (req, res) => {
       <h1>Welcome to the community</h1>
       <p>Thank you for registering, we hope you enjoy your stay.</p>
       <br />
+      <p>Your code: <b>${securityHash}</b></p>
       <p>
-        In order to verify your account, please click on the following link:
+        In order to verify your account, please click on the following link and enter your code:
         <a href="${process.env.CLIENT_URL}/auth/verify?securityHash=${securityHash}">Verify</a>
       </p>
       <br />
