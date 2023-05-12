@@ -1,23 +1,27 @@
-import Image from "next/image";
-import {
-  Box,
-  Center,
-  useColorModeValue,
-  Heading,
-  Text,
-  Stack,
-  Flex,
-  Container,
-  Img,
-} from "@chakra-ui/react";
+import { Box, Center, Text, Stack, Flex, Img, Avatar } from "@chakra-ui/react";
+import Link from "next/link";
 
-import { FaGithub, FaLightbulb, FaLinkedin } from "react-icons/fa";
-export default function UserCard() {
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+export default function UserCard({ name, image, text, linkedin, github }) {
   return (
-    <Center>
+    <Center w={"200px"}>
       <Box role={"group"} w={"full"} rounded={"lg"}>
-        <Box rounded={"lg"}>
-          <Img rounded={"full"} src={"https://via.placeholder.com/150"} />
+        <Box
+          rounded="full"
+          w={"100%"}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Avatar
+            size={"2xl"}
+            name={name}
+            src={`/team/${image}`}
+            _groupHover={{
+              transform: "translateY(-10px)",
+            }}
+            transition={"all 0.3s ease-in-out"}
+          />
         </Box>
         <Stack align={"center"}>
           <Text
@@ -26,18 +30,28 @@ export default function UserCard() {
             fontWeight={"bold"}
             pt={2}
           >
-            Tom Tom
+            {name || "Could be you?"}
           </Text>
-          <Text color={"gray.400"}>Happy Hacking ✌️</Text>
+          <Text color={"gray.400"} textAlign={"center"}>
+            {text || "It is open source, so join us and contribute to our code"}
+          </Text>
           <Flex gap={2} p={2}>
-            <FaGithub
-              color="var(--chakra-colors-blue-500)"
-              fontSize={"1.2rem"}
-            />
-            <FaLinkedin
-              color="var(--chakra-colors-blue-500)"
-              fontSize={"1.2rem"}
-            />
+            {github && (
+              <Link href={github} target="_blank">
+                <FaGithub
+                  color="var(--chakra-colors-blue-500)"
+                  fontSize={"1.2rem"}
+                />
+              </Link>
+            )}
+            {linkedin && (
+              <Link href={linkedin} target="_blank">
+                <FaLinkedin
+                  color="var(--chakra-colors-blue-500)"
+                  fontSize={"1.2rem"}
+                />
+              </Link>
+            )}
           </Flex>
         </Stack>
       </Box>

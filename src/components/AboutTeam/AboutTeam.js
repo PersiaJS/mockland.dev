@@ -21,16 +21,14 @@ export default function AboutTeam() {
         <Heading fontSize={"4xl"}>About Team</Heading>
       </Center>
 
-      <Flex
-        mx={"auto"}
-        gap={"50px"}
-        justifyContent={"center"}
-        wrap={"wrap"}
-        maxW={"700px"}
-      >
-        <UserCard />
-        <UserCard />
-        <UserCard />
+      <Flex mx={"auto"} gap={"50px"} justifyContent={"center"} wrap={"wrap"}>
+        <UserCard
+          name="Ehsan Gazar"
+          image="gazar.jpg"
+          text="Passionate about web development and programming, feel free to contact me."
+          linkedin="https://www.linkedin.com/in/gazar/"
+          github="https://github.com/ehsangazar"
+        />
         <UserCard />
       </Flex>
     </Container>
