@@ -39,6 +39,7 @@ const ResetPasswordForm = () => {
       maxW="md"
       flexGrow={1}
       justifyContent={"center"}
+      minH={"80vh"}
     >
       <Heading
         as={"h2"}

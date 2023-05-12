@@ -38,6 +38,7 @@ const VerifyForm = () => {
       maxW="md"
       flexGrow={1}
       justifyContent={"center"}
+      minH={"80vh"}
     >
       <VStack>
         <Heading
