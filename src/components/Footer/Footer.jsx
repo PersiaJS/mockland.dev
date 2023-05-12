@@ -1,4 +1,3 @@
-import { EmailIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -10,7 +9,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { FaDiscord, FaGithub, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaDiscord, FaGithub, FaTelegram } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -62,7 +61,7 @@ export default function Footer() {
                   alignItems={"center"}
                   mt={{ base: "20px", md: "0px" }}
                 >
-                  Join the #PersiaJS Discord!
+                  Join #PersiaJS Discord!
                 </Button>
               </Link>
             </Box>
@@ -109,14 +108,13 @@ export default function Footer() {
             <Box>
               <Link href="https://t.me/persiajs">
                 <Button
-                  leftIcon={<FaTelegram color="blue.600" />}
                   fontWeight={"bold"}
                   py={7}
                   px={8}
                   alignItems={"center"}
                   mt={{ base: "20px" }}
                 >
-                  Join the #PersiaJS Telegram!
+                  Join #PersiaJS Telegram!
                 </Button>
               </Link>
             </Box>
@@ -135,7 +133,7 @@ export default function Footer() {
         }}
       >
         <Stack direction={"row"} spacing={6}>
-          <Text color={"gray.900"}>Proudly made in by PersiaJS</Text>
+          <Text color={"gray.900"}>Developed by PersiaJS team</Text>
         </Stack>
         <Box>
           <Container
@@ -154,16 +152,14 @@ export default function Footer() {
                   fontSize={"20px"}
                 />
               </Link>
-
-              <Link href="https://discord.gg/P3Ht3qjR">
-                <FaDiscord
+              <Link href="https://t.me/persiajs">
+                <FaTelegram
                   color="var(--chakra-colors-gray-400)"
                   fontSize={"20px"}
                 />
               </Link>
-
-              <Link href="https://t.me/persiajs">
-                <FaTelegram
+              <Link href="https://discord.gg/P3Ht3qjR">
+                <FaDiscord
                   color="var(--chakra-colors-gray-400)"
                   fontSize={"20px"}
                 />
