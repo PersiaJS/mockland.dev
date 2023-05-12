@@ -31,6 +31,13 @@ export default function AboutTeam() {
           github="https://github.com/ehsangazar"
         />
         <UserCard />
+        <UserCard
+          name="Maral Najafi"
+          text="passionate about using programming languages to solve problems, bring ideas to life, and create engaging user experiences."
+          linkedin="https://www.linkedin.com/in/maral-najafi/"
+          github="https://github.com/maralnajafi"
+        />
+        <UserCard />
       </Flex>
     </Container>
   );
