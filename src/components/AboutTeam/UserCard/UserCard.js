@@ -1,7 +1,7 @@
-import { Box, Center, Text, Stack, Flex, Img, Avatar } from "@chakra-ui/react";
-import Link from "next/link";
-
+import { Link, Center, Text, Stack, Flex, Avatar } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+
 export default function UserCard({ name, image, text, linkedin, github }) {
   return (
     <Center w={"300px"}>
@@ -53,19 +53,25 @@ export default function UserCard({ name, image, text, linkedin, github }) {
         </Flex>
         <Flex gap={2} justifyContent={"center"}>
           {github && (
-            <Link href={github} target="_blank">
-              <FaGithub
-                color="var(--chakra-colors-blue-500)"
-                fontSize={"1.2rem"}
-              />
+            <Link
+              as={NextLink}
+              href={github}
+              target="_blank"
+              color="gray.500"
+              _hover={{ color: "blue.500" }}
+            >
+              <FaGithub fontSize={"1.2rem"} />
             </Link>
           )}
           {linkedin && (
-            <Link href={linkedin} target="_blank">
-              <FaLinkedin
-                color="var(--chakra-colors-blue-500)"
-                fontSize={"1.2rem"}
-              />
+            <Link
+              as={NextLink}
+              href={linkedin}
+              target="_blank"
+              color="gray.500"
+              _hover={{ color: "blue.500" }}
+            >
+              <FaLinkedin fontSize={"1.2rem"} />
             </Link>
           )}
         </Flex>

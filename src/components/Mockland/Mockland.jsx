@@ -11,6 +11,7 @@ const Mockland = () => {
         <Heading
           as="h1"
           fontSize="32px"
+          letterSpacing={"tighter"}
           color={"blue.500"}
           fontWeight={"800"}
           display={{ base: "none", md: "block" }}
