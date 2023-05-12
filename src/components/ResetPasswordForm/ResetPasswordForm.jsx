@@ -16,6 +16,8 @@ import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const ResetPasswordSchema = Yup.object().shape({
   password: Yup.string().min(6, "Password too short!").required("Required"),
@@ -125,6 +127,17 @@ const ResetPasswordForm = () => {
                 >
                   Reset
                 </Button>
+
+                <Link href="/auth/login">
+                  <Button
+                    variant={"outline"}
+                    width={"100%"}
+                    marginTop={2}
+                    leftIcon={<ArrowBackIcon />}
+                  >
+                    Back to login page
+                  </Button>
+                </Link>
               </VStack>
             </VStack>
           </form>

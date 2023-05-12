@@ -41,7 +41,7 @@ const handler = async (req, res) => {
         <br />
         <p>
             Click the link below to reset your password
-            <a href="${process.env.CLIENT_URL}/auth/resetpassword?reset=${user.securityHash}">Reset password</a>
+            <a href="${process.env.NEXT_PUBLIC_BASE_URL}/auth/resetpassword?reset=${user.securityHash}">Reset password</a>
         </p>
         <br />
         <p>

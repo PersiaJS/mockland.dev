@@ -1,8 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import fetchHandler from "../utils/fetchHandler";
-import { Box, Button, Container, Heading } from "@chakra-ui/react";
 import Hero from "@/components/Hero/Hero";
 import AboutTeam from "@/components/AboutTeam/AboutTeam";
 

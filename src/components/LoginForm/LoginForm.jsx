@@ -1,7 +1,6 @@
 import {
   Container,
   Heading,
-  Link,
   Text,
   VStack,
   HStack,
@@ -20,6 +19,7 @@ import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
 import Cookies from "universal-cookie";
+import Link from "next/link";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -50,7 +50,7 @@ const LoginForm = () => {
           Login to your account
         </Heading>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
-          Don't have an account?{" "}
+          Don{`'`}t have an account?{" "}
           <Link href="/auth/register" color="blue">
             Sign up
           </Link>
@@ -72,7 +72,10 @@ const LoginForm = () => {
             );
             if (response.data.status) {
               const cookies = new Cookies();
-              cookies.set("auth", response.data.auth);
+              cookies.set("auth", response.data.auth, {
+                path: "/",
+                maxAge: 60 * 60 * 24 * 7,
+              });
               setMessage({
                 status: "success",
                 message: response.data.message,
@@ -83,7 +86,9 @@ const LoginForm = () => {
               setIsPending(false);
               setMessage({
                 status: "warning",
-                message: response.data.message,
+                message: response.data.unVerified
+                  ? "User is not verified, new link has been sent to your email, please open your mail account and click to verify"
+                  : response.data.message,
               });
             }
           } catch (error) {

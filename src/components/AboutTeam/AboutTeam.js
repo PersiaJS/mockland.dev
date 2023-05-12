@@ -16,9 +16,10 @@ import UserCard from "./UserCard/UserCard";
 export default function AboutTeam() {
   return (
     <Container as={"flex"} maxWidth={"100%"} justifyContent={"center"}>
-      <Center pb={8}>
-        {" "}
-        <Heading fontSize={"4xl"}>About Team</Heading>
+      <Center>
+        <Heading mb={"100px"} fontSize={"4xl"}>
+          About Team
+        </Heading>
       </Center>
 
       <Flex mx={"auto"} gap={"50px"} justifyContent={"center"} wrap={"wrap"}>

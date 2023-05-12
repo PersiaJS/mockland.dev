@@ -1,7 +1,6 @@
 import {
   Container,
   Heading,
-  Link,
   Text,
   VStack,
   FormControl,
@@ -17,6 +16,7 @@ import * as Yup from "yup";
 import { useState } from "react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import fetchHandler from "@/utils/fetchHandler";
+import Link from "next/link";
 
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -26,6 +26,33 @@ const ForgotPasswordForm = () => {
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  const submitForm = async (values) => {
+    setIsPending(true);
+    try {
+      const response = await fetchHandler.post("/api/member/forget", values);
+      if (response.data.status) {
+        setMessage({
+          status: "success",
+          message: response.data.message,
+        });
+        setIsPending(false);
+        setIsSent(true);
+      } else {
+        setIsPending(false);
+        setMessage({
+          status: "warning",
+          message: response.data.message,
+        });
+      }
+    } catch (error) {
+      setIsPending(false);
+      setMessage({
+        status: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+    }
+  };
 
   return (
     <Container
@@ -47,7 +74,7 @@ const ForgotPasswordForm = () => {
           Forgot your password?
         </Heading>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
-          Enter your email and verify your identity
+          Enter your email to receive a password reset link.
         </Text>
       </VStack>
       <Formik
@@ -55,38 +82,9 @@ const ForgotPasswordForm = () => {
           email: "",
         }}
         validationSchema={ForgotPasswordSchema}
-        onSubmit={async (values, { resetForm }) => {
-          setIsPending(true);
-          try {
-            const response = await fetchHandler.post(
-              "/api/member/forget",
-              values
-            );
-            if (response.data.status) {
-              setMessage({
-                status: "success",
-                message: response.data.message,
-              });
-              setIsPending(false);
-              resetForm();
-              setIsSent(true);
-            } else {
-              setIsPending(false);
-              setMessage({
-                status: "warning",
-                message: response.data.message,
-              });
-            }
-          } catch (error) {
-            setIsPending(false);
-            setMessage({
-              status: "error",
-              message: "Something went wrong. Please try again later.",
-            });
-          }
-        }}
+        onSubmit={submitForm}
       >
-        {({ handleSubmit, errors, touched }) => (
+        {({ handleSubmit, errors, touched, values }) => (
           <form onSubmit={handleSubmit}>
             <VStack spacing={5}>
               <FormControl isInvalid={errors.email && touched.email}>
@@ -107,13 +105,15 @@ const ForgotPasswordForm = () => {
                   type="submit"
                   isLoading={isPending}
                 >
-                  Verify
+                  Recieve Reset Link
                 </Button>
                 {isSent && (
                   <>
                     <Text>
                       Didn{`'`}t receive an email?{" "}
-                      <Link color="blue">Send again</Link>
+                      <Link color="blue" onClick={() => submitForm(values)}>
+                        Send again
+                      </Link>
                     </Text>
                   </>
                 )}

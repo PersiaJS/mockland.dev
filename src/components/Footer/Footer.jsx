@@ -3,18 +3,13 @@ import {
   Box,
   Button,
   Center,
-  chakra,
   Container,
   Flex,
-  HStack,
-  IconButton,
-  Link,
   Stack,
   Text,
   useColorModeValue,
-  VisuallyHidden,
-  VStack,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { FaDiscord, FaGithub, FaInstagram, FaTelegram } from "react-icons/fa";
 
 export default function Footer() {
@@ -114,9 +109,7 @@ export default function Footer() {
             <Box>
               <Link href="https://t.me/persiajs">
                 <Button
-                  leftIcon={
-                    <FaTelegram color="color: var(--chakra-colors-blue-600);" />
-                  }
+                  leftIcon={<FaTelegram color="blue.600" />}
                   fontWeight={"bold"}
                   py={7}
                   px={8}

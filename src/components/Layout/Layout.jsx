@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 const Layout = ({ children }) => {
@@ -13,7 +13,14 @@ const Layout = ({ children }) => {
         padding={0}
       >
         <Header />
-        {children}
+        <Box
+          minHeight="60vh"
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          {children}
+        </Box>
         <Footer />
       </Container>
     </>

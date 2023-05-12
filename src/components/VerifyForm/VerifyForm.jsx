@@ -17,6 +17,8 @@ import * as Yup from "yup";
 import { useState } from "react";
 import fetchHandler from "@/utils/fetchHandler";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const VerifySchema = Yup.object().shape({
   securityHash: Yup.string().required("Required"),
@@ -27,6 +29,7 @@ const VerifyForm = () => {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
 
+  if (!router.query.securityHash) return null;
   return (
     <Container
       display={"flex"}
@@ -52,7 +55,7 @@ const VerifyForm = () => {
       </VStack>
       <Formik
         initialValues={{
-          securityHash: "",
+          securityHash: router.query.securityHash,
         }}
         validationSchema={VerifySchema}
         onSubmit={async (values, { resetForm }) => {
@@ -112,6 +115,17 @@ const VerifyForm = () => {
                 >
                   Verify
                 </Button>
+
+                <Link href="/auth/login">
+                  <Button
+                    variant={"outline"}
+                    width={"100%"}
+                    marginTop={2}
+                    leftIcon={<ArrowBackIcon />}
+                  >
+                    Back to login page
+                  </Button>
+                </Link>
               </VStack>
             </VStack>
           </form>

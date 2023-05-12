@@ -64,7 +64,7 @@ const handler = async (req, res) => {
       <p>Your code: <b>${securityHash}</b></p>
       <p>
         In order to verify your account, please click on the following link and enter your code:
-        <a href="${process.env.CLIENT_URL}/auth/verify?securityHash=${securityHash}">Verify</a>
+        <a href="${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify?securityHash=${securityHash}">Verify</a>
       </p>
       <br />
       <p>Regards, MockLand.dev</p>
