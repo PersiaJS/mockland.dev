@@ -1,15 +1,4 @@
-import Image from "next/image";
-
-import {
-  Box,
-  Center,
-  useColorModeValue,
-  Heading,
-  Text,
-  Stack,
-  Flex,
-  Container,
-} from "@chakra-ui/react";
+import { Center, Heading, Flex, Container } from "@chakra-ui/react";
 
 import UserCard from "./UserCard/UserCard";
 
