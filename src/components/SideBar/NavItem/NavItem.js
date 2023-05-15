@@ -11,6 +11,7 @@ const NavItem = ({ icon, children, ...rest }) => {
       <Flex
         align="center"
         p="2"
+        pl={{ base: 2, md: 8 }}
         borderRadius="sm"
         role="group"
         cursor="pointer"

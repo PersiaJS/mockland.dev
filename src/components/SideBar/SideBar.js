@@ -15,7 +15,7 @@ import SidebarContent from "./SidebarContent/SidebarContent";
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (
-    <Box left={0} p={5} w="200px" top={0} h="100vh" bg="white">
+    <Box left={0} w="200px" top={0} h="100vh" bg="white">
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (
@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerBody>
+          <DrawerBody boxShadow={2}>
             <SidebarContent onClick={onClose} />
           </DrawerBody>
         </DrawerContent>
