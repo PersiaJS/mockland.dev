@@ -1,7 +1,8 @@
-import React from "react";
-import { Box, Container } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Container, useBreakpointValue } from "@chakra-ui/react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+
 const Layout = ({ children }) => {
   return (
     <>
@@ -13,14 +14,10 @@ const Layout = ({ children }) => {
         padding={0}
       >
         <Header />
-        <Box
-          minHeight="60vh"
-          display={"flex"}
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
+        <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
           {children}
         </Box>
+
         <Footer />
       </Container>
     </>

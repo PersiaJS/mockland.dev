@@ -16,7 +16,6 @@ export default function Footer() {
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
-      mt={12}
     >
       <Flex p={10} bg={"#7289d9"} width={"full"}>
         <Container
