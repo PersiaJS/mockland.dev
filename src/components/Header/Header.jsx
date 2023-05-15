@@ -8,12 +8,13 @@ import {
   Box,
   Button,
   Link,
+  IconButton,
 } from "@chakra-ui/react";
 import React from "react";
 import Mockland from "../Mockland/Mockland";
 import NextLink from "next/link";
 
-const Header = () => {
+const Header = ({ showSidebarButton = true, onShowSidebar }) => {
   return (
     <header>
       <Flex
@@ -120,7 +121,12 @@ const Header = () => {
             </Link>
           </Flex>
           <Box display={{ base: "block", md: "none" }}>
-            <HamburgerIcon boxSize={5} />
+            <IconButton
+              icon={<HamburgerIcon boxSize={5} />}
+              colorScheme="blackAlpha"
+              variant="outline"
+              onClick={onShowSidebar}
+            />
           </Box>
         </Flex>
       </Flex>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import fetchHandler from "../utils/fetchHandler";
 import Hero from "@/components/Hero/Hero";
 import AboutTeam from "@/components/AboutTeam/AboutTeam";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home() {
   const [user, setUser] = useState({});
@@ -28,10 +29,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
-      <main>
-        <Hero />
-        <AboutTeam />
-      </main>
+
+      <Layout>
+        <main>
+          <Hero />
+          <AboutTeam />
+        </main>
+      </Layout>
     </>
   );
 }
