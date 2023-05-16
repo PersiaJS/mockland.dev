@@ -1,9 +1,12 @@
-import VerifyForm from "@/components/VerifyForm/VerifyForm"
+import Layout from "@/components/Layout/Layout";
+import VerifyForm from "@/components/VerifyForm/VerifyForm";
 
 const verify = () => {
   return (
-    <VerifyForm />
-  )
-}
+    <Layout>
+      <VerifyForm />
+    </Layout>
+  );
+};
 
-export default verify
+export default verify;
