@@ -25,6 +25,7 @@ const TermsAndConditions = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
+
       <main>
         <Landing
           head="Terms And Condition"
