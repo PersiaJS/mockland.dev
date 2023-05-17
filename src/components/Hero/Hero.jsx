@@ -50,7 +50,7 @@ const Hero = () => {
               lg: "center",
             }}
           >
-            <Link as={NextLink} href="/mocks">
+            <Link as={NextLink} href="/get-started">
               <Button
                 width={"100%"}
                 colorScheme={"blue"}

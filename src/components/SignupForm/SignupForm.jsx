@@ -18,6 +18,7 @@ import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
 import NextLink from "next/link";
+import Layout from "../Layout/Layout";
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -40,6 +41,7 @@ const LoginForm = () => {
   const [isPending, setIsPending] = useState(false);
 
   return (
+   <Layout>
     <Container
       display={"flex"}
       flexDirection={"column"}
@@ -198,7 +200,9 @@ const LoginForm = () => {
           </Link>
         </Text>
       </Box>
-    </Container>
+      </Container>
+         </Layout>
+
   );
 };
 

@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerBody boxShadow={2}>
+          <DrawerBody boxShadow={2} p={0}>
             <SidebarContent onClick={onClose} />
           </DrawerBody>
         </DrawerContent>
