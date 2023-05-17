@@ -11,7 +11,7 @@ const MocksItem = ({ icon, children, href }) => {
       <Flex
         align="center"
         p="2"
-        pl={8}
+        pl={7}
         borderRadius="sm"
         role="group"
         cursor="pointer"
@@ -27,6 +27,9 @@ const MocksItem = ({ icon, children, href }) => {
             bgColor={"blue.400"}
             fontSize="sm"
             fontWeight={"bold"}
+            _groupHover={{
+              bg: "blue.600",
+            }}
           />
         )}
         {children}

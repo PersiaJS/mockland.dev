@@ -25,7 +25,7 @@ function NavItem({ name, icon, href }) {
             icon={<Icon as={icon} color={"white"} fontSize={15} />}
             color="blue.500"
             _groupHover={{
-              color: "blue.500",
+              bg: "blue.600",
             }}
           />
 
