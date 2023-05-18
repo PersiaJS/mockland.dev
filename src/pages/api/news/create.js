@@ -25,7 +25,7 @@ const handler = async (req, res) => {
   const validation = new Validator(req.body, rules);
 
   if (validation.fails()) {
-    res.status(200).json({
+    res.status(422).json({
       status: false,
       message: "Validation failed",
       errors: validation.errors.all(),

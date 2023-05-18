@@ -6,7 +6,6 @@ import corsMiddleware from "@/middlewares/corsMiddleware";
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
   await methodMiddleware(req, res, "GET");
-  
 
   const contacts = await prisma.contact.findMany();
 
