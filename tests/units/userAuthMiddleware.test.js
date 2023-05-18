@@ -31,10 +31,4 @@ describe("userAuthMiddleware", () => {
       message: "User does not exist",
     });
   });
-  // it("Should respond with code 400 if there is no user related to the token", async () => {
-  //   req.headers.auth = process.env.TEST_TOKEN;
-  //   await userAuthMiddleware(req, res);
-  //   console.log(res.json);
-  //   expect(req.user).toBeDefined();
-  // });
 });
