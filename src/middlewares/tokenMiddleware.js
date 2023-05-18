@@ -10,7 +10,9 @@ const tokenMiddleware = async (req, res, next) => {
     return true;
   }
 
-  if (!jwt.verify(token, process.env.JWT_SECRET)) {
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
     res.status(400).json({ status: false, message: "Invalid token" });
     return true;
   }
