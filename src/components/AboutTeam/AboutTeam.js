@@ -1,6 +1,6 @@
 import { Center, Heading, Flex, Container } from "@chakra-ui/react";
 
-import UserCard from "./UserCard/UserCard";
+import UserCard from "../UserCard/UserCard";
 
 export default function AboutTeam() {
   return (

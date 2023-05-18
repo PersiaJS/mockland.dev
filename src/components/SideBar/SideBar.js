@@ -1,17 +1,13 @@
 import {
   Box,
-  Button,
   Drawer,
   DrawerOverlay,
   DrawerCloseButton,
-  DrawerHeader,
   DrawerBody,
   DrawerContent,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
-import Mockland from "../Mockland/Mockland";
-import SidebarContent from "./SidebarContent/SidebarContent";
+import SidebarContent from "../SidebarContent/SidebarContent";
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (

@@ -1,10 +1,10 @@
 import { Flex, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, url, children, ...rest }) => {
   return (
     <Link
-      href="#"
+      href={url}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
