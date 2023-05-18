@@ -17,7 +17,12 @@ import Landing from "@/components/Landing";
 
 const TermsAndConditions = () => {
   const [activeTab, setActiveTab] = useState("General");
-  const styles = { textAlign: "left", w: "full", p: 2, cursor: "pointer" };
+  const styles = {
+    textAlign: { base: "center", md: "left" },
+    w: "full",
+    p: 2,
+    cursor: "pointer",
+  };
 
   return (
     <>
@@ -44,7 +49,6 @@ const TermsAndConditions = () => {
                   fontSize={{ base: "xs", md: "sm" }}
                   bg={activeTab === "General" ? "#2B6CB011" : false}
                   onClick={() => setActiveTab("General")}
-                  id="General"
                 >
                   <Link href="#General">General Terms</Link>
                 </Text>
@@ -53,7 +57,6 @@ const TermsAndConditions = () => {
                   fontSize={{ base: "xs", md: "sm" }}
                   bg={activeTab === "Products" ? "#2B6CB011" : false}
                   onClick={() => setActiveTab("Product")}
-                  id="Products"
                 >
                   <Link href="#Products">Products</Link>
                 </Text>
@@ -62,7 +65,6 @@ const TermsAndConditions = () => {
                   fontSize={{ base: "xs", md: "sm" }}
                   bg={activeTab === "Security" ? "#2B6CB011" : false}
                   onClick={() => setActiveTab("Security")}
-                  id="Security"
                 >
                   <Link href="#Security">Security</Link>
                 </Text>
@@ -71,13 +73,12 @@ const TermsAndConditions = () => {
                   fontSize={{ base: "xs", md: "sm" }}
                   bg={activeTab === "Terms" ? "#2B6CB011" : false}
                   onClick={() => setActiveTab("Terms")}
-                  id="Terms"
                 >
                   <Link href="#Terms">Changes about terms</Link>
                 </Text>
               </Stack>
               <VStack flex={8}>
-                <VStack alignItems="left" py={4}>
+                <VStack alignItems="left" py={4} id="General">
                   <Heading fontSize="lg" fontWeight="bold">
                     General Terms
                   </Heading>
@@ -89,7 +90,7 @@ const TermsAndConditions = () => {
                     sed?
                   </Text>
                 </VStack>
-                <VStack alignItems="left" py={4}>
+                <VStack alignItems="left" py={4} id="Products">
                   <Heading fontSize="lg" fontWeight="bold">
                     Products
                   </Heading>
@@ -101,7 +102,7 @@ const TermsAndConditions = () => {
                     sed?
                   </Text>
                 </VStack>
-                <VStack alignItems="left" py={4}>
+                <VStack alignItems="left" py={4} id="Security">
                   <Heading fontSize="lg" fontWeight="bold">
                     Security
                   </Heading>
@@ -113,7 +114,7 @@ const TermsAndConditions = () => {
                     sed?
                   </Text>
                 </VStack>
-                <VStack alignItems="left" py={4}>
+                <VStack alignItems="left" py={4} id="Terms">
                   <Heading fontSize="lg" fontWeight="bold">
                     Changes about terms
                   </Heading>
