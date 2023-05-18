@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 
+import Layout from "@/components/Layout/Layout";
+
 import {
   Container,
   Flex,
@@ -25,104 +27,109 @@ const TermsAndConditions = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
-
-      <main>
-        <Landing
-          head="Terms And Condition"
-          text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      <Layout>
+        <main>
+          <Landing
+            head="Terms And Condition"
+            text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Necessitatibus eos harum illo inventore eum tempore soluta eligendi
             corrupti, iste nulla deleniti vero sapiente dolorum illum minima
             accusamus odit delectus cupiditate, atque at sed?"
-        />
-        <Container maxW={990}>
-          <Flex gap={12} direction={{ base: "column", md: "row" }}>
-            <Stack direction={{ base: "row", md: "column" }} flex={4}>
-              <Text
-                sx={styles}
-                fontSize={{ base: "xs", md: "sm" }}
-                bg={activeTab === "General" ? "#2B6CB011" : false}
-                onClick={() => setActiveTab("General")}
-                id="General"
-              >
-                <Link href="#General">General Terms</Link>
-              </Text>
-              <Text
-                sx={styles}
-                fontSize={{ base: "xs", md: "sm" }}
-                bg={activeTab === "Products" ? "#2B6CB011" : false}
-                onClick={() => setActiveTab("Product")}
-                id="Products"
-              >
-                <Link href="#Products">Products</Link>
-              </Text>
-              <Text
-                sx={styles}
-                fontSize={{ base: "xs", md: "sm" }}
-                bg={activeTab === "Security" ? "#2B6CB011" : false}
-                onClick={() => setActiveTab("Security")}
-                id="Security"
-              >
-                <Link href="#Security">Security</Link>
-              </Text>
-              <Text
-                sx={styles}
-                fontSize={{ base: "xs", md: "sm" }}
-                bg={activeTab === "Terms" ? "#2B6CB011" : false}
-                onClick={() => setActiveTab("Terms")}
-                id="Terms"
-              >
-                <Link href="#Terms">Changes about terms</Link>
-              </Text>
-            </Stack>
-            <VStack flex={8}>
-              <VStack alignItems="left" py={4}>
-                <Heading fontSize="lg" fontWeight="bold">
-                  General Terms
-                </Heading>
-                <Text py={2}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus eos harum illo inventore eum tempore soluta
-                  eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                  illum minima accusamus odit delectus cupiditate, atque at sed?
+          />
+          <Container maxW={990}>
+            <Flex gap={12} direction={{ base: "column", md: "row" }}>
+              <Stack direction={{ base: "row", md: "column" }} flex={4}>
+                <Text
+                  sx={styles}
+                  fontSize={{ base: "xs", md: "sm" }}
+                  bg={activeTab === "General" ? "#2B6CB011" : false}
+                  onClick={() => setActiveTab("General")}
+                  id="General"
+                >
+                  <Link href="#General">General Terms</Link>
                 </Text>
-              </VStack>
-              <VStack alignItems="left" py={4}>
-                <Heading fontSize="lg" fontWeight="bold">
-                  Products
-                </Heading>
-                <Text py={2}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus eos harum illo inventore eum tempore soluta
-                  eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                  illum minima accusamus odit delectus cupiditate, atque at sed?
+                <Text
+                  sx={styles}
+                  fontSize={{ base: "xs", md: "sm" }}
+                  bg={activeTab === "Products" ? "#2B6CB011" : false}
+                  onClick={() => setActiveTab("Product")}
+                  id="Products"
+                >
+                  <Link href="#Products">Products</Link>
                 </Text>
-              </VStack>
-              <VStack alignItems="left" py={4}>
-                <Heading fontSize="lg" fontWeight="bold">
-                  Security
-                </Heading>
-                <Text py={2}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus eos harum illo inventore eum tempore soluta
-                  eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                  illum minima accusamus odit delectus cupiditate, atque at sed?
+                <Text
+                  sx={styles}
+                  fontSize={{ base: "xs", md: "sm" }}
+                  bg={activeTab === "Security" ? "#2B6CB011" : false}
+                  onClick={() => setActiveTab("Security")}
+                  id="Security"
+                >
+                  <Link href="#Security">Security</Link>
                 </Text>
-              </VStack>
-              <VStack alignItems="left" py={4}>
-                <Heading fontSize="lg" fontWeight="bold">
-                  Changes about terms
-                </Heading>
-                <Text py={2}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus eos harum illo inventore eum tempore soluta
-                  eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                  illum minima accusamus odit delectus cupiditate, atque at sed?
+                <Text
+                  sx={styles}
+                  fontSize={{ base: "xs", md: "sm" }}
+                  bg={activeTab === "Terms" ? "#2B6CB011" : false}
+                  onClick={() => setActiveTab("Terms")}
+                  id="Terms"
+                >
+                  <Link href="#Terms">Changes about terms</Link>
                 </Text>
+              </Stack>
+              <VStack flex={8}>
+                <VStack alignItems="left" py={4}>
+                  <Heading fontSize="lg" fontWeight="bold">
+                    General Terms
+                  </Heading>
+                  <Text py={2}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Necessitatibus eos harum illo inventore eum tempore soluta
+                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
+                    illum minima accusamus odit delectus cupiditate, atque at
+                    sed?
+                  </Text>
+                </VStack>
+                <VStack alignItems="left" py={4}>
+                  <Heading fontSize="lg" fontWeight="bold">
+                    Products
+                  </Heading>
+                  <Text py={2}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Necessitatibus eos harum illo inventore eum tempore soluta
+                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
+                    illum minima accusamus odit delectus cupiditate, atque at
+                    sed?
+                  </Text>
+                </VStack>
+                <VStack alignItems="left" py={4}>
+                  <Heading fontSize="lg" fontWeight="bold">
+                    Security
+                  </Heading>
+                  <Text py={2}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Necessitatibus eos harum illo inventore eum tempore soluta
+                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
+                    illum minima accusamus odit delectus cupiditate, atque at
+                    sed?
+                  </Text>
+                </VStack>
+                <VStack alignItems="left" py={4}>
+                  <Heading fontSize="lg" fontWeight="bold">
+                    Changes about terms
+                  </Heading>
+                  <Text py={2}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Necessitatibus eos harum illo inventore eum tempore soluta
+                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
+                    illum minima accusamus odit delectus cupiditate, atque at
+                    sed?
+                  </Text>
+                </VStack>
               </VStack>
-            </VStack>
-          </Flex>
-        </Container>
-      </main>
+            </Flex>
+          </Container>
+        </main>
+      </Layout>
     </>
   );
 };
