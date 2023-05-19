@@ -22,6 +22,7 @@ import { useContext, useState } from "react";
 import Cookies from "universal-cookie";
 import NextLink from "next/link";
 import UserContext from "@/contexts/UserContext";
+import { useRouter } from "next/router";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -29,6 +30,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
+  const router = useRouter();
   const { refreshUser } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -87,6 +89,9 @@ const LoginForm = () => {
               refreshUser();
               setIsPending(false);
               resetForm();
+              setTimeout(() => {
+                router.push("/");
+              }, 1000);
             } else {
               setIsPending(false);
               setMessage({
