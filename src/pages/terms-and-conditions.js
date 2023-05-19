@@ -2,8 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 
-import Layout from "@/components/Layout/Layout";
-
 import {
   Container,
   Flex,
@@ -14,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import Landing from "@/components/Landing";
+import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 
 const TermsAndConditions = () => {
   const [activeTab, setActiveTab] = useState("General");
@@ -32,7 +31,7 @@ const TermsAndConditions = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
-      <Layout>
+      <LayoutWithSideBar>
         <main>
           <Landing
             head="Terms And Condition"
@@ -130,7 +129,7 @@ const TermsAndConditions = () => {
             </Flex>
           </Container>
         </main>
-      </Layout>
+      </LayoutWithSideBar>
     </>
   );
 };

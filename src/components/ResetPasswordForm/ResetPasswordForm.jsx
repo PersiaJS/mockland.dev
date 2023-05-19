@@ -32,127 +32,129 @@ const ResetPasswordForm = () => {
   const router = useRouter();
 
   return (
-    <Container
-      display={"flex"}
-      flexDirection={"column"}
-      gap={8}
-      maxW="md"
-      flexGrow={1}
-      justifyContent={"center"}
-      minH={"80vh"}
-    >
-      <Heading
-        as={"h2"}
-        size={"xl"}
-        fontWeight={"500"}
-        color={"blackAlpha.800"}
-        textAlign={"center"}
+    <Layout>
+      <Container
+        display={"flex"}
+        flexDirection={"column"}
+        gap={8}
+        maxW="md"
+        flexGrow={1}
+        justifyContent={"center"}
+        minH={"80vh"}
       >
-        Reset your password
-      </Heading>
-      <Formik
-        initialValues={{
-          password: "",
-          passwordConfirm: "",
-        }}
-        validationSchema={ResetPasswordSchema}
-        onSubmit={async (values, { resetForm }) => {
-          console.log(values);
-          setIsPending(true);
-          try {
-            const response = await fetchHandler.put("/api/member/reset", {
-              ...values,
-              securityHash: router.query.reset,
-            });
-            if (response.data.status) {
-              setMessage({
-                status: "success",
-                message: response.data.message,
+        <Heading
+          as={"h2"}
+          size={"xl"}
+          fontWeight={"500"}
+          color={"blackAlpha.800"}
+          textAlign={"center"}
+        >
+          Reset your password
+        </Heading>
+        <Formik
+          initialValues={{
+            password: "",
+            passwordConfirm: "",
+          }}
+          validationSchema={ResetPasswordSchema}
+          onSubmit={async (values, { resetForm }) => {
+            console.log(values);
+            setIsPending(true);
+            try {
+              const response = await fetchHandler.put("/api/member/reset", {
+                ...values,
+                securityHash: router.query.reset,
               });
-              setIsPending(false);
-              resetForm();
-            } else {
+              if (response.data.status) {
+                setMessage({
+                  status: "success",
+                  message: response.data.message,
+                });
+                setIsPending(false);
+                resetForm();
+              } else {
+                setIsPending(false);
+                setMessage({
+                  status: "warning",
+                  message: response.data.message,
+                });
+              }
+            } catch (error) {
               setIsPending(false);
               setMessage({
-                status: "warning",
-                message: response.data.message,
+                status: "error",
+                message: "Something went wrong. Please try again later.",
               });
             }
-          } catch (error) {
-            setIsPending(false);
-            setMessage({
-              status: "error",
-              message: "Something went wrong. Please try again later.",
-            });
-          }
-        }}
-      >
-        {({ handleSubmit, errors, touched }) => (
-          <form onSubmit={handleSubmit}>
-            <VStack spacing={5}>
-              <FormControl isInvalid={errors.password && touched.password}>
-                <FormLabel htmlFor="password" color={"blackAlpha.700"}>
-                  Password
-                </FormLabel>
-                <Field
-                  as={Input}
-                  id="password"
-                  name="password"
-                  type="password"
-                  focusBorderColor="#38A169"
-                />
-                <FormErrorMessage>{errors.password}</FormErrorMessage>
-              </FormControl>
-              <FormControl
-                isInvalid={errors.passwordConfirm && touched.passwordConfirm}
-              >
-                <FormLabel htmlFor="password" color={"blackAlpha.700"}>
-                  Confirm Password
-                </FormLabel>
-
-                <Field
-                  as={Input}
-                  id="passwordConfirm"
-                  name="passwordConfirm"
-                  type="password"
-                  focusBorderColor="#38A169"
-                />
-                <FormErrorMessage>{errors.passwordConfirm}</FormErrorMessage>
-              </FormControl>
-              <VStack align="stretch" width={"100%"} spacing={3}>
-                <Button
-                  variant={"solid"}
-                  colorScheme="blue"
-                  type="submit"
-                  isLoading={isPending}
+          }}
+        >
+          {({ handleSubmit, errors, touched }) => (
+            <form onSubmit={handleSubmit}>
+              <VStack spacing={5}>
+                <FormControl isInvalid={errors.password && touched.password}>
+                  <FormLabel htmlFor="password" color={"blackAlpha.700"}>
+                    Password
+                  </FormLabel>
+                  <Field
+                    as={Input}
+                    id="password"
+                    name="password"
+                    type="password"
+                    focusBorderColor="#38A169"
+                  />
+                  <FormErrorMessage>{errors.password}</FormErrorMessage>
+                </FormControl>
+                <FormControl
+                  isInvalid={errors.passwordConfirm && touched.passwordConfirm}
                 >
-                  Reset
-                </Button>
+                  <FormLabel htmlFor="password" color={"blackAlpha.700"}>
+                    Confirm Password
+                  </FormLabel>
 
-                <Link href="/auth/login">
+                  <Field
+                    as={Input}
+                    id="passwordConfirm"
+                    name="passwordConfirm"
+                    type="password"
+                    focusBorderColor="#38A169"
+                  />
+                  <FormErrorMessage>{errors.passwordConfirm}</FormErrorMessage>
+                </FormControl>
+                <VStack align="stretch" width={"100%"} spacing={3}>
                   <Button
-                    variant={"outline"}
-                    width={"100%"}
-                    marginTop={2}
-                    leftIcon={<ArrowBackIcon />}
+                    variant={"solid"}
+                    colorScheme="blue"
+                    type="submit"
+                    isLoading={isPending}
                   >
-                    Back to login page
+                    Reset
                   </Button>
-                </Link>
+
+                  <Link href="/auth/login">
+                    <Button
+                      variant={"outline"}
+                      width={"100%"}
+                      marginTop={2}
+                      leftIcon={<ArrowBackIcon />}
+                    >
+                      Back to login page
+                    </Button>
+                  </Link>
+                </VStack>
               </VStack>
-            </VStack>
-          </form>
+            </form>
+          )}
+        </Formik>
+        {message && (
+          <Box py={4}>
+            <Alert status={message.status}>
+              <AlertIcon />
+              {message.message}
+            </Alert>
+          </Box>
         )}
-      </Formik>
-      {message && (
-        <Box py={4}>
-          <Alert status={message.status}>
-            <AlertIcon />
-            {message.message}
-          </Alert>
-        </Box>
-      )}
-    </Container>
+      </Container>
+    </Layout>
   );
 };
 

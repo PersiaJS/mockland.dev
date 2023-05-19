@@ -9,14 +9,31 @@ import {
   Button,
   Link,
   IconButton,
+  DrawerOverlay,
+  DrawerCloseButton,
+  DrawerBody,
+  DrawerContent,
+  Drawer,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import Mockland from "../Mockland/Mockland";
 import NextLink from "next/link";
+import Sidebar from "../SideBar/SideBar";
 
-const Header = ({ showSidebarButton = true, onShowSidebar }) => {
+const Header = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
+  const btnRef = React.useRef();
+
   return (
-    <header>
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        backgroundColor: "#fff",
+      }}
+    >
       <Flex
         height={"75px"}
         transition={"all 250ms"}
@@ -120,16 +137,38 @@ const Header = ({ showSidebarButton = true, onShowSidebar }) => {
               </Button>
             </Link>
           </Flex>
-          <Box display={{ base: "block", md: "none" }}>
+          <Box
+            display={{
+              base: "block",
+              sm: "block",
+              md: "block",
+              lg: "none",
+            }}
+          >
             <IconButton
               icon={<HamburgerIcon boxSize={5} />}
               colorScheme="blackAlpha"
               variant="outline"
-              onClick={onShowSidebar}
+              onClick={onOpen}
             />
           </Box>
         </Flex>
       </Flex>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay>
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerBody boxShadow={2} p={0}>
+              <Sidebar onClick={onClose} />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
     </header>
   );
 };

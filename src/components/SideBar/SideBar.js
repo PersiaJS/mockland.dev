@@ -1,31 +1,63 @@
+import { Box } from "@chakra-ui/react";
+import NavItem from "../NavItem/NavItem";
 import {
-  Box,
-  Drawer,
-  DrawerOverlay,
-  DrawerCloseButton,
-  DrawerBody,
-  DrawerContent,
-} from "@chakra-ui/react";
+  FaComment,
+  FaHome,
+  FaQuestion,
+  FaRegistered,
+  FaServicestack,
+  FaUserAlt,
+} from "react-icons/fa";
 
-import SidebarContent from "../SidebarContent/SidebarContent";
+const LinkItems = [
+  { name: "Home", icon: FaHome, href: "/" },
+  {
+    name: "Mocks",
+    icon: FaQuestion,
+    href: "/mocks",
+  },
+  {
+    name: "Terms And Conditions",
+    icon: FaComment,
+    href: "/terms-and-conditions",
+  },
+  {
+    name: "Privacy Policy",
+    icon: FaServicestack,
+    href: "/privacy-policy",
+  },
+  {
+    name: "Login",
+    icon: FaUserAlt,
+    href: "/auth/login",
+  },
+  {
+    name: "Register",
+    icon: FaRegistered,
+    href: "/auth/register",
+  },
+];
 
-const Sidebar = ({ isOpen, variant, onClose }) => {
-  return variant === "sidebar" ? (
-    <Box left={0} w="200px" top={0} h="100vh" bg="white">
-      <SidebarContent onClick={onClose} />
+const Sidebar = () => {
+  return (
+    <Box
+      minW={"300px"}
+      height={"100vh"}
+      my={4}
+      borderRight={"1px solid"}
+      borderColor={"blue.600"}
+      position={"sticky"}
+      top={100}
+    >
+      {LinkItems.map((link) => (
+        <NavItem
+          key={link.name}
+          icon={link.icon}
+          href={link.href}
+          name={link.name}
+        />
+      ))}
     </Box>
-  ) : (
-    <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-      <DrawerOverlay>
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerBody boxShadow={2}>
-            <SidebarContent onClick={onClose} />
-          </DrawerBody>
-        </DrawerContent>
-      </DrawerOverlay>
-    </Drawer>
   );
 };
-
 export default Sidebar;
