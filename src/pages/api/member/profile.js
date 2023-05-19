@@ -19,7 +19,7 @@ const handler = async (req, res) => {
   return res.status(200).json({
     status: true,
     message: "User logged in",
-    data: {
+    user: {
       id: req.user.id,
       email: req.user.email,
       firstName: req.user.firstName,

@@ -16,14 +16,18 @@ import {
   Drawer,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import Mockland from "../Mockland/Mockland";
 import NextLink from "next/link";
 import Sidebar from "../SideBar/SideBar";
+import UserContext from "@/contexts/UserContext";
 
 const Header = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const btnRef = React.useRef();
+  const { user } = useContext(UserContext);
+
+  console.log("debug user", user);
 
   return (
     <header
@@ -126,16 +130,22 @@ const Header = () => {
             </Flex>
           </Box>
           <Flex gap={2}>
-            <Link as={NextLink} href="/auth/login">
-              <Button colorScheme="blue" variant="ghost">
-                Log In
-              </Button>
-            </Link>
-            <Link as={NextLink} href="/auth/register">
-              <Button colorScheme="blue" variant="solid">
-                Sign Up
-              </Button>
-            </Link>
+            {!user ? (
+              <>
+                <Link as={NextLink} href="/auth/login">
+                  <Button colorScheme="blue" variant="ghost">
+                    Log In
+                  </Button>
+                </Link>
+                <Link as={NextLink} href="/auth/register">
+                  <Button colorScheme="blue" variant="solid">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>PROFILE</>
+            )}
           </Flex>
           <Box
             display={{
