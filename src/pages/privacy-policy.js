@@ -23,7 +23,7 @@ function PrivacyPolicy() {
           <Flex gap={12} direction={{ base: "column", md: "row" }}>
             <Container>
               <Box display={"grid"} alignItems={"center"}>
-                <Text fontSize="5xl">General rules</Text>
+                <Text fontSize="xl">General rules</Text>
                 <Text mt={5}>
                   testChakra UI Pro does not share personal information of any
                   kind with anyone. We will not sell or rent your name or
@@ -56,7 +56,7 @@ function PrivacyPolicy() {
                   browsed).
                 </Text>
                 <br />
-                <Text fontSize="5xl">Changes about privacy</Text>
+                <Text fontSize="xl">Changes about privacy</Text>
                 <Text mt={5} pb={10}>
                   If we change our terms of use we will post those changes on
                   this page. Registered users will be sent an email that

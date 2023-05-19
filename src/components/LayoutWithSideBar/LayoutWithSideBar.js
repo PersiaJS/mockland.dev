@@ -26,12 +26,7 @@ const LayoutWithSideBar = ({ children }) => {
           >
             <Sidebar />
           </Box>
-          <Box
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            w={"full"}
-          >
+          <Box display={"flex"} justifyContent={"center"} w={"full"} py={12}>
             {children}
           </Box>
         </Flex>
