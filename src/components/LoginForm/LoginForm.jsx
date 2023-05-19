@@ -18,10 +18,10 @@ import {
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Cookies from "universal-cookie";
 import NextLink from "next/link";
-import Layout from "../Layout/Layout";
+import UserContext from "@/contexts/UserContext";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -29,6 +29,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
+  const { refreshUser } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -83,6 +84,7 @@ const LoginForm = () => {
                 status: "success",
                 message: response.data.message,
               });
+              refreshUser();
               setIsPending(false);
               resetForm();
             } else {
