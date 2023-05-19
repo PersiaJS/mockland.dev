@@ -15,7 +15,7 @@ const LayoutWithSideBar = ({ children }) => {
         padding={0}
       >
         <Header />
-        <Flex>
+        <Flex position={"relative"}>
           <Box
             display={{
               base: "none",

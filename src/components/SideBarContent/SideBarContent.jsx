@@ -8,6 +8,8 @@ import {
   FaServicestack,
   FaUserAlt,
 } from "react-icons/fa";
+import UserContext from "@/contexts/UserContext";
+import { useContext } from "react";
 
 const LinkItems = [
   { name: "Home", icon: FaHome, href: "/" },
@@ -26,6 +28,9 @@ const LinkItems = [
     icon: FaServicestack,
     href: "/privacy-policy",
   },
+];
+
+const AuthItems = [
   {
     name: "Login",
     icon: FaUserAlt,
@@ -38,17 +43,10 @@ const LinkItems = [
   },
 ];
 
-const Sidebar = () => {
+const SidebarContent = () => {
+  const { user } = useContext(UserContext);
   return (
-    <Box
-      minW={"300px"}
-      height={"100vh"}
-      my={4}
-      borderRight={"1px solid"}
-      borderColor={"blue.600"}
-      position={"sticky"}
-      top={100}
-    >
+    <Box>
       {LinkItems.map((link) => (
         <NavItem
           key={link.name}
@@ -57,7 +55,16 @@ const Sidebar = () => {
           name={link.name}
         />
       ))}
+      {!user &&
+        AuthItems.map((link) => (
+          <NavItem
+            key={link.name}
+            icon={link.icon}
+            href={link.href}
+            name={link.name}
+          />
+        ))}
     </Box>
   );
 };
-export default Sidebar;
+export default SidebarContent;
