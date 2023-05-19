@@ -1,18 +1,19 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useState } from "react";
-
-import Layout from "@/components/Layout/Layout";
 
 import {
   Container,
-  Flex,
-  Heading,
-  Stack,
+  Tab,
+  TabIndicator,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
-  VStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
+import Layout from "@/components/Layout/Layout";
 import Landing from "@/components/Landing";
 
 const TermsAndConditions = () => {
@@ -42,92 +43,90 @@ const TermsAndConditions = () => {
             accusamus odit delectus cupiditate, atque at sed?"
           />
           <Container maxW={990}>
-            <Flex gap={12} direction={{ base: "column", md: "row" }}>
-              <Stack direction={{ base: "row", md: "column" }} flex={4}>
-                <Text
-                  sx={styles}
-                  fontSize={{ base: "xs", md: "sm" }}
-                  bg={activeTab === "General" ? "#2B6CB011" : false}
-                  onClick={() => setActiveTab("General")}
-                >
-                  <Link href="#General">General Terms</Link>
-                </Text>
-                <Text
-                  sx={styles}
-                  fontSize={{ base: "xs", md: "sm" }}
-                  bg={activeTab === "Products" ? "#2B6CB011" : false}
-                  onClick={() => setActiveTab("Product")}
-                >
-                  <Link href="#Products">Products</Link>
-                </Text>
-                <Text
-                  sx={styles}
-                  fontSize={{ base: "xs", md: "sm" }}
-                  bg={activeTab === "Security" ? "#2B6CB011" : false}
-                  onClick={() => setActiveTab("Security")}
-                >
-                  <Link href="#Security">Security</Link>
-                </Text>
-                <Text
-                  sx={styles}
-                  fontSize={{ base: "xs", md: "sm" }}
-                  bg={activeTab === "Terms" ? "#2B6CB011" : false}
-                  onClick={() => setActiveTab("Terms")}
-                >
-                  <Link href="#Terms">Changes about terms</Link>
-                </Text>
-              </Stack>
-              <VStack flex={8}>
-                <VStack alignItems="left" py={4} id="General">
-                  <Heading fontSize="lg" fontWeight="bold">
-                    General Terms
-                  </Heading>
-                  <Text py={2}>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Necessitatibus eos harum illo inventore eum tempore soluta
-                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                    illum minima accusamus odit delectus cupiditate, atque at
-                    sed?
+            <Tabs display="inline-block">
+              <TabList>
+                <Tab fontSize={{ base: "xs", md: "md" }}>General Terms</Tab>
+                <Tab fontSize={{ base: "xs", md: "md" }}>Products</Tab>
+                <Tab fontSize={{ base: "xs", md: "md" }}>Security</Tab>
+                <Tab fontSize={{ base: "xs", md: "md" }}>
+                  Changes about terms
+                </Tab>
+              </TabList>
+              <TabIndicator
+                mt="-1.5px"
+                height="2px"
+                bg="blue.500"
+                borderRadius="1px"
+              />
+              <TabPanels>
+                <TabPanel>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Integer mattis bibendum volutpat. Maecenas vel fringilla
+                    purus, vitae mattis nibh. Duis vestibulum quam libero, id
+                    interdum arcu placerat ut. Maecenas ultrices augue id erat
+                    rutrum, sit amet tincidunt sem rhoncus. In porta sit amet
+                    lectus dignissim ullamcorper. Mauris vitae magna sem. Duis
+                    fringilla et ligula in semper. In malesuada dui blandit nisl
+                    dapibus, vitae hendrerit dolor finibus. Cras ac sagittis
+                    mauris. Donec non orci turpis. Etiam fermentum pretium enim
+                    at efficitur. Phasellus eleifend ac orci eget efficitur.
+                    Nulla id commodo velit. Maecenas porttitor elementum erat,
+                    vitae vestibulum odio dictum vitae. Vivamus fermentum
+                    feugiat dui, eu consectetur augue tincidunt dignissim.
+                    Aliquam erat volutpat.
                   </Text>
-                </VStack>
-                <VStack alignItems="left" py={4} id="Products">
-                  <Heading fontSize="lg" fontWeight="bold">
-                    Products
-                  </Heading>
-                  <Text py={2}>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Necessitatibus eos harum illo inventore eum tempore soluta
-                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                    illum minima accusamus odit delectus cupiditate, atque at
-                    sed?
+                </TabPanel>
+                <TabPanel>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Duis tempus tempor fermentum. Mauris varius mi hendrerit,
+                    blandit justo vel, finibus diam. Donec justo mauris, rutrum
+                    at ex et, ornare porta nisi. Phasellus consequat felis quis
+                    purus gravida gravida. Morbi eros leo, convallis eu
+                    hendrerit quis, porta quis erat. Vestibulum vel elit in est
+                    accumsan congue sit amet sed nulla. Fusce facilisis dui eu
+                    purus aliquet, a commodo libero luctus. Proin id tortor ac
+                    velit consectetur porta. Ut in orci efficitur, pellentesque
+                    augue eu, ullamcorper mauris. Duis fringilla nisl quis nibh
+                    vulputate, ut tempor nibh auctor. Duis quis mollis metus.
+                    Cras pellentesque sit amet quam pulvinar fermentum.
                   </Text>
-                </VStack>
-                <VStack alignItems="left" py={4} id="Security">
-                  <Heading fontSize="lg" fontWeight="bold">
-                    Security
-                  </Heading>
-                  <Text py={2}>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Necessitatibus eos harum illo inventore eum tempore soluta
-                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                    illum minima accusamus odit delectus cupiditate, atque at
-                    sed?
+                </TabPanel>
+                <TabPanel>
+                  <Text>
+                    Integer in turpis a est varius ultricies. Quisque libero
+                    neque, faucibus eu velit in, gravida ornare diam. Maecenas
+                    sodales a orci et maximus. Quisque id arcu elementum,
+                    ultrices odio eu, vehicula sem. Sed eu metus vel tellus
+                    pellentesque rhoncus id nec nisl. Cras a augue nec sem
+                    finibus eleifend. Aenean interdum finibus urna, eget
+                    imperdiet mauris porta vel. Mauris ligula ex, vehicula sit
+                    amet lobortis sit amet, feugiat egestas ex. Pellentesque
+                    habitant morbi tristique senectus et netus et malesuada
+                    fames ac turpis egestas. Quisque mattis accumsan
+                    scelerisque. Mauris iaculis enim risus, vel semper justo
+                    tincidunt quis.
                   </Text>
-                </VStack>
-                <VStack alignItems="left" py={4} id="Terms">
-                  <Heading fontSize="lg" fontWeight="bold">
-                    Changes about terms
-                  </Heading>
-                  <Text py={2}>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Necessitatibus eos harum illo inventore eum tempore soluta
-                    eligendi corrupti, iste nulla deleniti vero sapiente dolorum
-                    illum minima accusamus odit delectus cupiditate, atque at
-                    sed?
+                </TabPanel>
+                <TabPanel>
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Curabitur pharetra risus a ante ornare, nec laoreet sapien
+                    semper. Sed nibh felis, luctus hendrerit lectus at, dictum
+                    aliquet odio. Morbi volutpat faucibus diam vitae ultricies.
+                    Morbi vel lectus aliquet, dictum orci id, pharetra nisi.
+                    Aliquam tempor nibh sed aliquam iaculis. Pellentesque
+                    habitant morbi tristique senectus et netus et malesuada
+                    fames ac turpis egestas. Ut at ultrices metus, et faucibus
+                    ex. Vivamus augue lectus, iaculis a diam et, commodo mattis
+                    augue. Integer vel ex posuere, vestibulum mauris ac, sodales
+                    purus. Suspendisse dignissim venenatis nisl, eget
+                    pellentesque metus luctus vitae
                   </Text>
-                </VStack>
-              </VStack>
-            </Flex>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </Container>
         </main>
       </Layout>
