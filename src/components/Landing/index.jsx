@@ -9,7 +9,7 @@ const Landing = ({ head, text }) => {
   const { pathname } = useRouter();
 
   return (
-    <Container maxW={990} my={50}>
+    <Container maxW={990} mb={50}>
       <Flex
         justifyContent="center"
         alignItems="center"

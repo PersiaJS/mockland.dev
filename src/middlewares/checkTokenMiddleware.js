@@ -4,7 +4,9 @@ import prisma from "../../lib/prisma";
 const checkTokenMiddleware = async (req, res, next) => {
   const { token } = req.headers;
   if (token) {
-    if (!jwt.verify(token, process.env.JWT_SECRET)) {
+    try {
+      jwt.verify(token, process.env.JWT_SECRET);
+    } catch (err) {
       return res.status(400).json({ status: false, message: "Invalid token" });
     }
 

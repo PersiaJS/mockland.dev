@@ -13,14 +13,16 @@ import {
   Button,
   Alert,
   AlertIcon,
-  Link
+  Link,
 } from "@chakra-ui/react";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Cookies from "universal-cookie";
 import NextLink from "next/link";
+import UserContext from "@/contexts/UserContext";
+import { useRouter } from "next/router";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -28,6 +30,8 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
+  const router = useRouter();
+  const { refreshUser } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -82,8 +86,12 @@ const LoginForm = () => {
                 status: "success",
                 message: response.data.message,
               });
+              refreshUser();
               setIsPending(false);
               resetForm();
+              setTimeout(() => {
+                router.push("/");
+              }, 1000);
             } else {
               setIsPending(false);
               setMessage({
@@ -143,7 +151,9 @@ const LoginForm = () => {
                   Remember me
                 </Field>
                 <Text color={"blue.500"} fontWeight={"500"}>
-                  <Link as={NextLink} href="/auth/forgotpassword">Forgot password</Link>
+                  <Link as={NextLink} href="/auth/forgotpassword">
+                    Forgot password
+                  </Link>
                 </Text>
               </HStack>
               <VStack align="stretch" width={"100%"} spacing={5}>

@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout/Layout";
 import {
   Box,
   Breadcrumb,
@@ -9,6 +10,7 @@ import Link from "next/link";
 
 const MockNewsIndex = () => {
   return (
+    <Layout isActiveSideBar={true}>
     <Container>
       <Box display={"grid"} alignItems={"center"} height={"100vh"}>
         <Box>
@@ -34,7 +36,8 @@ const MockNewsIndex = () => {
           </Box>
         </Box>
       </Box>
-    </Container>
+      </Container>
+      </Layout>
   );
 };
 

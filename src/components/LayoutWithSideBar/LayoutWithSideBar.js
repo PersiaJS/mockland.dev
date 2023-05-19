@@ -1,27 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Container, Flex } from "@chakra-ui/react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Sidebar from "../SideBar/SideBar";
 
-const Layout = ({ children }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+const LayoutWithSideBar = ({ children }) => {
   return (
     <>
       <Container
         display={"flex"}
         flexDirection={"column"}
-        maxWidth={"100vw"}
+        maxWidth={"100wh"}
         minHeight={"100vh"}
         padding={0}
       >
         <Header />
         <Flex>
           <Box
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            w={"full"}
+            display={{
+              base: "none",
+              sm: "none",
+              md: "none",
+              lg: "block",
+            }}
           >
+            <Sidebar />
+          </Box>
+          <Box display={"flex"} justifyContent={"center"} w={"full"} py={12}>
             {children}
           </Box>
         </Flex>
@@ -31,4 +36,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default LayoutWithSideBar;

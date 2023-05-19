@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout/Layout";
 import {
   Box,
   Breadcrumb,
@@ -9,6 +10,7 @@ import Link from "next/link";
 
 const MockAuthIndex = () => {
   return (
+    <Layout isActiveSideBar={true}>
     <Container>
       <Box display={"grid"} alignItems={"center"} height={"100vh"}>
         <Box>
@@ -35,7 +37,8 @@ const MockAuthIndex = () => {
           </Box>
         </Box>
       </Box>
-    </Container>
+      </Container>
+      </Layout>
   );
 };
 

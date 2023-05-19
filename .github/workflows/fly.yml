@@ -29,6 +29,11 @@ jobs:
           echo JWT_SECRET="${{secrets.JWT_SECRET}}" >> .env
           echo EMAIL_ADDRESS=info@mockland.dev >> .env
 
+      - name: "Unit tests"
+        run: |
+          npm install
+          npm run test:units
+
       - name: Deploy to Fly
         run: flyctl deploy --remote-only
         env:

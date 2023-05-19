@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 
 import Layout from "@/components/Layout/Layout";
 import Landing from "@/components/Landing";
+import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 
 const TermsAndConditions = () => {
   const [activeTab, setActiveTab] = useState("General");
@@ -33,7 +34,7 @@ const TermsAndConditions = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
-      <Layout>
+      <LayoutWithSideBar>
         <main>
           <Landing
             head="Terms And Condition"
@@ -129,7 +130,7 @@ const TermsAndConditions = () => {
             </Tabs>
           </Container>
         </main>
-      </Layout>
+      </LayoutWithSideBar>
     </>
   );
 };

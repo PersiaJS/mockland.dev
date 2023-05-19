@@ -65,9 +65,9 @@ const Contact = () => {
         </Heading>
         <Text textAlign="center" mt="1rem">
           If you have any questions, feedback, or concerns about the mock APIs
-          provided by mockland, we'd love to hear from you! Please use the form
-          below to get in touch with us and we'll do our best to respond to your
-          inquiry as soon as possible.
+          provided by mockland, we{`'`}d love to hear from you! Please use the
+          form below to get in touch with us and we{`'`}ll do our best to
+          respond to your inquiry as soon as possible.
         </Text>
         <Box
           width="full"

@@ -1,4 +1,4 @@
-import LayoutwSideBar from "@/components/LayoutwSideBar/LayoutwSideBar";
+import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import {
   Box,
   Breadcrumb,
@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const MocksIndex = () => {
   return (
-    <LayoutwSideBar>
+    <LayoutWithSideBar>
       <Container>
         <Box display={"grid"} alignItems={"center"} height={"100vh"}>
           <Box>
@@ -47,7 +47,7 @@ const MocksIndex = () => {
           </Box>
         </Box>
       </Container>
-    </LayoutwSideBar>
+    </LayoutWithSideBar>
   );
 };
 

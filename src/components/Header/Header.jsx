@@ -9,14 +9,33 @@ import {
   Button,
   Link,
   IconButton,
+  DrawerOverlay,
+  DrawerCloseButton,
+  DrawerBody,
+  DrawerContent,
+  Drawer,
+  useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import Mockland from "../Mockland/Mockland";
 import NextLink from "next/link";
+import Sidebar from "../SideBar/SideBar";
+import UserContext from "@/contexts/UserContext";
 
-const Header = ({ showSidebarButton = true, onShowSidebar }) => {
+const Header = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
+  const btnRef = React.useRef();
+  const { user } = useContext(UserContext);
+
   return (
-    <header>
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        backgroundColor: "#fff",
+      }}
+    >
       <Flex
         height={"75px"}
         transition={"all 250ms"}
@@ -36,11 +55,9 @@ const Header = ({ showSidebarButton = true, onShowSidebar }) => {
           maxWidth={"600px"}
           borderRadius={"5px"}
         >
-          <InputLeftElement
-            pt={"3px"}
-            pointerEvents="none"
-            children={<Search2Icon color="gray.500" />}
-          />
+          <InputLeftElement pt={"3px"} pointerEvents="none">
+            <Search2Icon color="gray.500" />
+          </InputLeftElement>
           <Input
             type="tel"
             _placeholder={{ color: "gray.500", fontSize: "16px" }}
@@ -109,27 +126,55 @@ const Header = ({ showSidebarButton = true, onShowSidebar }) => {
             </Flex>
           </Box>
           <Flex gap={2}>
-            <Link as={NextLink} href="/auth/login">
-              <Button colorScheme="blue" variant="ghost">
-                Log In
-              </Button>
-            </Link>
-            <Link as={NextLink} href="/auth/register">
-              <Button colorScheme="blue" variant="solid">
-                Sign Up
-              </Button>
-            </Link>
+            {!user ? (
+              <>
+                <Link as={NextLink} href="/auth/login">
+                  <Button colorScheme="blue" variant="ghost">
+                    Log In
+                  </Button>
+                </Link>
+                <Link as={NextLink} href="/auth/register">
+                  <Button colorScheme="blue" variant="solid">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>PROFILE</>
+            )}
           </Flex>
-          <Box display={{ base: "block", md: "none" }}>
+          <Box
+            display={{
+              base: "block",
+              sm: "block",
+              md: "block",
+              lg: "none",
+            }}
+          >
             <IconButton
               icon={<HamburgerIcon boxSize={5} />}
               colorScheme="blackAlpha"
               variant="outline"
-              onClick={onShowSidebar}
+              onClick={onOpen}
             />
           </Box>
         </Flex>
       </Flex>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay>
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerBody boxShadow={2} p={0}>
+              <Sidebar onClick={onClose} />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
     </header>
   );
 };

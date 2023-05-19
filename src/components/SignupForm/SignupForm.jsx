@@ -11,13 +11,14 @@ import {
   Alert,
   AlertIcon,
   Input,
-  Link
+  Link,
 } from "@chakra-ui/react";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import fetchHandler from "../../utils/fetchHandler";
 import { useState } from "react";
 import NextLink from "next/link";
+import Layout from "../Layout/Layout";
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -193,7 +194,11 @@ const LoginForm = () => {
       )}
       <Box>
         <Text textAlign={"center"} color={"blackAlpha.600"} fontWeight={"500"}>
-          <Link as={NextLink} href="/auth/forgotpassword" _hover={{color: "blue.500"}} >
+          <Link
+            as={NextLink}
+            href="/auth/forgotpassword"
+            _hover={{ color: "blue.500" }}
+          >
             Have you forgotten your password?
           </Link>
         </Text>

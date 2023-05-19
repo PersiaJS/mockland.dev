@@ -1,35 +1,35 @@
-import { Flex, Icon } from "@chakra-ui/react";
+import { Flex, Icon, IconButton } from "@chakra-ui/react";
 import Link from "next/link";
 
-const NavItem = ({ icon, children, ...rest }) => {
+const MocksItem = ({ icon, children, href }) => {
   return (
     <Link
-      href="#"
+      href={href}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
       <Flex
         align="center"
         p="2"
-        pl={{ base: 2, md: 8 }}
+        pl={7}
         borderRadius="sm"
         role="group"
         cursor="pointer"
-        _hover={{
-          bg: "blue.300",
-          color: "white",
-        }}
-        {...rest}
+        fontFamily={"heading"}
+        fontWeight={"semibold"}
+        color={"blue.600"}
       >
         {icon && (
-          <Icon
+          <IconButton
+            icon={<Icon as={icon} color={"white"} fontSize={15} />}
             mr="4"
+            size={"xs"}
+            bgColor={"blue.400"}
             fontSize="sm"
             fontWeight={"bold"}
             _groupHover={{
-              color: "white",
+              bg: "blue.600",
             }}
-            as={icon}
           />
         )}
         {children}
@@ -37,4 +37,4 @@ const NavItem = ({ icon, children, ...rest }) => {
     </Link>
   );
 };
-export default NavItem;
+export default MocksItem;
