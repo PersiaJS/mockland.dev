@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [fetchUser]);
 
   return (
     <UserContext.Provider

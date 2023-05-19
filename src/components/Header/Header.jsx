@@ -27,8 +27,6 @@ const Header = () => {
   const btnRef = React.useRef();
   const { user } = useContext(UserContext);
 
-  console.log("debug user", user);
-
   return (
     <header
       style={{
@@ -57,11 +55,9 @@ const Header = () => {
           maxWidth={"600px"}
           borderRadius={"5px"}
         >
-          <InputLeftElement
-            pt={"3px"}
-            pointerEvents="none"
-            children={<Search2Icon color="gray.500" />}
-          />
+          <InputLeftElement pt={"3px"} pointerEvents="none">
+            <Search2Icon color="gray.500" />
+          </InputLeftElement>
           <Input
             type="tel"
             _placeholder={{ color: "gray.500", fontSize: "16px" }}

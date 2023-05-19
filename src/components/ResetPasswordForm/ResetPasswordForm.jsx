@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import Layout from "../Layout/Layout";
 
 const ResetPasswordSchema = Yup.object().shape({
   password: Yup.string().min(6, "Password too short!").required("Required"),
