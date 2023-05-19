@@ -21,6 +21,7 @@ import Mockland from "../Mockland/Mockland";
 import NextLink from "next/link";
 import Sidebar from "../SideBar/SideBar";
 import UserContext from "@/contexts/UserContext";
+import UserDrawer from "../UserDrawer/UserDrawer";
 
 const Header = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -140,7 +141,7 @@ const Header = () => {
                 </Link>
               </>
             ) : (
-              <>PROFILE</>
+              <UserDrawer />
             )}
           </Flex>
           <Box
@@ -160,7 +161,7 @@ const Header = () => {
           </Box>
         </Flex>
       </Flex>
-      <Drawer
+{      <Drawer
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
@@ -175,7 +176,7 @@ const Header = () => {
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
-    </header>
+}    </header>
   );
 };
 
