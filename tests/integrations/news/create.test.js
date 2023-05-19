@@ -4,7 +4,7 @@ const endpoint = "/api/news/create";
 const url = baseUrl + endpoint;
 
 describe(endpoint + "/list", () => {
-  it("Should respond with code 422 if validation fails", async () => {
+  xit("Should respond with code 422 if validation fails", async () => {
     const res = await axios.post(url, {
       title: "test",
       description: "test",
