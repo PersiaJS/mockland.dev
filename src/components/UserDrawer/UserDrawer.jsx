@@ -14,10 +14,12 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import UserContext from "@/contexts/UserContext";
 import { FiLogOut } from "react-icons/fi";
 
 const UserDrawer = () => {
+  const { user } = useContext(UserContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
@@ -47,7 +49,7 @@ const UserDrawer = () => {
             ></Box>
             <Flex padding={"7"} flexDir={"column"} gap={4}>
               <Avatar
-                name="Username"
+                name={`${user.firstName} ${user.lastName}`}
                 size={"lg"}
                 marginTop={"-3.5rem"}
                 border={"solid white 3px"}
@@ -55,9 +57,9 @@ const UserDrawer = () => {
               />
               <Box>
                 <Heading as={"h1"} size={"md"} fontWeight={"medium"}>
-                  Username
+                  {`${user.firstName} ${user.lastName}`}
                 </Heading>
-                <Text>username@email.com</Text>
+                <Text>{user.email}</Text>
               </Box>
             </Flex>
           </DrawerBody>
