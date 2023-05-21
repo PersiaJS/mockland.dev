@@ -1,6 +1,8 @@
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import fetchHandler from "@/utils/fetchHandler";
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Container,
@@ -76,6 +78,14 @@ const Contact = () => {
             py="2rem"
             px={{ base: "0", xl: "10rem", lg: "8rem", md: "6rem", sm: "0" }}
           >
+            {message && (
+              <Box py={4}>
+                <Alert status={message.status}>
+                  <AlertIcon />
+                  {message.message}
+                </Alert>
+              </Box>
+            )}
             <Formik
               initialValues={{ name: "", email: "", description: "" }}
               validationSchema={contactSchema}
