@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import NavItem from "../NavItem/NavItem";
 import {
+  FaAddressBook,
   FaComment,
   FaHome,
   FaQuestion,
@@ -27,6 +28,11 @@ const LinkItems = [
     name: "Privacy Policy",
     icon: FaServicestack,
     href: "/privacy-policy",
+  },
+  {
+    name: "Contact Us",
+    icon: FaAddressBook,
+    href: "/contact",
   },
 ];
 
