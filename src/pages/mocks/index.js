@@ -1,21 +1,33 @@
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
+import MocksCards from "@/components/MockCards";
 import {
+  Badge,
   Box,
   Breadcrumb,
   BreadcrumbItem,
   Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
   Container,
+  Grid,
+  GridItem,
+  HStack,
   Heading,
+  Stack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
 const MocksIndex = () => {
   return (
     <LayoutWithSideBar>
-      <Container>
-        <Box display={"grid"} alignItems={"center"} height={"100vh"}>
+      <Container maxW={990}>
+        <Box height={{ base: "auto", md: "110vh" }}>
           <Box>
-            <Breadcrumb>
+            <Breadcrumb my={2}>
               <BreadcrumbItem>
                 <Link href="/"> HomePage </Link>
               </BreadcrumbItem>
@@ -24,26 +36,39 @@ const MocksIndex = () => {
               </BreadcrumbItem>
             </Breadcrumb>
             <Heading as={"h1"}>Mocks</Heading>
-            <Box my={8} display={"grid"} gridGap={4}>
-              <Link href="/mocks/news">
-                <Button colorScheme="orange">News</Button>
-              </Link>
-              <Link href="/mocks/product">
-                <Button colorScheme="messenger">Product</Button>
-              </Link>
-              <Link href="/mocks/post">
-                <Button colorScheme="yellow">Post</Button>
-              </Link>
-              <Link href="/mocks/category">
-                <Button colorScheme="blue">Category</Button>
-              </Link>
-              <Link href="/mocks/auth">
-                <Button colorScheme="cyan">Auth</Button>
-              </Link>
-              <Link href="/mocks/cart">
-                <Button colorScheme="pink">Cart</Button>
-              </Link>
-            </Box>
+            <Grid
+              my={8}
+              gridGap={4}
+              templateRows={{
+                base: "repeat(1, 1fr)",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(3, 1fr)",
+              }}
+              templateColumns={{
+                base: "repeat(1, 1fr)",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(3, 1fr)",
+              }}
+            >
+              <GridItem>
+                <MocksCards title="News" link="news" />
+              </GridItem>
+              <GridItem>
+                <MocksCards title="Product" link="product" />
+              </GridItem>
+              <GridItem>
+                <MocksCards title="Post" link="post" />
+              </GridItem>
+              <GridItem>
+                <MocksCards title="Category" link="category" />
+              </GridItem>
+              <GridItem>
+                <MocksCards title="Auth" link="auth" />
+              </GridItem>
+              <GridItem>
+                <MocksCards title="Cart" link="cart" />
+              </GridItem>
+            </Grid>
           </Box>
         </Box>
       </Container>

@@ -11,9 +11,7 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 
-import Layout from "@/components/Layout/Layout";
 import Landing from "@/components/Landing";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 
