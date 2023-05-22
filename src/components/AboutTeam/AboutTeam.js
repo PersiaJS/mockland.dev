@@ -25,6 +25,12 @@ export default function AboutTeam() {
           linkedin="https://www.linkedin.com/in/maral-najafi/"
           github="https://github.com/maralnajafi"
         />
+        <UserCard
+          name="Mohammad Baqer Kohie"
+          text="Versatility at its finest - I thrive on diverse projects!"
+          linkedin="https://www.linkedin.com/in/mbkProgrammer/"
+          github="https://github.com/mbkProgrammer/"
+        />
         <UserCard />
       </Flex>
     </Container>
