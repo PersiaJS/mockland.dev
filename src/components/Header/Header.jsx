@@ -20,8 +20,6 @@ import UserDrawer from "../UserDrawer/UserDrawer";
 const Header = () => {
   const { user } = useContext(UserContext);
 
-  console.log("debug user", user);
-
   return (
     <header
       style={{
