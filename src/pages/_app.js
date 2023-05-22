@@ -4,12 +4,11 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
-
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
 
   const fetchUser = useCallback(async () => {
+    const cookies = new Cookies();
     try {
       const res = await fetchHandler("/api/member/profile", {
         method: "GET",
@@ -21,7 +20,7 @@ export default function App({ Component, pageProps }) {
     } catch (err) {
       setUser(null);
     }
-  }, [cookies]);
+  }, []);
 
   useEffect(() => {
     fetchUser();

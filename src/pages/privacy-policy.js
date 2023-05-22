@@ -50,10 +50,10 @@ function PrivacyPolicy() {
                   order or fraud investigation. We may also use personal
                   information in a manner that does not identify you
                   specifically nor allow you to be contacted but does identify
-                  certain criteria about our Site's users in general (such as we
-                  may inform third parties about the number of registered users,
-                  number of unique visitors, and the pages most frequently
-                  browsed).
+                  certain criteria about our Site{`'`}s users in general (such
+                  as we may inform third parties about the number of registered
+                  users, number of unique visitors, and the pages most
+                  frequently browsed).
                 </Text>
                 <br />
                 <Text fontSize="xl">Changes about privacy</Text>
