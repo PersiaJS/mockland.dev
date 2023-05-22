@@ -17,11 +17,23 @@ import { useDisclosure } from "@chakra-ui/react";
 import { useContext, useRef } from "react";
 import UserContext from "@/contexts/UserContext";
 import { FiLogOut } from "react-icons/fi";
+import Cookies from "universal-cookie";
+import { useRouter } from "next/router";
+
+const cookies = new Cookies();
 
 const UserDrawer = () => {
-  const { user } = useContext(UserContext);
+  const router = useRouter();
+  const { user, refreshUser } = useContext(UserContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+
+  const handleLogout = () => {
+    cookies.remove("auth");
+    refreshUser();
+    onClose();
+    router.push("/");
+  };
 
   return (
     <>
@@ -65,7 +77,9 @@ const UserDrawer = () => {
           </DrawerBody>
 
           <DrawerFooter>
-            <Button rightIcon={<FiLogOut />}>Sign out</Button>
+            <Button onClick={handleLogout} rightIcon={<FiLogOut />}>
+              Sign out
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

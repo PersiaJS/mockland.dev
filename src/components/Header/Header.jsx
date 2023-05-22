@@ -13,12 +13,14 @@ import {
 import React, { useContext } from "react";
 import Mockland from "../Mockland/Mockland";
 import NextLink from "next/link";
-import SidebarDrawer from "../SidebarDrawer/SidebarDrawer"
+import SidebarDrawer from "../SidebarDrawer/SidebarDrawer";
 import UserContext from "@/contexts/UserContext";
 import UserDrawer from "../UserDrawer/UserDrawer";
 
 const Header = () => {
   const { user } = useContext(UserContext);
+
+  console.log("debug user", user);
 
   return (
     <header

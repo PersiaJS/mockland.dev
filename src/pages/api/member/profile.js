@@ -7,6 +7,13 @@ const handler = async (req, res) => {
 
   await authMiddleware(req, res);
 
+  if (!req.user?.id) {
+    return res.status(401).json({
+      status: false,
+      message: "User not found",
+    });
+  }
+
   await prisma.member.update({
     where: {
       id: req.user.id,

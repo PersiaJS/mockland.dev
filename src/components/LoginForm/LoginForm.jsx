@@ -88,9 +88,9 @@ const LoginForm = () => {
               });
               refreshUser();
               setIsPending(false);
-              resetForm();
               setTimeout(() => {
                 router.push("/");
+                resetForm();
               }, 1000);
             } else {
               setIsPending(false);

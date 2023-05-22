@@ -1,26 +1,9 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import fetchHandler from "../utils/fetchHandler";
 import Hero from "@/components/Hero/Hero";
 import AboutTeam from "@/components/AboutTeam/AboutTeam";
 import Layout from "@/components/Layout/Layout";
 
 export default function Home() {
-  const [user, setUser] = useState({});
-
-  const getProfile = async () => {
-    try {
-      const response = await fetchHandler.get("/api/profile/get");
-      setUser(response.data.profile);
-    } catch (error) {
-      console.log("NOT LOGGED IN");
-    }
-  };
-
-  useEffect(() => {
-    getProfile();
-  }, []);
-
   return (
     <>
       <Head>
