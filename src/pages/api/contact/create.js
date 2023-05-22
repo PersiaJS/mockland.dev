@@ -1,6 +1,7 @@
 import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
 import Validator from "validatorjs";
+import sendEmail from "@/utils/sendEmail";
 
 const handler = async (req, res) => {
   await methodMiddleware(req, res, "POST");
@@ -26,6 +27,19 @@ const handler = async (req, res) => {
         name: req.body.name,
         description: req.body.description,
     }
+  });
+
+  await sendEmail({
+    email: 'me@ehsangazar.com',
+    subject: `New Contact Message From ${req.body.name}`,
+    message: `
+      <h1>${req.body.name}</h1>
+      <h2>${req.body.email}</h2>
+      <br />
+      <h4>message: </h4>
+      <p>${req.body.description}</p>
+      <p>https://mockland.dev</p>
+    `,
   });
 
   res.status(200).json({
