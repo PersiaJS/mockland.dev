@@ -6,7 +6,6 @@ const SideBar = () => {
       width={"300px"}
       minH={"100%"}
       pt={"3rem"}
-      position={"sticky"}
       boxShadow={"2px 0 5px -2px #DCDCDC;"}
     >
       <SidebarContent />

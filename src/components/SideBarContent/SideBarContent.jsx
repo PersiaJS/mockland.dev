@@ -52,7 +52,7 @@ const AuthItems = [
 const SidebarContent = () => {
   const { user } = useContext(UserContext);
   return (
-    <Box>
+    <Box position={"sticky"} top={[4, 24]}>
       {LinkItems.map((link) => (
         <NavItem
           key={link.name}
