@@ -85,6 +85,9 @@ const UserDrawer = () => {
                     icon={<Icon as={FaEdit} />}
                     _hover={{
                       bg: "none",
+                      svg: {
+                        color: "blue.500",
+                      },
                     }}
                   />
                 </Heading>

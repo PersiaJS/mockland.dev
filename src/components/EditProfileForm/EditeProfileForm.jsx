@@ -4,31 +4,24 @@ import {
   Modal,
   ModalBody,
   ModalCloseButton,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   ModalContent,
   Container,
   VStack,
-  Heading,
-  Link,
   FormControl,
   FormLabel,
   HStack,
   AlertIcon,
   Input,
   FormErrorMessage,
-  Checkbox,
   Alert,
   Text,
   Box,
 } from "@chakra-ui/react";
-import NextLink from "next/link";
 import fetchHandler from "../../utils/fetchHandler";
-import Cookies from "universal-cookie";
 import * as Yup from "yup";
 import { Field, Formik } from "formik";
-import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 const editProfileSchema = Yup.object().shape({
   firstName: Yup.string().required("Required"),
@@ -36,7 +29,6 @@ const editProfileSchema = Yup.object().shape({
 });
 
 function EditeProfileForm({ isOpen, onClose }) {
-  const router = useRouter();
   const { refreshUser, user } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -51,9 +43,9 @@ function EditeProfileForm({ isOpen, onClose }) {
           <Container
             display={"flex"}
             flexDirection={"column"}
-            gap={8}
             maxW="md"
             flexGrow={1}
+            mb={4}
             justifyContent={"center"}
           >
             <Formik
@@ -118,7 +110,7 @@ function EditeProfileForm({ isOpen, onClose }) {
                       isInvalid={errors.firstName && touched.firstName}
                     >
                       <FormLabel htmlFor="firstName" color={"blackAlpha.700"}>
-                        firstName
+                        First Name
                       </FormLabel>
 
                       <Field
@@ -135,7 +127,7 @@ function EditeProfileForm({ isOpen, onClose }) {
                       isInvalid={errors.lastName && touched.lastName}
                     >
                       <FormLabel htmlFor="lastName" color={"blackAlpha.700"}>
-                        lastName
+                        Last Name
                       </FormLabel>
 
                       <Field
@@ -176,12 +168,6 @@ function EditeProfileForm({ isOpen, onClose }) {
             )}
           </Container>
         </ModalBody>
-
-        <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
-            Close
-          </Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );
