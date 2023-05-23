@@ -1,5 +1,6 @@
 import { Box, Text, Container, Flex } from "@chakra-ui/react";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
+import CodeExample from "@/components/CodeExample/CodeExample";
 
 function NewsDocs() {
   return (
@@ -29,23 +30,11 @@ function NewsDocs() {
                 <p>DELETE: https://mockland.dev/api/news/delete/:id</p>
                 <p>POST: https://mockland.dev/api/news/create</p>
                 <br />
-                <Box bg="black" w="100%" p={4} color="white">
-                  <Box
-                    as="button"
-                    borderRadius="md"
-                    bg="blue.600"
-                    color="white"
-                    px={4}
-                    h={8}
-                  >
-                    copy
-                  </Box>
-                  <Text mt={5}> #first step</Text>
-                  <Text mt={6} color={"blue.600"}>
-                    npm i @chakra-ui/react @emotion/react @emotion/styled
-                    framer-motion
-                  </Text>
-                </Box>
+                <CodeExample
+                  code={
+                    "npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion"
+                  }
+                />
                 <Text mt={5}>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                   diam nonumy eirmod tempor invidunt ut labore et dolore magna
