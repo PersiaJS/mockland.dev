@@ -62,6 +62,7 @@ function EditeProfileForm({ isOpen, onClose }) {
               validationSchema={editProfileSchema}
               onSubmit={async (values, { resetForm }) => {
                 setIsPending(true);
+                setMessage(null);
                 try {
                   const response = await fetchHandler.put(
                     "/api/member/edit-profile",
@@ -81,6 +82,7 @@ function EditeProfileForm({ isOpen, onClose }) {
                   }
                 } catch (error) {
                   setIsPending(false);
+
                   setMessage({
                     status: "error",
                     message: "Something went wrong. Please try again later.",
