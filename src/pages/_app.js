@@ -1,6 +1,7 @@
 import UserContext from "@/contexts/UserContext";
 import fetchHandler from "@/utils/fetchHandler";
 import { ChakraProvider } from "@chakra-ui/react";
+import Script from "next/script";
 import { useCallback, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 
@@ -36,6 +37,19 @@ export default function App({ Component, pageProps }) {
       <ChakraProvider>
         <Component {...pageProps} />
       </ChakraProvider>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-H92ZEDHZTX"
+      ></Script>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-H92ZEDHZTX');
+        `}
+      </Script>
     </UserContext.Provider>
   );
 }
