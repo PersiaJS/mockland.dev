@@ -32,6 +32,7 @@ import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 const editProfileSchema = Yup.object().shape({
   firstName: Yup.string().required("Required"),
+  lastName: Yup.string().required("Required"),
 });
 
 function EditeProfileForm({ isOpen, onClose }) {
@@ -58,6 +59,8 @@ function EditeProfileForm({ isOpen, onClose }) {
             <Formik
               initialValues={{
                 firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
               }}
               validationSchema={editProfileSchema}
               onSubmit={async (values, { resetForm }) => {
@@ -68,7 +71,7 @@ function EditeProfileForm({ isOpen, onClose }) {
                     "/api/member/edit-profile",
                     {
                       ...values,
-                      lastName: user.lastName,
+
                       newsletter: user.newsletter,
                     }
                   );
@@ -94,6 +97,24 @@ function EditeProfileForm({ isOpen, onClose }) {
                 <form onSubmit={handleSubmit}>
                   <VStack spacing={5}>
                     <FormControl
+                      isInvalid={errors.email && touched.email}
+                      isDisabled={true}
+                    >
+                      <FormLabel htmlFor="Email" color={"blackAlpha.700"}>
+                        Email
+                      </FormLabel>
+
+                      <Field
+                        as={Input}
+                        id="Email"
+                        name="email"
+                        type="Email"
+                        focusBorderColor="#38A169"
+                      />
+
+                      <FormErrorMessage>{errors.email}</FormErrorMessage>
+                    </FormControl>
+                    <FormControl
                       isInvalid={errors.firstName && touched.firstName}
                     >
                       <FormLabel htmlFor="firstName" color={"blackAlpha.700"}>
@@ -109,6 +130,23 @@ function EditeProfileForm({ isOpen, onClose }) {
                       />
 
                       <FormErrorMessage>{errors.firstName}</FormErrorMessage>
+                    </FormControl>
+                    <FormControl
+                      isInvalid={errors.lastName && touched.lastName}
+                    >
+                      <FormLabel htmlFor="lastName" color={"blackAlpha.700"}>
+                        lastName
+                      </FormLabel>
+
+                      <Field
+                        as={Input}
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        focusBorderColor="#38A169"
+                      />
+
+                      <FormErrorMessage>{errors.lastName}</FormErrorMessage>
                     </FormControl>
 
                     <HStack w={"100%"} justifyContent={"space-between"}>
