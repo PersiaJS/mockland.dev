@@ -22,7 +22,7 @@ export default function Footer() {
           as={"flex"}
           direction={"row"}
           justifyContent={"space-between"}
-          maxW={"7xl"}
+          maxW={"100rem"}
         >
           <Flex
             direction={{ base: "column", md: "row" }}
@@ -72,7 +72,7 @@ export default function Footer() {
           as={"flex"}
           direction={"row"}
           justifyContent={"space-between"}
-          maxW={"7xl"}
+          maxW={"100rem"}
         >
           <Flex
             direction={{ base: "column", md: "row" }}

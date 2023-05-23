@@ -16,6 +16,13 @@ function NavItem({ name, icon, href }) {
           fontSize={"sm"}
           color={router.pathname === href ? "blue.500" : "gray.600"}
           fontWeight={"bold"}
+          _hover={{
+            color: "blue.500",
+            bg: "gray.100",
+            button: {
+              bg: "blue.500",
+            },
+          }}
         >
           <IconButton
             size={"xs"}

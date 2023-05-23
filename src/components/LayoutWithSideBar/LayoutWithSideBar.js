@@ -7,14 +7,14 @@ import Sidebar from "../SideBar/SideBar";
 const LayoutWithSideBar = ({ children }) => {
   return (
     <>
+      <Header />
       <Container
         display={"flex"}
         flexDirection={"column"}
-        maxWidth={"100wh"}
-        minHeight={"100vh"}
+        maxWidth={"100rem"}
+        minHeight={"60rem"}
         padding={0}
       >
-        <Header />
         <Flex position={"relative"}>
           <Box
             display={{
@@ -30,8 +30,8 @@ const LayoutWithSideBar = ({ children }) => {
             {children}
           </Box>
         </Flex>
-        <Footer />
       </Container>
+      <Footer />
     </>
   );
 };
