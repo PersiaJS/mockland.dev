@@ -34,15 +34,16 @@ const TermsAndConditions = () => {
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
       <LayoutWithSideBar>
-        <Flex flexDir={"column"} px={6} minH={"80vh"}>
+        <Flex flexDir={"column"} px={12} minH={"80vh"} gap={6}>
           <Landing
+
             head="Terms And Condition"
             text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Necessitatibus eos harum illo inventore eum tempore soluta eligendi
             corrupti, iste nulla deleniti vero sapiente dolorum illum minima
             accusamus odit delectus cupiditate, atque at sed?"
           />
-            <Tabs display="inline-block">
+            <Tabs bgColor={"blue.50"}>
               <TabList>
                 <Tab fontSize={{ base: "xs", md: "md" }}>General Terms</Tab>
                 <Tab fontSize={{ base: "xs", md: "md" }}>Products</Tab>
