@@ -1,4 +1,4 @@
-import { Box, Text, Container, Flex } from "@chakra-ui/react";
+import { Box, Text, Heading, Flex } from "@chakra-ui/react";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import Landing from "@/components/Landing";
 import Head from "next/head";
@@ -13,59 +13,59 @@ function PrivacyPolicy() {
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
       <LayoutWithSideBar>
-        <main>
-          <Landing
-            head="Privacy Policy"
-            text="Your privacy is important to us. We respect your privacy
-            regarding any information we may collect from you across our
-            website."
-          />
-          <Flex gap={12} direction={{ base: "column", md: "row" }}>
-            <Container>
-              <Box display={"grid"} alignItems={"center"}>
-                <Text fontSize="xl">General rules</Text>
-                <Text mt={5}>
-                  testChakra UI Pro does not share personal information of any
-                  kind with anyone. We will not sell or rent your name or
-                  personal information to any third party.
-                </Text>
-                <Text mt={5}>
-                  We do not sell, rent or provide outside access to our mailing
-                  list or any data we store. Any data that a user stores via our
-                  website is wholly owned by that user or business.
-                </Text>
-                <Text mt={5}>
-                  At any time a user or business is free to take their data and
-                  leave, or to simply delete their data from our website.
-                </Text>
-                <Text mt={5}>
-                  Chakra UI Pro only collects such personal information that is
-                  necessary for you to access and use our services. This
-                  personal information includes, but is not limited to, first
-                  and last name, email address.
-                </Text>
-                <Text mt={5}>
-                  Chakra UI Pro may release personal information if Chakra UI
-                  Pro is required to by law, search warrant, subpoena, court
-                  order or fraud investigation. We may also use personal
-                  information in a manner that does not identify you
-                  specifically nor allow you to be contacted but does identify
-                  certain criteria about our Site{`'`}s users in general (such
-                  as we may inform third parties about the number of registered
-                  users, number of unique visitors, and the pages most
-                  frequently browsed).
-                </Text>
-                <br />
-                <Text fontSize="xl">Changes about privacy</Text>
-                <Text mt={5} pb={10}>
-                  If we change our terms of use we will post those changes on
-                  this page. Registered users will be sent an email that
-                  outlines changes made to the terms of use.
-                </Text>
-              </Box>
-            </Container>
+        
+          <Flex flexDir={"column"} px={"12"} gap={6}>
+            <Landing
+              head="Privacy Policy"
+              text="Your privacy is important to us. We respect your privacy
+              regarding any information we may collect from you across our
+              website."
+            />
+            <Flex gap={12} direction={{ base: "column", md: "row" }}>
+                <Box display={"grid"} alignItems={"center"}>
+                  <Heading as="h2" fontSize="xl" color={"blue.500"}>General rules</Heading>
+                  <Text mt={5}>
+                    testChakra UI Pro does not share personal information of any
+                    kind with anyone. We will not sell or rent your name or
+                    personal information to any third party.
+                  </Text>
+                  <Text mt={5}>
+                    We do not sell, rent or provide outside access to our mailing
+                    list or any data we store. Any data that a user stores via our
+                    website is wholly owned by that user or business.
+                  </Text>
+                  <Text mt={5}>
+                    At any time a user or business is free to take their data and
+                    leave, or to simply delete their data from our website.
+                  </Text>
+                  <Text mt={5}>
+                    Chakra UI Pro only collects such personal information that is
+                    necessary for you to access and use our services. This
+                    personal information includes, but is not limited to, first
+                    and last name, email address.
+                  </Text>
+                  <Text mt={5}>
+                    Chakra UI Pro may release personal information if Chakra UI
+                    Pro is required to by law, search warrant, subpoena, court
+                    order or fraud investigation. We may also use personal
+                    information in a manner that does not identify you
+                    specifically nor allow you to be contacted but does identify
+                    certain criteria about our Site{`'`}s users in general (such
+                    as we may inform third parties about the number of registered
+                    users, number of unique visitors, and the pages most
+                    frequently browsed).
+                  </Text>
+                  <br />
+                  <Heading as={"h2"} color={"blue.500"} fontSize="xl">Changes about privacy</Heading>
+                  <Text mt={5} pb={10}>
+                    If we change our terms of use we will post those changes on
+                    this page. Registered users will be sent an email that
+                    outlines changes made to the terms of use.
+                  </Text>
+                </Box>
+            </Flex>
           </Flex>
-        </main>
+        
       </LayoutWithSideBar>
     </>
   );
