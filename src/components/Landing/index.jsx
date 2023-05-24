@@ -9,7 +9,6 @@ const Landing = ({ head, text }) => {
   const { pathname } = useRouter();
 
   return (
-    <Container maxW={990} mb={50}>
       <Flex
         justifyContent="center"
         alignItems="center"
@@ -29,7 +28,6 @@ const Landing = ({ head, text }) => {
           {pathname === "/terms-and-conditions" ? <Conditions /> : <Privacy />}
         </VStack>
       </Flex>
-    </Container>
   );
 };
 

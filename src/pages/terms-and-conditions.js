@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   Box,
   Container,
+  Flex,
   Tab,
   TabIndicator,
   TabList,
@@ -35,15 +36,13 @@ const TermsAndConditions = () => {
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
       <LayoutWithSideBar>
-        <main>
-          <Box ml={4}>
-            <BreadCrumb
-              pages={[
-                { href: "/", name: "Home" },
-                { href: "/terms-and-conditions", name: "Terms And Conditions" },
-              ]}
-            />
-          </Box>
+        <Flex flexDir={"column"} px={12} minH={"80vh"} gap={6}>
+          <BreadCrumb
+            pages={[
+              { href: "/", name: "Home" },
+              { href: "/terms-and-conditions", name: "Terms And Conditions" },
+            ]}
+          />
           <Landing
             head="Terms And Condition"
             text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -51,93 +50,81 @@ const TermsAndConditions = () => {
             corrupti, iste nulla deleniti vero sapiente dolorum illum minima
             accusamus odit delectus cupiditate, atque at sed?"
           />
-          <Container maxW={990}>
-            <Tabs display="inline-block">
-              <TabList>
-                <Tab fontSize={{ base: "xs", md: "md" }}>General Terms</Tab>
-                <Tab fontSize={{ base: "xs", md: "md" }}>Products</Tab>
-                <Tab fontSize={{ base: "xs", md: "md" }}>Security</Tab>
-                <Tab fontSize={{ base: "xs", md: "md" }}>
-                  Changes about terms
-                </Tab>
-              </TabList>
-              <TabIndicator
-                mt="-1.5px"
-                height="2px"
-                bg="blue.500"
-                borderRadius="1px"
-              />
-              <TabPanels>
-                <TabPanel>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer mattis bibendum volutpat. Maecenas vel fringilla
-                    purus, vitae mattis nibh. Duis vestibulum quam libero, id
-                    interdum arcu placerat ut. Maecenas ultrices augue id erat
-                    rutrum, sit amet tincidunt sem rhoncus. In porta sit amet
-                    lectus dignissim ullamcorper. Mauris vitae magna sem. Duis
-                    fringilla et ligula in semper. In malesuada dui blandit nisl
-                    dapibus, vitae hendrerit dolor finibus. Cras ac sagittis
-                    mauris. Donec non orci turpis. Etiam fermentum pretium enim
-                    at efficitur. Phasellus eleifend ac orci eget efficitur.
-                    Nulla id commodo velit. Maecenas porttitor elementum erat,
-                    vitae vestibulum odio dictum vitae. Vivamus fermentum
-                    feugiat dui, eu consectetur augue tincidunt dignissim.
-                    Aliquam erat volutpat.
-                  </Text>
-                </TabPanel>
-                <TabPanel>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis tempus tempor fermentum. Mauris varius mi hendrerit,
-                    blandit justo vel, finibus diam. Donec justo mauris, rutrum
-                    at ex et, ornare porta nisi. Phasellus consequat felis quis
-                    purus gravida gravida. Morbi eros leo, convallis eu
-                    hendrerit quis, porta quis erat. Vestibulum vel elit in est
-                    accumsan congue sit amet sed nulla. Fusce facilisis dui eu
-                    purus aliquet, a commodo libero luctus. Proin id tortor ac
-                    velit consectetur porta. Ut in orci efficitur, pellentesque
-                    augue eu, ullamcorper mauris. Duis fringilla nisl quis nibh
-                    vulputate, ut tempor nibh auctor. Duis quis mollis metus.
-                    Cras pellentesque sit amet quam pulvinar fermentum.
-                  </Text>
-                </TabPanel>
-                <TabPanel>
-                  <Text>
-                    Integer in turpis a est varius ultricies. Quisque libero
-                    neque, faucibus eu velit in, gravida ornare diam. Maecenas
-                    sodales a orci et maximus. Quisque id arcu elementum,
-                    ultrices odio eu, vehicula sem. Sed eu metus vel tellus
-                    pellentesque rhoncus id nec nisl. Cras a augue nec sem
-                    finibus eleifend. Aenean interdum finibus urna, eget
-                    imperdiet mauris porta vel. Mauris ligula ex, vehicula sit
-                    amet lobortis sit amet, feugiat egestas ex. Pellentesque
-                    habitant morbi tristique senectus et netus et malesuada
-                    fames ac turpis egestas. Quisque mattis accumsan
-                    scelerisque. Mauris iaculis enim risus, vel semper justo
-                    tincidunt quis.
-                  </Text>
-                </TabPanel>
-                <TabPanel>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur pharetra risus a ante ornare, nec laoreet sapien
-                    semper. Sed nibh felis, luctus hendrerit lectus at, dictum
-                    aliquet odio. Morbi volutpat faucibus diam vitae ultricies.
-                    Morbi vel lectus aliquet, dictum orci id, pharetra nisi.
-                    Aliquam tempor nibh sed aliquam iaculis. Pellentesque
-                    habitant morbi tristique senectus et netus et malesuada
-                    fames ac turpis egestas. Ut at ultrices metus, et faucibus
-                    ex. Vivamus augue lectus, iaculis a diam et, commodo mattis
-                    augue. Integer vel ex posuere, vestibulum mauris ac, sodales
-                    purus. Suspendisse dignissim venenatis nisl, eget
-                    pellentesque metus luctus vitae
-                  </Text>
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </Container>
-        </main>
+          <Tabs bgColor={"blue.50"}>
+            <TabList>
+              <Tab fontSize={{ base: "xs", md: "md" }}>General Terms</Tab>
+              <Tab fontSize={{ base: "xs", md: "md" }}>Products</Tab>
+              <Tab fontSize={{ base: "xs", md: "md" }}>Security</Tab>
+              <Tab fontSize={{ base: "xs", md: "md" }}>Changes about terms</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Integer mattis bibendum volutpat. Maecenas vel fringilla
+                  purus, vitae mattis nibh. Duis vestibulum quam libero, id
+                  interdum arcu placerat ut. Maecenas ultrices augue id erat
+                  rutrum, sit amet tincidunt sem rhoncus. In porta sit amet
+                  lectus dignissim ullamcorper. Mauris vitae magna sem. Duis
+                  fringilla et ligula in semper. In malesuada dui blandit nisl
+                  dapibus, vitae hendrerit dolor finibus. Cras ac sagittis
+                  mauris. Donec non orci turpis. Etiam fermentum pretium enim at
+                  efficitur. Phasellus eleifend ac orci eget efficitur. Nulla id
+                  commodo velit. Maecenas porttitor elementum erat, vitae
+                  vestibulum odio dictum vitae. Vivamus fermentum feugiat dui,
+                  eu consectetur augue tincidunt dignissim. Aliquam erat
+                  volutpat.
+                </Text>
+              </TabPanel>
+              <TabPanel>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  tempus tempor fermentum. Mauris varius mi hendrerit, blandit
+                  justo vel, finibus diam. Donec justo mauris, rutrum at ex et,
+                  ornare porta nisi. Phasellus consequat felis quis purus
+                  gravida gravida. Morbi eros leo, convallis eu hendrerit quis,
+                  porta quis erat. Vestibulum vel elit in est accumsan congue
+                  sit amet sed nulla. Fusce facilisis dui eu purus aliquet, a
+                  commodo libero luctus. Proin id tortor ac velit consectetur
+                  porta. Ut in orci efficitur, pellentesque augue eu,
+                  ullamcorper mauris. Duis fringilla nisl quis nibh vulputate,
+                  ut tempor nibh auctor. Duis quis mollis metus. Cras
+                  pellentesque sit amet quam pulvinar fermentum.
+                </Text>
+              </TabPanel>
+              <TabPanel>
+                <Text>
+                  Integer in turpis a est varius ultricies. Quisque libero
+                  neque, faucibus eu velit in, gravida ornare diam. Maecenas
+                  sodales a orci et maximus. Quisque id arcu elementum, ultrices
+                  odio eu, vehicula sem. Sed eu metus vel tellus pellentesque
+                  rhoncus id nec nisl. Cras a augue nec sem finibus eleifend.
+                  Aenean interdum finibus urna, eget imperdiet mauris porta vel.
+                  Mauris ligula ex, vehicula sit amet lobortis sit amet, feugiat
+                  egestas ex. Pellentesque habitant morbi tristique senectus et
+                  netus et malesuada fames ac turpis egestas. Quisque mattis
+                  accumsan scelerisque. Mauris iaculis enim risus, vel semper
+                  justo tincidunt quis.
+                </Text>
+              </TabPanel>
+              <TabPanel>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Curabitur pharetra risus a ante ornare, nec laoreet sapien
+                  semper. Sed nibh felis, luctus hendrerit lectus at, dictum
+                  aliquet odio. Morbi volutpat faucibus diam vitae ultricies.
+                  Morbi vel lectus aliquet, dictum orci id, pharetra nisi.
+                  Aliquam tempor nibh sed aliquam iaculis. Pellentesque habitant
+                  morbi tristique senectus et netus et malesuada fames ac turpis
+                  egestas. Ut at ultrices metus, et faucibus ex. Vivamus augue
+                  lectus, iaculis a diam et, commodo mattis augue. Integer vel
+                  ex posuere, vestibulum mauris ac, sodales purus. Suspendisse
+                  dignissim venenatis nisl, eget pellentesque metus luctus vitae
+                </Text>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Flex>
       </LayoutWithSideBar>
     </>
   );
