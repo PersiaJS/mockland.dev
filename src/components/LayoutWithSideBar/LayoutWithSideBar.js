@@ -26,7 +26,7 @@ const LayoutWithSideBar = ({ children }) => {
           >
             <Sidebar />
           </Box>
-          <Box display={"flex"} justifyContent={"center"} w={"full"} py={12}>
+          <Box flexGrow={1} py={12}>
             {children}
           </Box>
         </Flex>

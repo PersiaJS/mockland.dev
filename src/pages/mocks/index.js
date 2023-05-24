@@ -1,32 +1,21 @@
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import MocksCards from "@/components/MockCards";
 import {
-  Badge,
   Box,
   Breadcrumb,
   BreadcrumbItem,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
   Container,
+  Flex,
   Grid,
   GridItem,
-  HStack,
   Heading,
-  Stack,
-  Text,
-  VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
 const MocksIndex = () => {
   return (
     <LayoutWithSideBar>
-      <Container maxW={990}>
-        <Box height={{ base: "auto", md: "110vh" }}>
-          <Box>
+      <Flex flexDir={"column"} px={6}>
             <Breadcrumb my={2}>
               <BreadcrumbItem>
                 <Link href="/"> HomePage </Link>
@@ -69,9 +58,7 @@ const MocksIndex = () => {
                 <MocksCards title="Cart" link="cart" />
               </GridItem>
             </Grid>
-          </Box>
-        </Box>
-      </Container>
+      </Flex>
     </LayoutWithSideBar>
   );
 };
