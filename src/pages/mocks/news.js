@@ -1,12 +1,22 @@
 import { Box, Text, Container, Flex } from "@chakra-ui/react";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import CodeExample from "@/components/CodeExample/CodeExample";
+import BreadCrumb from "@/components/Breadcrumb";
 
 function NewsDocs() {
   return (
     <>
       <LayoutWithSideBar>
         <main>
+          <Box ml={4}>
+            <BreadCrumb
+              pages={[
+                { href: "/", name: "Home" },
+                { href: "/mocks", name: "Mocks" },
+                { href: "/mocks/news", name: "News" },
+              ]}
+            />
+          </Box>
           <Flex gap={12}>
             <Container maxW="4xl">
               <Box display={"grid"} alignItems={"center"}>
