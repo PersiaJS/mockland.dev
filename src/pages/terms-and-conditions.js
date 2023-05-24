@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 import {
+  Box,
   Container,
   Tab,
   TabIndicator,
@@ -14,6 +15,7 @@ import {
 
 import Landing from "@/components/Landing";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
+import BreadCrumb from "@/components/Breadcrumb";
 
 const TermsAndConditions = () => {
   const [activeTab, setActiveTab] = useState("General");
@@ -34,6 +36,14 @@ const TermsAndConditions = () => {
       </Head>
       <LayoutWithSideBar>
         <main>
+          <Box ml={4}>
+            <BreadCrumb
+              pages={[
+                { href: "/", name: "Home" },
+                { href: "/terms-and-conditions", name: "Terms And Conditions" },
+              ]}
+            />
+          </Box>
           <Landing
             head="Terms And Condition"
             text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.

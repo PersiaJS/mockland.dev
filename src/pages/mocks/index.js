@@ -1,25 +1,8 @@
+import { Box, Container, Grid, GridItem, Heading } from "@chakra-ui/react";
+
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
+import BreadCrumb from "@/components/Breadcrumb";
 import MocksCards from "@/components/MockCards";
-import {
-  Badge,
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Container,
-  Grid,
-  GridItem,
-  HStack,
-  Heading,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import Link from "next/link";
 
 const MocksIndex = () => {
   return (
@@ -27,14 +10,12 @@ const MocksIndex = () => {
       <Container maxW={990}>
         <Box height={{ base: "auto", md: "110vh" }}>
           <Box>
-            <Breadcrumb my={2}>
-              <BreadcrumbItem>
-                <Link href="/"> HomePage </Link>
-              </BreadcrumbItem>
-              <BreadcrumbItem isCurrentPage>
-                <Link href="/mocks"> Mocks </Link>
-              </BreadcrumbItem>
-            </Breadcrumb>
+            <BreadCrumb
+              pages={[
+                { href: "/", name: "Home" },
+                { href: "/mocks", name: "Mocks" },
+              ]}
+            />
             <Heading as={"h1"}>Mocks</Heading>
             <Grid
               my={8}

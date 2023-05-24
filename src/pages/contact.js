@@ -1,3 +1,4 @@
+import BreadCrumb from "@/components/Breadcrumb";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import fetchHandler from "@/utils/fetchHandler";
 import {
@@ -63,6 +64,14 @@ const Contact = () => {
         maxW="5xl"
         px={{ base: "1rem", xl: "4rem", lg: "4rem", md: "3rem", sm: "1rem" }}
       >
+        <Box ml={4}>
+          <BreadCrumb
+            pages={[
+              { href: "/", name: "Home" },
+              { href: "/contact", name: "Contact" },
+            ]}
+          />
+        </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Heading as="h2" mt="1rem">
             Hire us

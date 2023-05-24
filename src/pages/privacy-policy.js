@@ -2,6 +2,7 @@ import { Box, Text, Container, Flex } from "@chakra-ui/react";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import Landing from "@/components/Landing";
 import Head from "next/head";
+import BreadCrumb from "@/components/Breadcrumb";
 
 function PrivacyPolicy() {
   return (
@@ -14,6 +15,14 @@ function PrivacyPolicy() {
       </Head>
       <LayoutWithSideBar>
         <main>
+          <Box ml={4}>
+            <BreadCrumb
+              pages={[
+                { href: "/", name: "Home" },
+                { href: "/privacy-policy", name: "Privacy Policy" },
+              ]}
+            />
+          </Box>
           <Landing
             head="Privacy Policy"
             text="Your privacy is important to us. We respect your privacy
