@@ -42,25 +42,6 @@ const Header = () => {
           gap={4}
         >
           <Mockland />
-          <InputGroup
-            display={{ base: "none", lg: "flex", md: "flex", sm: "flex" }}
-            alignItems={"center"}
-            boxShadow="base"
-            height={"100%"}
-            maxWidth={"600px"}
-            borderRadius={"5px"}
-          >
-            <InputLeftElement pt={"3px"} pointerEvents="none">
-              <Search2Icon color="gray.500" />
-            </InputLeftElement>
-            <Input
-              type="tel"
-              _placeholder={{ color: "gray.500", fontSize: "16px" }}
-              placeholder="Search Mocks"
-              variant="unstyled"
-            />
-          </InputGroup>
-
           <Flex gap={4} alignItems={"Center"} height={"100%"}>
             <HStack
               justifyContent={"space-between"}
