@@ -7,7 +7,7 @@ import MocksCards from "@/components/MockCards";
 const MocksIndex = () => {
   return (
     <LayoutWithSideBar>
-      <Flex flexDir={"column"} px={6}>
+      <Flex flexDir={"column"} px={"12"} gap={6}>
         <BreadCrumb
           pages={[
             { href: "/", name: "Home" },

@@ -15,28 +15,27 @@ function CodeExample({ code }) {
 
   return (
     <Box
-      p={4}
       borderWidth="1px"
       borderRadius="md"
-      mb={4}
       bg="black"
       w="100%"
       color="white"
+      position={"relative"}
     >
-      <Flex align="center" justifyContent="space-between">
-        <Text fontSize="sm" fontWeight="bold" mb={2} color={"red.400"}>
-          First Step:
-        </Text>
-        <Button
-          bg="blue.600"
-          size="sm"
-          onClick={handleCopy}
-          colorScheme={copied ? "green" : "gray"}
-        >
-          {copied ? "copied!" : "Copy"}
-        </Button>
-      </Flex>
-      <pre>{code}</pre>
+      <Button
+        position={"absolute"}
+        top={2}
+        right={2}
+        bg="blue.600"
+        size="sm"
+        onClick={handleCopy}
+        colorScheme={copied ? "green" : "gray"}
+      >
+        {copied ? "copied!" : "Copy"}
+      </Button>
+      <Box mt={12} px={4} pb={6} overflowY={"scroll"} w={"100%"}>
+        <pre>{code}</pre>
+      </Box>
     </Box>
   );
 }
