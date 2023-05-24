@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import {
   Container,
+  Flex,
   Tab,
   TabIndicator,
   TabList,
@@ -33,7 +34,7 @@ const TermsAndConditions = () => {
         <link rel="icon" href="/MocklandLogo.ico" />
       </Head>
       <LayoutWithSideBar>
-        <main>
+        <Flex flexDir={"column"} px={6} minH={"80vh"}>
           <Landing
             head="Terms And Condition"
             text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -41,7 +42,6 @@ const TermsAndConditions = () => {
             corrupti, iste nulla deleniti vero sapiente dolorum illum minima
             accusamus odit delectus cupiditate, atque at sed?"
           />
-          <Container maxW={990}>
             <Tabs display="inline-block">
               <TabList>
                 <Tab fontSize={{ base: "xs", md: "md" }}>General Terms</Tab>
@@ -51,12 +51,6 @@ const TermsAndConditions = () => {
                   Changes about terms
                 </Tab>
               </TabList>
-              <TabIndicator
-                mt="-1.5px"
-                height="2px"
-                bg="blue.500"
-                borderRadius="1px"
-              />
               <TabPanels>
                 <TabPanel>
                   <Text>
@@ -126,8 +120,7 @@ const TermsAndConditions = () => {
                 </TabPanel>
               </TabPanels>
             </Tabs>
-          </Container>
-        </main>
+        </Flex>
       </LayoutWithSideBar>
     </>
   );

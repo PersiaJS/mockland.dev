@@ -12,7 +12,7 @@ const LayoutWithSideBar = ({ children }) => {
         display={"flex"}
         flexDirection={"column"}
         maxWidth={"100rem"}
-        minHeight={"60rem"}
+        // minHeight={"60rem"}
         padding={0}
       >
         <Flex position={"relative"}>
