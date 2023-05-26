@@ -80,9 +80,7 @@ const SidebarContent = () => {
             name={link.name}
           />
         ))
-      ) : (
-        ""
-      )}
+      ) : null}
     </Box>
   );
 };
