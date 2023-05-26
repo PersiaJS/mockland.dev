@@ -1,9 +1,6 @@
 import { Search2Icon } from "@chakra-ui/icons";
 import {
   Flex,
-  InputGroup,
-  InputLeftElement,
-  Input,
   Icon,
   Button,
   Link,
@@ -11,6 +8,7 @@ import {
   HStack,
   Container,
   Box,
+  Spinner,
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import Mockland from "../Mockland/Mockland";
@@ -20,7 +18,7 @@ import UserContext from "@/contexts/UserContext";
 import UserDrawer from "../UserDrawer/UserDrawer";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+  const { user, isLoading } = useContext(UserContext);
 
   return (
     <Box
@@ -104,7 +102,18 @@ const Header = () => {
                 </Icon>
               </Link>
             </HStack>
-            {!user ? (
+            {isLoading ? (
+              <Button paddingInline={"3rem"}>
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="md"
+                />
+              </Button>
+            ) :
+            !user ? (
               <>
                 <ButtonGroup
                   display={{

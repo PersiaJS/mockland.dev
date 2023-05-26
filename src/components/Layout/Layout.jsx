@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import { Box, Container, Flex } from "@chakra-ui/react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 const Layout = ({ children }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
       <Container
@@ -15,7 +13,6 @@ const Layout = ({ children }) => {
         padding={0}
       >
         <Header />
-        <Flex>
           <Box
             display={"flex"}
             alignItems={"center"}
@@ -24,7 +21,6 @@ const Layout = ({ children }) => {
           >
             {children}
           </Box>
-        </Flex>
         <Footer />
       </Container>
     </>

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Spinner, Flex } from "@chakra-ui/react";
 import NavItem from "../NavItem/NavItem";
 import {
   FaAddressBook,
@@ -50,7 +50,7 @@ const AuthItems = [
 ];
 
 const SidebarContent = () => {
-  const { user } = useContext(UserContext);
+  const { user, isLoading } = useContext(UserContext);
   return (
     <Box position={"sticky"} top={[4, 24]}>
       {LinkItems.map((link) => (
@@ -61,7 +61,17 @@ const SidebarContent = () => {
           name={link.name}
         />
       ))}
-      {!user &&
+      {isLoading ? (
+        <Flex mt={4} justifyContent={"center"}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="md"
+          />
+        </Flex>
+      ) : !user ? (
         AuthItems.map((link) => (
           <NavItem
             key={link.name}
@@ -69,7 +79,10 @@ const SidebarContent = () => {
             href={link.href}
             name={link.name}
           />
-        ))}
+        ))
+      ) : (
+        ""
+      )}
     </Box>
   );
 };

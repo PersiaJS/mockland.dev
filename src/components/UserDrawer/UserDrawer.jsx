@@ -46,7 +46,17 @@ const UserDrawer = () => {
 
   return (
     <>
-      <Button ref={btnRef} colorScheme="blue" onClick={onOpen}>
+      <Button
+        leftIcon={
+          <Avatar
+            size={"xs"}
+            name={`${user.firstName} ${user.lastName}`}
+          />
+        }
+        ref={btnRef}
+        colorScheme="blue"
+        onClick={onOpen}
+      >
         My Account
       </Button>
       <Drawer

@@ -7,9 +7,11 @@ import Cookies from "universal-cookie";
 
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchUser = useCallback(async () => {
     const cookies = new Cookies();
+    setIsLoading(true);
     try {
       const res = await fetchHandler("/api/member/profile", {
         method: "GET",
@@ -18,7 +20,9 @@ export default function App({ Component, pageProps }) {
         },
       });
       setUser(res.data.user);
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       setUser(null);
     }
   }, []);
@@ -31,6 +35,7 @@ export default function App({ Component, pageProps }) {
     <UserContext.Provider
       value={{
         user,
+        isLoading,
         refreshUser: fetchUser,
       }}
     >
