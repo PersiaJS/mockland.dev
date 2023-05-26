@@ -7,8 +7,7 @@ function NewsDocs() {
   return (
     <>
       <LayoutWithSideBar>
-        <main>
-          <Flex flexDir={"column"} px={"12"} gap={6}>
+          <Flex flexDir={"column"} gap={6} px={12}>
             <BreadCrumb
               pages={[
                 { href: "/", name: "Home" },
@@ -16,7 +15,6 @@ function NewsDocs() {
                 { href: "/mocks/news", name: "News" },
               ]}
             />
-            <Box display={"grid"} alignItems={"center"}>
               <Text fontSize="5xl">NewsDocs Page</Text>
               <Text mt={5}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -68,9 +66,7 @@ function NewsDocs() {
                 et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
                 est Lorem ipsum dolor sit amet.
               </Text>
-            </Box>
           </Flex>
-        </main>
       </LayoutWithSideBar>
     </>
   );
