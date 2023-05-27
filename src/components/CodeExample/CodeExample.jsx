@@ -26,15 +26,14 @@ function CodeExample({ code }) {
         position={"absolute"}
         top={2}
         right={2}
-        bg="blue.600"
         size="sm"
         onClick={handleCopy}
-        colorScheme={copied ? "green" : "gray"}
+        colorScheme={copied ? "green" : "blue"}
       >
         {copied ? "copied!" : "Copy"}
       </Button>
-      <Box mt={12} px={4} pb={6} overflowY={"scroll"} w={"100%"}>
-        <pre>{code}</pre>
+      <Box mt={12} px={4} pb={6} overflowY={"auto"} w={"100%"}>
+        <code>{code}</code>
       </Box>
     </Box>
   );
