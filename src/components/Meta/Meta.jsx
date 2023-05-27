@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 const Meta = ({ title, description, image }) => (
   <Head>
@@ -16,6 +16,9 @@ const Meta = ({ title, description, image }) => (
 
     {/* Additional metadata */}
     <meta name="twitter:card" content="Mockland" />
+
+    {/* Favicons */}
+    <link rel="icon" href="/MocklandLogo.ico" />
   </Head>
 );
 
