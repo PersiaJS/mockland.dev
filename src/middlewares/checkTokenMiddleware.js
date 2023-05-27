@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import prisma from "../../lib/prisma";
 
 // JUST CHECKING, NOT PREVENTING ANYTHING

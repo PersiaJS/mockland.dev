@@ -14,10 +14,10 @@ describe("tokenMiddleware", () => {
   it("Should respond with code 400 if the token header is not provided", async () => {
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
     const req = { headers: { token: undefined } };
-    await tokenMiddleware(req, res);
-    expect(res.status).toBeCalledWith(400);
-    expect(res.json).toBeCalledWith({
+    const tokenResponse = await tokenMiddleware(req, res);
+    expect(tokenResponse).toEqual({
       status: false,
+      code: 400,
       message: "token header is required",
     });
   });
@@ -25,10 +25,10 @@ describe("tokenMiddleware", () => {
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
     const req = { headers: { token: "INVALID TOKEN" } };
 
-    await tokenMiddleware(req, res);
-    expect(res.status).toBeCalledWith(400);
-    expect(res.json).toBeCalledWith({
+    const tokenResponse = await tokenMiddleware(req, res);
+    expect(tokenResponse).toEqual({
       status: false,
+      code: 400,
       message: "Invalid token",
     });
   });
@@ -37,11 +37,11 @@ describe("tokenMiddleware", () => {
     const req = { headers: { token: "TOKEN_NOT_EXIST" } };
     jwt.verify = jest.fn().mockReturnValue(true);
     prisma.member.findFirst = jest.fn().mockResolvedValue(null);
-    await tokenMiddleware(req, res);
-    expect(res.status).toBeCalledWith(400);
-    expect(res.json).toBeCalledWith({
+    const tokenResponse = await tokenMiddleware(req, res);
+    expect(tokenResponse).toEqual({
       status: false,
-      message: "User does not exist",
+      code: 400,
+      message: "Invalid token",
     });
   });
   it("Should set req.user to a valid user object if the token is OK", async () => {
@@ -56,7 +56,11 @@ describe("tokenMiddleware", () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    await tokenMiddleware(req, res);
-    expect(req.user).toBeDefined();
+    const tokenResponse = await tokenMiddleware(req, res);
+    expect(tokenResponse).toEqual({
+      status: true,
+      code: 200,
+      message: "Valid token",
+    });
   });
 });
