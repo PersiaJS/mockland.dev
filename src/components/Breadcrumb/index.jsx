@@ -12,8 +12,11 @@ const BreadCrumb = ({ pages }) => {
       }}
       separator={<ChevronRightIcon />}
     >
-      {pages.map((page) => (
-        <BreadcrumbItem _hover={{ color: "blue.500" }}>
+      {pages.map((page, index) => (
+        <BreadcrumbItem
+          _hover={{ color: "blue.500" }}
+          key={`BreadcrumbItem-${index}`}
+        >
           <BreadcrumbLink
             _hover={{ textDecoration: "none" }}
             as={Link}

@@ -1,6 +1,6 @@
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import { Alert, AlertIcon, Box, Flex } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import fetchHandler from "@/utils/fetchHandler";
 import ContactItem from "@/components/ContactItem/ContactItem";
 
@@ -8,7 +8,7 @@ const ContactList = () => {
   const [contacts, setContacts] = useState(null);
   const [message, setMessage] = useState(null);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await fetchHandler.get("/api/contact/list");
       if (response.data.status) {
@@ -30,12 +30,12 @@ const ContactList = () => {
         status: "error",
         message: "something went wrong. Please try again later.",
       });
-      console.log("message", message, error);
     }
-  };
+  }, [contacts, message]);
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <LayoutWithSideBar>

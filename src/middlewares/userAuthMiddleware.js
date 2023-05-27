@@ -4,7 +4,7 @@ import prisma from "../../lib/prisma";
 const userAuthMiddleware = async (req, res) => {
   const { auth } = req.headers;
   if (!auth) {
-    return { status: false, code, 400, message: "auth header is required" };
+    return { status: false, code: 400, message: "auth header is required" };
   }
 
   try {
@@ -12,17 +12,17 @@ const userAuthMiddleware = async (req, res) => {
   } catch (err) {
     return { status: false, code: 400, message: "Invalid token" };
   }
-  
+
   const user = await prisma.user.findFirst({
     where: {
       auth,
     },
   });
-  
+
   if (!user) {
     return { status: false, code: 400, message: "Invalid auth" };
   }
-  
+
   req.user = user;
   return { status: true, code: 200, message: "Valid auth" };
 };
