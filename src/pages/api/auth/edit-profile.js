@@ -8,10 +8,31 @@ import tokenCounterMiddleware from "@/middlewares/tokenCounterMiddleware";
 
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
-  await methodMiddleware(req, res, "POST");
-  await tokenMiddleware(req, res);
 
-  await userAuthMiddleware(req, res);
+  const methodResponse = await methodMiddleware(req, res, "POST");
+  if (!methodResponse.status) {
+    return res.status(methodResponse.code).json({
+      status: false,
+      message: methodResponse.message,
+    });
+  }
+
+  const tokenResponse = await tokenMiddleware(req, res);
+  if (!tokenResponse.status) {
+    return res.status(tokenResponse.code).json({
+      status: false,
+      message: tokenResponse.message,
+    });
+  }
+
+  const userAuthResponse = await userAuthMiddleware(req, res);
+  if (!userAuthResponse.status) {
+    return res.status(userAuthResponse.code).json({
+      status: false,
+      message: userAuthResponse.message,
+    });
+  }
+
   await tokenCounterMiddleware(req, res);
 
   const rules = {

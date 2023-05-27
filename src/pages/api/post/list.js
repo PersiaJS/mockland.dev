@@ -6,7 +6,15 @@ import tokenCounterMiddleware from "@/middlewares/tokenCounterMiddleware";
 
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
-  await methodMiddleware(req, res, "GET");
+
+  const methodResponse = await methodMiddleware(req, res, "GET");
+  if (!methodResponse.status) {
+    return res.status(methodResponse.code).json({
+      status: false,
+      message: methodResponse.message,
+    });
+  }
+
   await checkTokenMiddleware(req, res);
   await tokenCounterMiddleware(req, res);
 

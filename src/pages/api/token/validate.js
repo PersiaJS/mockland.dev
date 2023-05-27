@@ -4,7 +4,14 @@ import jwt from "jsonwebtoken";
 
 const handler = async (req, res) => {
   await corsMiddleware(req, res);
-  await methodMiddleware(req, res, "GET");
+
+  const methodResponse = await methodMiddleware(req, res, "GET");
+  if (!methodResponse.status) {
+    return res.status(methodResponse.code).json({
+      status: false,
+      message: methodResponse.message,
+    });
+  }
 
   const { token } = req.headers;
 
@@ -14,8 +21,10 @@ const handler = async (req, res) => {
 
   jwt.decode(token, process.env.JWT_SECRET);
 
-  if (!jwt.verify(token, process.env.JWT_SECRET)) {
-    return res.status(400).json({ status: false, message: "Invalid token" });
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return { status: false, code: 400, message: "Invalid token" };
   }
 
   res.status(200).json({

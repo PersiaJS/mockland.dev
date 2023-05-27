@@ -2,7 +2,13 @@ import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  await methodMiddleware(req, res, "PUT");
+  const methodResponse = await methodMiddleware(req, res, "PUT");
+  if (!methodResponse.status) {
+    return res.status(methodResponse.code).json({
+      status: false,
+      message: methodResponse.message,
+    });
+  }
 
   const { securityHash } = req.body;
 

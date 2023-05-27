@@ -3,9 +3,21 @@ import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  await methodMiddleware(req, res, "GET");
+  const methodResponse = await methodMiddleware(req, res, "POST");
+  if (!methodResponse.status) {
+    return res.status(methodResponse.code).json({
+      status: false,
+      message: methodResponse.message,
+    });
+  }
 
-  await authMiddleware(req, res);
+  const authResposne = await authMiddleware(req, res);
+  if (!authResposne.status) {
+    return res.status(authResposne.code).json({
+      status: false,
+      message: authResposne.message,
+    });
+  }
 
   if (!req.user?.id) {
     return res.status(401).json({

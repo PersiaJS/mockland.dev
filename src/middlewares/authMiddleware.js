@@ -4,15 +4,13 @@ import prisma from "../../lib/prisma";
 const authMiddleware = async (req, res) => {
   const { auth } = req.headers;
   if (!auth) {
-    return res
-      .status(400)
-      .json({ status: false, message: "auth header is required" });
+    return { status: false, code: 400, message: "auth header is required" };
   }
 
-  if (!jwt.verify(auth, process.env.JWT_SECRET)) {
-    return res
-      .status(400)
-      .json({ status: false, message: "Invalid auth token" });
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return { status: false, code: 400, message: "Invalid token" };
   }
 
   const user = await prisma.member.findFirst({
@@ -22,12 +20,11 @@ const authMiddleware = async (req, res) => {
   });
 
   if (!user) {
-    return res
-      .status(400)
-      .json({ status: false, message: "User does not exist" });
+    return { status: false, code: 400, message: "Invalid auth" };
   }
 
   req.user = user;
+  return { status: true, code: 200, message: "Valid auth" };
 };
 
 export default authMiddleware;

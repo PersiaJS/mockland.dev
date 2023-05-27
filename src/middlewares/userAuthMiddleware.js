@@ -4,31 +4,27 @@ import prisma from "../../lib/prisma";
 const userAuthMiddleware = async (req, res) => {
   const { auth } = req.headers;
   if (!auth) {
-    return res
-      .status(400)
-      .json({ status: false, message: "auth header is required" });
+    return { status: false, code, 400, message: "auth header is required" };
   }
 
   try {
-    jwt.verify(auth, process.env.JWT_SECRET);
-    const user = await prisma.user.findFirst({
-      where: {
-        auth,
-      },
-    });
-
-    if (!user) {
-      return res
-        .status(400)
-        .json({ status: false, message: "User does not exist" });
-    }
-
-    req.user = user;
+    jwt.verify(token, process.env.JWT_SECRET);
   } catch (err) {
-    return res
-      .status(400)
-      .json({ status: false, message: "Invalid auth token" });
+    return { status: false, code: 400, message: "Invalid token" };
   }
+  
+  const user = await prisma.user.findFirst({
+    where: {
+      auth,
+    },
+  });
+  
+  if (!user) {
+    return { status: false, code: 400, message: "Invalid auth" };
+  }
+  
+  req.user = user;
+  return { status: true, code: 200, message: "Valid auth" };
 };
 
 export default userAuthMiddleware;
