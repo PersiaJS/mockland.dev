@@ -80,7 +80,7 @@ const LoginForm = () => {
               const cookies = new Cookies();
               cookies.set("auth", response.data.auth, {
                 path: "/",
-                maxAge: 60 * 60 * 24 * 7,
+                expires: new Date(new Date().getTime() + 60 * 60 * 24 * 180 * 1000),
               });
               setMessage({
                 status: "success",
