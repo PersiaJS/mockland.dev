@@ -1,5 +1,5 @@
-import get from "../../../src/pages/api/token/get";
-import prisma from "../../../lib/prisma";
+import get from "../../../../src/pages/api/token/get";
+import prisma from "../../../../lib/prisma";
 import jwt from "jsonwebtoken";
 
 describe("token/get", () => {

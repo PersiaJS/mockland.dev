@@ -1,13 +1,13 @@
-import validate from "../../../src/pages/api/token/validate";
-import prisma from "../../../lib/prisma";
+import generate from "../../../../src/pages/api/token/generate";
+import prisma from "../../../../lib/prisma";
 import jwt from "jsonwebtoken";
 
-describe("token/validate", () => {
-  it("should return token validated", async () => {
+describe("token/generate", () => {
+  it("should return new token", async () => {
     const req = {
       method: "GET",
       headers: {
-        token: jwt.sign({ id: 1 }, process.env.JWT_SECRET),
+        auth: "TEST_TOKEN",
       },
     };
     const res = {
@@ -15,18 +15,21 @@ describe("token/validate", () => {
       json: jest.fn().mockReturnThis(),
       setHeader: jest.fn().mockReturnThis(),
     };
+
     prisma.member.findFirst = jest.fn().mockResolvedValue({
       id: 1,
     });
 
     jwt.verify = jest.fn().mockReturnValue(true);
 
-    await validate(req, res);
-
-    expect(res.status).toHaveBeenCalledWith(200);
+    await generate(req, res);
+    // expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
       status: true,
-      message: "Token Validated",
+      message: "New Token Generated",
+      data: {
+        token: expect.any(String),
+      },
     });
   });
 });
