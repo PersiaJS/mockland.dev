@@ -3,7 +3,7 @@ import methodMiddleware from "@/middlewares/methodMiddleware";
 import prisma from "../../../../lib/prisma";
 
 const handler = async (req, res) => {
-  const methodResponse = await methodMiddleware(req, res, "POST");
+  const methodResponse = await methodMiddleware(req, res, "GET");
   if (!methodResponse.status) {
     return res.status(methodResponse.code).json({
       status: false,

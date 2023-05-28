@@ -1,4 +1,4 @@
-const { default: methodMiddleware } = require("@/middlewares/methodMiddleware");
+import methodMiddleware from "../../../src/middlewares/methodMiddleware";
 
 describe("methodMiddleware", () => {
   const req = { method: "POST" };

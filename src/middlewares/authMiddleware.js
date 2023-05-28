@@ -8,9 +8,9 @@ const authMiddleware = async (req, res) => {
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET);
+    jwt.verify(auth, process.env.JWT_SECRET);
   } catch (err) {
-    return { status: false, code: 400, message: "Invalid token" };
+    return { status: false, code: 400, message: "Invalid auth token" };
   }
 
   const user = await prisma.member.findFirst({

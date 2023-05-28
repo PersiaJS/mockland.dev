@@ -1,16 +1,8 @@
 import tokenMiddleware from "@/middlewares/tokenMiddleware";
-import { createMockContext } from "../../context";
-import prisma from "../../lib/prisma";
+import prisma from "../../../lib/prisma";
 import jwt from "jsonwebtoken";
 
-let mockCtx;
-let ctx;
-
 describe("tokenMiddleware", () => {
-  beforeEach(() => {
-    mockCtx = createMockContext();
-    ctx = mockCtx;
-  });
   it("Should respond with code 400 if the token header is not provided", async () => {
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
     const req = { headers: { token: undefined } };
