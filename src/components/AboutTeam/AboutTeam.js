@@ -32,6 +32,13 @@ export default function AboutTeam() {
         <UserCard />
         <UserCard />
         <UserCard />
+        <UserCard
+          name="Hossein Karbakhsh Ravari"
+          text="We can help each other to progress in the virtual world."
+          linkedin="https://www.linkedin.com/in/hossein-karbakhsh-10a703268/"
+          github="https://github.com/Hossein-K-R"
+        />
+        <UserCard />
       </Flex>
     </Container>
   );
