@@ -11,7 +11,13 @@ export default function AboutTeam() {
         </Heading>
       </Center>
 
-      <Flex mx={"auto"} gap={"50px"} justifyContent={"center"} wrap={"wrap"}>
+      <Flex
+        mx={"auto"}
+        gap={"50px"}
+        justifyContent={"center"}
+        wrap={"wrap"}
+        maxWidth={"100rem"}
+      >
         <UserCard
           name="Ehsan Gazar"
           image="gazar.jpg"
@@ -31,7 +37,6 @@ export default function AboutTeam() {
           linkedin="https://www.linkedin.com/in/mbkProgrammer/"
           github="https://github.com/mbkProgrammer/"
         />
-        <UserCard />
         <UserCard
           name="Hossein Karbakhsh Ravari"
           text="We can help each other to progress in the virtual world."
