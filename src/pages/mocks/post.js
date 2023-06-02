@@ -12,7 +12,7 @@ function PostDocs() {
         description="Post Apis are used to get the post data. You can use the post apis to test the application without having to implement the backend. By Default all the GET requests do not need any token. However, the POST, PUT and DELETE requests need a token. You can find your token in the profile drawer."
       />
       <LayoutWithSideBar>
-        <Flex flexDir={"column"} gap={6} px={12}>
+        <Flex flexDir={"column"} gap={6} px={[4, 12]}>
           <BreadCrumb
             pages={[
               { href: "/", name: "Home" },

@@ -21,7 +21,7 @@ function CodeExample({ code }) {
       w="100%"
       color="white"
       position={"relative"}
-      maxW={"100vw"}
+      maxW={"calc(100vw - 32px)"}
     >
       <Button
         position={"absolute"}

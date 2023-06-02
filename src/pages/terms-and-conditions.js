@@ -27,7 +27,7 @@ const TermsAndConditions = () => {
         description={"Terms And Conditions of Mockland"}
       />
       <LayoutWithSideBar>
-        <Flex flexDir={"column"} px={12} minH={"80vh"} gap={6}>
+        <Flex flexDir={"column"} px={[4, 12]} minH={"80vh"} gap={6}>
           <BreadCrumb
             pages={[
               { href: "/", name: "Home" },
