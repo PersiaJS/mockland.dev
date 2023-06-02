@@ -3,10 +3,15 @@ import { Flex, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import BreadCrumb from "@/components/Breadcrumb";
 import MocksCards from "@/components/MockCards";
+import Meta from "@/components/Meta/Meta";
 
 const MocksIndex = () => {
   return (
     <LayoutWithSideBar>
+      <Meta
+        title="Mockland | List of mocks"
+        description={"List of mocks that you can use to test your application"}
+      />
       <Flex flexDir={"column"} px={"12"} gap={6}>
         <BreadCrumb
           pages={[

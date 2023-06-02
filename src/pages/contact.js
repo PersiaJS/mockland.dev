@@ -1,5 +1,6 @@
 import BreadCrumb from "@/components/Breadcrumb";
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
+import Meta from "@/components/Meta/Meta";
 import fetchHandler from "@/utils/fetchHandler";
 import {
   Alert,
@@ -59,6 +60,10 @@ const Contact = () => {
 
   return (
     <LayoutWithSideBar>
+      <Meta
+        title="Mockland | Contact Us"
+        description={"Mockland is a free fake API for testing and prototyping"}
+      />
       <Box display="flex" flexDirection="column" px={"12"} gap={6}>
         <BreadCrumb
           pages={[
