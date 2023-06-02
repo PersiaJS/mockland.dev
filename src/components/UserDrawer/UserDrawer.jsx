@@ -23,6 +23,7 @@ import Cookies from "universal-cookie";
 import { useRouter } from "next/router";
 import { FaEdit } from "react-icons/fa";
 import EditeProfileForm from "../EditProfileForm/EditeProfileForm";
+import GenrateTokenForm from "./GenrateTokenForm/GenrateTokenForm";
 
 const cookies = new Cookies();
 
@@ -34,6 +35,11 @@ const UserDrawer = () => {
     isOpen: modelIsopen,
     onOpen: modelOnopen,
     onClose: modelOnClose,
+  } = useDisclosure();
+  const {
+    isOpen: fTokenIsopen,
+    onOpen: fTokenOnopen,
+    onClose: fTokenOnClose,
   } = useDisclosure();
   const btnRef = useRef();
 
@@ -48,10 +54,7 @@ const UserDrawer = () => {
     <>
       <Button
         leftIcon={
-          <Avatar
-            size={"xs"}
-            name={`${user.firstName} ${user.lastName}`}
-          />
+          <Avatar size={"xs"} name={`${user.firstName} ${user.lastName}`} />
         }
         ref={btnRef}
         colorScheme="blue"
@@ -104,6 +107,12 @@ const UserDrawer = () => {
                 <EditeProfileForm isOpen={modelIsopen} onClose={modelOnClose} />
                 <Text>{user.email}</Text>
               </Box>
+            </Flex>
+            <Flex padding={"10"} flexDir={"column"} gap={4}>
+              <Button colorScheme="blue" bg={"blue.500"} onClick={fTokenOnopen}>
+                Generate Token
+              </Button>
+              <GenrateTokenForm isOpen={fTokenIsopen} onClose={fTokenOnClose} />
             </Flex>
           </DrawerBody>
 
