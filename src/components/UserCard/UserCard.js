@@ -27,17 +27,15 @@ export default function UserCard({ name, image, text, linkedin, github }) {
           flexDirection={"column"}
           gap={2}
         >
-          {image && (
-            <Avatar
-              size={"2xl"}
-              name={name}
-              src={`/team/${image}`}
-              _groupHover={{
-                transform: "translateY(-8px)",
-              }}
-              transition={"all 0.3s ease-in-out"}
-            />
-          )}
+          <Avatar
+            size={"2xl"}
+            name={name}
+            src={`/team/${image}`}
+            _groupHover={{
+              transform: "translateY(-8px)",
+            }}
+            transition={"all 0.3s ease-in-out"}
+          />
           <Stack align={"center"}>
             <Text
               fontSize={"sm"}

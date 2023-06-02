@@ -67,7 +67,7 @@ const Contact = () => {
           ]}
         />
         <Heading as="h2" mt="1rem">
-          Hire us
+          Contact Us
         </Heading>
         <Text mt="1rem">
           If you have any questions, feedback, or concerns about the mock APIs

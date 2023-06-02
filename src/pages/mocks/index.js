@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Heading } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 
 import LayoutWithSideBar from "@/components/LayoutWithSideBar/LayoutWithSideBar";
 import BreadCrumb from "@/components/Breadcrumb";
@@ -15,6 +15,20 @@ const MocksIndex = () => {
           ]}
         />
         <Heading as={"h1"}>Mocks</Heading>
+        <Text fontSize={"lg"}>
+          There is a list of mocks that you can use to test your application.
+          You can use the mocks to test the application without having to
+          implement the backend.
+          <br />
+          Also for your convenience, all the GET requests do not need any token.
+          <br />
+          However, the POST, PUT and DELETE requests need a token. You can find
+          your token in the profile drawer.
+          <br />
+          Click on Generate Token button and get your token and follow the
+          instructions.
+        </Text>
+
         <Grid
           my={8}
           gridGap={4}

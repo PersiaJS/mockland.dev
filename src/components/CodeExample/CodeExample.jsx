@@ -21,6 +21,7 @@ function CodeExample({ code }) {
       w="100%"
       color="white"
       position={"relative"}
+      maxW={"100vw"}
     >
       <Button
         position={"absolute"}
@@ -33,7 +34,9 @@ function CodeExample({ code }) {
         {copied ? "copied!" : "Copy"}
       </Button>
       <Box mt={12} px={4} pb={6} overflowY={"auto"} w={"100%"}>
-        <code>{code}</code>
+        <pre>
+          <code>{code}</code>
+        </pre>
       </Box>
     </Box>
   );
