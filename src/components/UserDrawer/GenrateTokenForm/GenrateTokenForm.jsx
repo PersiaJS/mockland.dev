@@ -9,7 +9,6 @@ import {
   ModalContent,
   Container,
   VStack,
-  FormControl,
   AlertIcon,
   Input,
   Alert,
@@ -56,7 +55,7 @@ function GenrateTokenForm({ isOpen, onClose }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>GenrateToken</ModalHeader>
+        <ModalHeader>Genrate Token</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Container
@@ -96,7 +95,7 @@ function GenrateTokenForm({ isOpen, onClose }) {
                   type="submit"
                   onClick={handelToken}
                 >
-                  GenrateToken
+                  Genrate Token
                 </Button>
               </VStack>
             </Flex>
