@@ -149,7 +149,7 @@ function NewsDocs() {
           </Text>
           <CodeExample
             code={`fetch("https://mockland.dev/api/news/delete/:id", {
-  method: "PUT",
+  method: "DELETE",
   headers: {
     token: "YOUR_TOKEN",
   },

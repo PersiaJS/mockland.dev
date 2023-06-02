@@ -133,7 +133,7 @@ function ProductDocs() {
           </Text>
           <CodeExample
             code={`fetch("https://mockland.dev/api/product/delete/:id", {
-  method: "PUT",
+  method: "DELETE",
   headers: {
     token: "YOUR_TOKEN",
   },
