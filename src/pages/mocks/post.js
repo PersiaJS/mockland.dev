@@ -39,7 +39,7 @@ function PostDocs() {
             GET LIST
           </Heading>
           <Text>
-            We have 100 post in our database. You can get all the post by using
+            We have 150 post in our database. You can get all the post by using
             the following api. and if you create new, it will be added to this
             list
           </Text>
