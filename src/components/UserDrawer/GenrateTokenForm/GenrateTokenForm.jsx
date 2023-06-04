@@ -16,7 +16,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useClipboard } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import fetchHandler from "@/utils/fetchHandler";
 
 function GenrateTokenForm({ isOpen, onClose }) {
@@ -25,6 +25,34 @@ function GenrateTokenForm({ isOpen, onClose }) {
   const [isPending, setIsPending] = useState(false);
 
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
+
+  const getToken = useCallback(async () => {
+    try {
+      setIsPending(true);
+      const response = await fetchHandler.get("/api/token/get");
+
+      if (response.data.status) {
+        setMessage({
+          status: "success",
+          message: response.data.message,
+        });
+
+        setValue(response.data.data.token);
+        setIsPending(false);
+      }
+    } catch (error) {
+      setIsPending(false);
+
+      setMessage({
+        status: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    getToken();
+  }, []);
 
   const handelToken = async (e) => {
     e.preventDefult;
@@ -55,7 +83,7 @@ function GenrateTokenForm({ isOpen, onClose }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Genrate Token</ModalHeader>
+        <ModalHeader>Generate Token</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Container
@@ -95,7 +123,7 @@ function GenrateTokenForm({ isOpen, onClose }) {
                   type="submit"
                   onClick={handelToken}
                 >
-                  Genrate Token
+                  Generate New Token
                 </Button>
               </VStack>
             </Flex>
