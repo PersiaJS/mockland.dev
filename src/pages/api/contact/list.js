@@ -25,9 +25,7 @@ const handler = async (req, res) => {
   const validUserToGetData = ["me@ehsangazar.com", "exampleForTest@gmail.com"];
 
   if (!validUserToGetData.includes(req.user.email)) {
-    return res
-      .status(200)
-      .json({ status: false, message: "User not access to this page!" });
+    return res.status(200).json({ status: false, message: "Access denied!" });
   }
   const contacts = await prisma.contact.findMany();
 

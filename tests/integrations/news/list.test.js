@@ -5,6 +5,14 @@ const url = baseUrl + endpoint;
 
 describe(endpoint, () => {
   describe(endpoint, () => {
+    it("Should respond with code 405 if method is not GET", async () => {
+      try {
+        await axios.post(url);
+      } catch (err) {
+        expect(err.response.status).toBe(405);
+      }
+    });
+
     it("Should send 10 news. (Default page is 1 and limit is 10)", async () => {
       const res = await (await axios.get(url)).data;
       const news = await res.data;
