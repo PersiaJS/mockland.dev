@@ -56,6 +56,12 @@ export default function AboutTeam() {
           linkedin="https://www.linkedin.com/in/alimh17/"
           github="https://github.com/alimh17/"
         />
+        <UserCard
+          name="Sina koosha"
+          text="Experience new stuff in software is my passion..."
+          linkedin="https://www.linkedin.com/in/sina-koosha-a56742b7/"
+          github="https://github.com/sinkoosha"
+        />
         <UserCard />
       </Flex>
     </Container>
