@@ -41,20 +41,17 @@ const Contact = () => {
           status: "success",
           message: response.data.message,
         });
-        console.log("message", message);
       } else {
         setMessage({
           status: "warning",
           message: response.data.message,
         });
-        console.log("message", message);
       }
     } catch (error) {
       setMessage({
         status: "error",
         message: "something went wrong. Please try again later.",
       });
-      console.log("message", message);
     }
   };
 

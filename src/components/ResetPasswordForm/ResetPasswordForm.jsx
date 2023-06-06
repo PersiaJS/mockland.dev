@@ -59,7 +59,6 @@ const ResetPasswordForm = () => {
           }}
           validationSchema={ResetPasswordSchema}
           onSubmit={async (values, { resetForm }) => {
-            console.log(values);
             setIsPending(true);
             try {
               const response = await fetchHandler.put("/api/member/reset", {

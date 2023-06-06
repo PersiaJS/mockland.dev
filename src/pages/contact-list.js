@@ -17,13 +17,11 @@ const ContactList = () => {
           status: "success",
           message: response.data.message,
         });
-        console.log("contacts", contacts);
       } else {
         setMessage({
           status: "warning",
           message: response.data.message,
         });
-        console.log("message", message);
       }
     } catch (error) {
       setMessage({

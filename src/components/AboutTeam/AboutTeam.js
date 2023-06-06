@@ -49,6 +49,13 @@ export default function AboutTeam() {
           linkedin="https://www.linkedin.com/in/ali-ahmadi-7a61a123b/"
           github="https://github.com/unityali99/"
         />
+        <UserCard
+          name="Ali Mohamadi"
+          image="Alimh.jpg"
+          text="I like to create new things and programming helps me to do that"
+          linkedin="https://www.linkedin.com/in/alimh17/"
+          github="https://github.com/alimh17/"
+        />
         <UserCard />
       </Flex>
     </Container>
