@@ -31,7 +31,13 @@ export default function AboutTeam() {
           linkedin="https://www.linkedin.com/in/mbkProgrammer/"
           github="https://github.com/mbkProgrammer/"
         />
-        <UserCard />
+        <UserCard
+          name="Ali Mohamadi"
+          image="Alimh.jpg"
+          text="I like to create new things and programming helps me to do that"
+          linkedin="https://www.linkedin.com/in/alimh17/"
+          github="https://github.com/alimh17/"
+        />
       </Flex>
     </Container>
   );
