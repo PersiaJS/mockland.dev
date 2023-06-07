@@ -112,7 +112,11 @@ const ForgotPasswordForm = () => {
                   <>
                     <Text>
                       Didn{`'`}t receive an email?{" "}
-                      <Link color="blue" onClick={() => submitForm(values)}>
+                      <Link
+                        color="blue"
+                        onClick={() => submitForm(values)}
+                        href="/auth/forgotpassword"
+                      >
                         Send again
                       </Link>
                     </Text>
