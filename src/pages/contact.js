@@ -35,7 +35,7 @@ const Contact = () => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      const response = await fetchHandler.post("/api/contact/create", values);
+      const response = await fetchHandler().post("/api/contact/create", values);
       if (response.data.status) {
         setMessage({
           status: "success",

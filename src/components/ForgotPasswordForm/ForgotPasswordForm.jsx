@@ -30,7 +30,7 @@ const ForgotPasswordForm = () => {
   const submitForm = async (values) => {
     setIsPending(true);
     try {
-      const response = await fetchHandler.post("/api/member/forget", values);
+      const response = await fetchHandler().post("/api/member/forget", values);
       if (response.data.status) {
         setMessage({
           status: "success",

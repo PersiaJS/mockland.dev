@@ -59,11 +59,10 @@ function EditeProfileForm({ isOpen, onClose }) {
                 setIsPending(true);
                 setMessage(null);
                 try {
-                  const response = await fetchHandler.put(
+                  const response = await fetchHandler().put(
                     "/api/member/edit-profile",
                     {
                       ...values,
-
                       newsletter: user.newsletter,
                     }
                   );

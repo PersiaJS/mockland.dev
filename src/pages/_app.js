@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
     const cookies = new Cookies();
     setIsLoading(true);
     try {
-      const res = await fetchHandler("/api/member/profile", {
+      const res = await fetchHandler().get("/api/member/profile", {
         method: "GET",
         headers: {
           auth: cookies.get("auth"),

@@ -10,7 +10,7 @@ const ContactList = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetchHandler.get("/api/contact/list");
+      const response = await fetchHandler().get("/api/contact/list");
       if (response.data.status) {
         await setContacts(response.data.data);
         await setMessage({

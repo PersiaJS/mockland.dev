@@ -72,7 +72,7 @@ const LoginForm = () => {
         onSubmit={async (values, { resetForm }) => {
           setIsPending(true);
           try {
-            const response = await fetchHandler.post(
+            const response = await fetchHandler().post(
               "/api/member/login",
               values
             );
@@ -80,7 +80,9 @@ const LoginForm = () => {
               const cookies = new Cookies();
               cookies.set("auth", response.data.auth, {
                 path: "/",
-                expires: new Date(new Date().getTime() + 60 * 60 * 24 * 180 * 1000),
+                expires: new Date(
+                  new Date().getTime() + 60 * 60 * 24 * 180 * 1000
+                ),
               });
               setMessage({
                 status: "success",

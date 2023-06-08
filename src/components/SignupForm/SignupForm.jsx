@@ -80,7 +80,7 @@ const LoginForm = () => {
         onSubmit={async (values, { resetForm }) => {
           setIsPending(true);
           try {
-            const response = await fetchHandler.post(
+            const response = await fetchHandler().post(
               "/api/member/register",
               values
             );

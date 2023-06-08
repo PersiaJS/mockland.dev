@@ -20,4 +20,4 @@ const getInstance = () => {
   return instance;
 };
 
-export default getInstance();
+export default getInstance;

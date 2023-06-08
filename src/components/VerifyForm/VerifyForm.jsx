@@ -62,7 +62,7 @@ const VerifyForm = () => {
         onSubmit={async (values, { resetForm }) => {
           setIsPending(true);
           try {
-            const response = await fetchHandler.put("/api/member/verify", {
+            const response = await fetchHandler().put("/api/member/verify", {
               ...values,
               securityHash: router.query.securityHash,
             });

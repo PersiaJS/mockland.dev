@@ -23,7 +23,7 @@ const handler = async (req, res) => {
 
   return res.status(200).json({
     status: true,
-    message: "User logged in",
+    message: req.user.token ? "Token found" : "Token not found",
     data: {
       token: req.user.token,
     },

@@ -37,9 +37,9 @@ const UserDrawer = () => {
     onClose: modelOnClose,
   } = useDisclosure();
   const {
-    isOpen: fTokenIsopen,
-    onOpen: fTokenOnopen,
-    onClose: fTokenOnClose,
+    isOpen: tokenIsOpen,
+    onOpen: tokenOnOpen,
+    onClose: tokenOnClose,
   } = useDisclosure();
   const btnRef = useRef();
 
@@ -92,27 +92,21 @@ const UserDrawer = () => {
               <Box>
                 <Heading as={"h1"} size={"md"} fontWeight={"medium"}>
                   {`${user.firstName} ${user.lastName}`}{" "}
-                  <IconButton
-                    onClick={modelOnopen}
-                    bg={"none"}
-                    icon={<Icon as={FaEdit} />}
-                    _hover={{
-                      bg: "none",
-                      svg: {
-                        color: "blue.500",
-                      },
-                    }}
-                  />
                 </Heading>
-                <EditeProfileForm isOpen={modelIsopen} onClose={modelOnClose} />
                 <Text>{user.email}</Text>
               </Box>
             </Flex>
-            <Flex padding={"10"} flexDir={"column"} gap={4}>
-              <Button colorScheme="blue" bg={"blue.500"} onClick={fTokenOnopen}>
+            <Flex padding={"4"} flexDir={"column"} gap={4}>
+              <Button colorScheme="blue" bg={"gray.500"} onClick={modelOnopen}>
+                Edit Profile
+              </Button>
+              <EditeProfileForm isOpen={modelIsopen} onClose={modelOnClose} />
+            </Flex>
+            <Flex padding={"4"} flexDir={"column"} gap={4}>
+              <Button colorScheme="blue" bg={"blue.500"} onClick={tokenOnOpen}>
                 Generate Token
               </Button>
-              <GenrateTokenForm isOpen={fTokenIsopen} onClose={fTokenOnClose} />
+              <GenrateTokenForm isOpen={tokenIsOpen} onClose={tokenOnClose} />
             </Flex>
           </DrawerBody>
 

@@ -61,7 +61,7 @@ const ResetPasswordForm = () => {
           onSubmit={async (values, { resetForm }) => {
             setIsPending(true);
             try {
-              const response = await fetchHandler.put("/api/member/reset", {
+              const response = await fetchHandler().put("/api/member/reset", {
                 ...values,
                 securityHash: router.query.reset,
               });

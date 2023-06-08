@@ -20,7 +20,6 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import fetchHandler from "@/utils/fetchHandler";
 
 function GenrateTokenForm({ isOpen, onClose }) {
-  const { refreshUser, user } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -29,7 +28,7 @@ function GenrateTokenForm({ isOpen, onClose }) {
   const getToken = useCallback(async () => {
     try {
       setIsPending(true);
-      const response = await fetchHandler.get("/api/token/get");
+      const response = await fetchHandler().get("/api/token/get");
 
       if (response.data.status) {
         setMessage({
@@ -59,7 +58,7 @@ function GenrateTokenForm({ isOpen, onClose }) {
 
     try {
       setIsPending(true);
-      const response = await fetchHandler.get("/api/token/generate");
+      const response = await fetchHandler().get("/api/token/generate");
       if (response.data.status) {
         setMessage({
           status: "success",
