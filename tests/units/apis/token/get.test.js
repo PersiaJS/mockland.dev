@@ -26,7 +26,7 @@ describe("token/get", () => {
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
       status: true,
-      message: "User logged in",
+      message: "Token found",
       data: {
         token: expect.any(String),
       },
