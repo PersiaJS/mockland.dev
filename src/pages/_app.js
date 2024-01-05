@@ -55,6 +55,11 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-H92ZEDHZTX');
         `}
       </Script>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1231858558080110"
+        crossorigin="anonymous"
+      ></Script>
     </UserContext.Provider>
   );
 }
